@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Index – Portal de Inteligência Artificial</title>
+<style>
+:root{--navy:#0b1629;--ink:#0f1f3d;--muted:#6b7fa3;--blue:#2563eb;--blue2:#1d4ed8;--line:#e2eaf6;--bg:#f0f4fb;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13px/1.5 'Inter',system-ui,Arial,sans-serif}
+button,input,select{font:inherit;cursor:pointer}a{text-decoration:none}
+
+/* Layout */
+.app{min-height:100vh;display:grid;grid-template-columns:240px minmax(0,1fr)}
+
+/* Sidebar */
+.sidebar{background:linear-gradient(180deg,#0b1629,#0d1b2e);color:#c8d8f0;display:flex;flex-direction:column;min-height:100vh;position:sticky;top:0;height:100vh;overflow-y:auto}
+.brand{display:flex;align-items:center;gap:11px;padding:20px 18px 18px;border-bottom:1px solid #1e2f4a}
+.brand-logo{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#3b82f6,#1d4ed8);display:grid;place-items:center;flex-shrink:0}
+.brand-logo svg{width:20px;height:20px}
+.brand-text strong{display:block;color:#fff;font-size:16px;font-weight:700;letter-spacing:-.3px}
+.brand-text small{color:#7a96bf;font-size:11px}
+.nav-section{padding:16px 10px 0}
+.nav-btn{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;color:#c8d8f0;background:transparent;border:0;width:100%;text-align:left;font-size:13px;margin-bottom:3px}
+.nav-btn:hover,.nav-btn.active{background:#1e3a6e;color:#fff}
+.nav-btn svg{width:16px;height:16px;flex-shrink:0;opacity:.8}
+.badge{margin-left:auto;background:#1e3a6e;color:#90b8f0;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600}
+.nav-btn.active .badge{background:#2563eb;color:#fff}
+.cat-label{font-size:10px;letter-spacing:.9px;color:#4e6a90;font-weight:600;padding:18px 12px 8px;text-transform:uppercase}
+.cat-nav{padding:0 10px}
+.cat-btn{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#b0c4e0;background:transparent;border:0;width:100%;text-align:left;font-size:12.5px;margin-bottom:2px}
+.cat-btn:hover,.cat-btn.active{background:#1a2e50;color:#fff}
+.cat-btn svg{width:15px;height:15px;flex-shrink:0;opacity:.7}
+.cat-count{margin-left:auto;color:#4e6a90;font-size:11px}
+.side-bottom{margin-top:auto;padding:14px 18px 10px;border-top:1px solid #1a2a40}
+.status-row{display:flex;align-items:center;gap:8px;font-size:11.5px;color:#7a96bf}
+.status-dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 3px #34d39922;flex-shrink:0}
+.status-row div strong{color:#c8d8f0;display:block;font-size:12px;font-weight:500}
+.status-row div span{color:#5a78a0;font-size:10px}
+.side-motto{display:flex;align-items:center;gap:10px;padding:12px 18px 18px;color:#6a84a8;font-size:12px}
+.side-motto svg{width:18px;height:18px;opacity:.5}
+
+/* Main */
+main{min-width:0;display:flex;flex-direction:column}
+.topbar{height:62px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 24px;gap:16px;position:sticky;top:0;z-index:20}
+.search-wrap{flex:1;max-width:520px;position:relative}
+.search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:#8fa3c0}
+.search-wrap input{width:100%;border:1px solid #dce6f5;background:#f8faff;border-radius:22px;padding:9px 16px 9px 38px;color:var(--ink);outline:none;font-size:13px}
+.search-wrap input:focus{border-color:#93bbfd;background:#fff}
+.top-right{display:flex;align-items:center;gap:12px;margin-left:auto}
+.notif-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;color:#6b7fa3}
+.notif-btn svg{width:16px;height:16px}
+.profile{display:flex;align-items:center;gap:9px;padding:5px 11px 5px 5px;border:1px solid var(--line);border-radius:22px;background:#fff}
+.avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#374151,#1f2937);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700;flex-shrink:0}
+.profile-info strong{font-size:12px;font-weight:600;display:block;color:var(--ink)}
+.profile-info small{font-size:10.5px;color:var(--muted)}
+.profile svg{width:13px;height:13px;color:#9bafc8;margin-left:2px}
+
+/* Filter bar */
+.filter-bar{background:#fff;border-bottom:1px solid var(--line);padding:10px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:sticky;top:62px;z-index:19}
+.filter-bar label{font-size:11px;font-weight:600;color:var(--muted);white-space:nowrap}
+.filter-select{border:1px solid #dce7f8;border-radius:8px;padding:7px 28px 7px 10px;color:var(--ink);background:#f8faff;font-size:12px;outline:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%238fa3c0' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center}
+.filter-sep{width:1px;height:22px;background:var(--line)}
+.clear-btn{border:0;background:0;color:var(--blue);font-size:12px;font-weight:600;white-space:nowrap;padding:0 4px}
+.result-count{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+
+/* Content */
+.content{padding:20px 24px 32px}
+
+/* Hero */
+.hero{border-radius:14px;background:radial-gradient(ellipse at 72% 50%,#0f4c6e,transparent 55%),linear-gradient(135deg,#0b1a2e,#0d2040 55%,#071a30);color:#fff;padding:28px 36px;display:flex;align-items:center;justify-content:space-between;min-height:200px;margin-bottom:22px;position:relative;overflow:hidden}
+.hero-copy{max-width:480px;position:relative;z-index:1}
+.hero-eyebrow{font-size:10.5px;letter-spacing:1.5px;font-weight:600;color:#64b5d6;text-transform:uppercase;margin-bottom:8px}
+.hero h1{font-size:40px;font-weight:800;letter-spacing:-1.5px;line-height:1.05;margin-bottom:10px}
+.hero p{color:#b8cfe6;font-size:13px;line-height:1.6;margin-bottom:20px}
+.hero-pts{display:flex;gap:18px;flex-wrap:wrap}
+.hero-pt{display:flex;align-items:center;gap:8px;font-size:11px;color:#c5daf0}
+.hero-pt-icon{width:32px;height:32px;border-radius:50%;background:#ffffff14;display:grid;place-items:center;flex-shrink:0}
+.hero-pt-icon svg{width:14px;height:14px}
+.hero-right{position:relative;z-index:1;flex-shrink:0;margin-right:8px;text-align:right}
+.hero-brain{width:140px;height:140px}
+.hero-tagline{color:#e2f0fb;font-size:14px;font-weight:700;line-height:1.4;margin-top:8px}
+
+/* Stats row */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+.stat-card{background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px 16px;display:flex;align-items:center;gap:12px}
+.stat-icon{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.stat-icon svg{width:20px;height:20px}
+.stat-icon.blue{background:#eff6ff;color:#2563eb}
+.stat-icon.green{background:#ecfdf5;color:#059669}
+.stat-icon.purple{background:#f5f3ff;color:#7c3aed}
+.stat-icon.teal{background:#ecfeff;color:#0891b2}
+.stat-card strong{font-size:20px;font-weight:800;display:block;line-height:1.1;color:var(--ink)}
+.stat-card span{font-size:11px;color:var(--muted)}
+
+/* Section head */
+.sec-head{display:flex;align-items:baseline;gap:8px;margin-bottom:14px}
+.sec-head h2{font-size:16px;font-weight:700}
+.sec-head p{font-size:12px;color:var(--muted)}
+
+/* Tool list */
+.tool-list{display:flex;flex-direction:column;gap:8px}
+.tool-row{background:#fff;border:1px solid #e0eaf6;border-radius:11px;padding:14px 16px;display:flex;align-items:center;gap:14px;transition:.15s}
+.tool-row:hover{border-color:#bdd4f8;box-shadow:0 4px 16px #1d467310}
+.tool-logo{width:44px;height:44px;border-radius:10px;background:#f0f5ff;display:grid;place-items:center;flex-shrink:0;overflow:hidden}
+.tool-logo img{width:32px;height:32px;object-fit:contain}
+.tool-info{flex:1;min-width:0}
+.tool-info strong{font-size:13.5px;font-weight:700;display:block;margin-bottom:2px}
+.tool-info p{font-size:12px;color:#607898;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tool-cats{display:flex;gap:5px;flex-wrap:wrap;flex-shrink:0;margin:0 8px}
+.tc-tag{font-size:10.5px;border-radius:12px;padding:3px 9px;font-weight:500;white-space:nowrap}
+.tc-tag.blue{color:#2563eb;background:#eff6ff}
+.tc-tag.green{color:#059669;background:#ecfdf5}
+.tc-tag.purple{color:#7c3aed;background:#f5f3ff}
+.tc-tag.orange{color:#d97706;background:#fffbeb}
+.tc-tag.pink{color:#db2777;background:#fdf2f8}
+.tc-tag.gray{color:#4b5563;background:#f3f4f6}
+.tool-price{font-size:11px;color:var(--muted);white-space:nowrap;flex-shrink:0;min-width:70px;text-align:right}
+.tool-link{width:32px;height:32px;border-radius:50%;background:#f3f7fe;display:grid;place-items:center;color:#3b82f6;flex-shrink:0;border:0;transition:.15s}
+.tool-link:hover{background:#dbeafe}
+.tool-link svg{width:14px;height:14px}
+
+/* Destaques */
+.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+.dest-card{background:#fff;border:1px solid #e0eaf6;border-radius:11px;padding:16px;display:flex;align-items:center;gap:12px;transition:.15s}
+.dest-card:hover{border-color:#bdd4f8;box-shadow:0 4px 16px #1d467310}
+.dest-logo{width:44px;height:44px;border-radius:10px;background:#f0f5ff;display:grid;place-items:center;flex-shrink:0;overflow:hidden}
+.dest-logo img{width:32px;height:32px;object-fit:contain}
+.dest-info strong{font-size:13px;font-weight:700;display:block;margin-bottom:2px}
+.dest-info p{font-size:11px;color:#607898;margin:0}
+.dest-info span{font-size:10px;color:#2563eb;background:#eff6ff;border-radius:10px;padding:2px 7px;display:inline-block;margin-top:5px;font-weight:500}
+
+.empty{background:#fff;border:1px dashed #c8d8f0;border-radius:12px;padding:40px;text-align:center;color:#7a96bf;font-size:13px}
+.empty strong{display:block;margin-bottom:6px;font-size:14px}
+.hidden{display:none!important}
+.footer{font-size:11px;text-align:center;color:#9bafc8;padding:20px 0 4px}
+.section-mb{margin-bottom:24px}
+
+@media(max-width:1100px){.dest-grid{grid-template-columns:repeat(2,1fr)}.stats-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.app{grid-template-columns:60px 1fr}.brand-text,.cat-label,.cat-btn span,.cat-count,.side-motto,.side-bottom .status-row div span{display:none}.brand{justify-content:center;padding:16px 10px}.cat-btn,.nav-btn{justify-content:center;padding:10px 8px}.badge{display:none}.dest-grid{grid-template-columns:1fr}.tool-cats,.tool-price{display:none}.hero-right{display:none}.hero h1{font-size:30px}}
+@media(max-width:500px){.stats-row{grid-template-columns:1fr 1fr}.filter-bar{gap:6px}}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-logo">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 3L4 14h8l-1 7 9-11h-8l1-10z" fill="#fff" stroke="#fff" stroke-width=".5" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="brand-text"><strong>AI Index</strong><small>Portal de Inteligência Artificial</small></div>
+  </div>
+  <div class="nav-section">
+    <button class="nav-btn active" id="allNav" onclick="filterByCategory('all')">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      <span>Início</span>
+    </button>
+    <button class="nav-btn" onclick="filterByCategory('all')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span>Catálogo Completo</span>
+      <span class="badge" id="totalBadge">0</span>
+    </button>
+  </div>
+  <div class="cat-label">CATEGORIAS</div>
+  <div class="cat-nav" id="categoryNav"></div>
+  <div class="side-bottom">
+    <div class="status-row">
+      <span class="status-dot"></span>
+      <div><strong>Portal em funcionamento</strong><span id="lastUpdate"></span></div>
+    </div>
+  </div>
+  <div class="side-motto">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a7 7 0 0 1 7 7c0 3.5-2.5 6.5-6 7.4V18h-2v-1.6C7.5 15.5 5 12.5 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/></svg>
+    <span>Mais inteligência.<br>Mais produtividade.</span>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="searchInput" placeholder="Buscar por nome da IA, função, tecnologia ou categoria...">
+    </div>
+    <div class="top-right">
+      <button class="notif-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      </button>
+      <div class="profile">
+        <div class="avatar">LM</div>
+        <div class="profile-info"><strong>Leonardo Missio</strong><small>Colaborador</small></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- Filter bar -->
+  <div class="filter-bar">
+    <label>Categoria</label>
+    <select class="filter-select" id="categoryFilter"><option value="all">Todas as categorias</option></select>
+    <div class="filter-sep"></div>
+    <label>Tipo de acesso</label>
+    <select class="filter-select" id="priceFilter">
+      <option value="all">Todos</option>
+      <option>Gratuito</option><option>Freemium</option><option>Pago</option><option>Open Source</option>
+    </select>
+    <div class="filter-sep"></div>
+    <label>Tecnologia</label>
+    <select class="filter-select" id="technologyFilter">
+      <option value="all">Todas</option>
+      <option value="dev">Desenvolvimento</option>
+      <option value="data">Análise de dados</option>
+      <option value="creative">Design e criação</option>
+    </select>
+    <div class="filter-sep"></div>
+    <label>Complexidade</label>
+    <select class="filter-select" id="complexityFilter">
+      <option value="all">Todos</option>
+      <option value="simple">Fácil de começar</option>
+      <option value="advanced">Mais técnico</option>
+    </select>
+    <button class="clear-btn" onclick="clearFilters()">✕ Limpar</button>
+    <span class="result-count" id="resultCount"></span>
+  </div>
+
+  <div class="content">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="hero-eyebrow">Bem-vindo ao</div>
+        <h1>AI Index</h1>
+        <p>O portal corporativo que conecta você às melhores ferramentas de Inteligência Artificial, organizadas por categoria e com foco em produtividade e inovação.</p>
+        <div class="hero-pts">
+          <div class="hero-pt">
+            <div class="hero-pt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#64b5d6" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <div><strong style="display:block;font-size:11px">Mais eficiência</strong><span style="font-size:10.5px;color:#8fb4d0">no seu dia a dia</span></div>
+          </div>
+          <div class="hero-pt">
+            <div class="hero-pt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#64b5d6" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div><strong style="display:block;font-size:11px">Ferramentas seguras</strong><span style="font-size:10.5px;color:#8fb4d0">e confiáveis</span></div>
+          </div>
+          <div class="hero-pt">
+            <div class="hero-pt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#64b5d6" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+            <div><strong style="display:block;font-size:11px">Inovação ao alcance</strong><span style="font-size:10.5px;color:#8fb4d0">de todos</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <svg class="hero-brain" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M100 38C65 38 40 63 40 93c0 20 12 37 28 45 4 10 10 18 20 20 4 1 8 0 12-2" stroke="#3b82f6" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M100 38C85 40 75 53 72 66" stroke="#3b82f6" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M40 93c2-15 10-25 20-30" stroke="#3b82f6" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M68 138C55 128 48 116 47 103" stroke="#3b82f6" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M57 76C63 70 72 70 78 76c6 6 6 15 0 20" stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M52 103C58 98 68 99 73 105" stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M62 120C70 115 80 117 84 124" stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M72 66C76 60 84 60 88 66" stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M88 158L92 168" stroke="#3b82f6" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M100 38C135 38 160 63 160 93c0 20-12 37-28 45-4 10-10 18-20 20-4 1-8 0-12-2" stroke="#34d399" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M100 38C115 40 125 53 128 66" stroke="#34d399" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M160 93c-2-15-10-25-20-30" stroke="#34d399" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M132 138C145 128 152 116 153 103" stroke="#34d399" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M143 76C137 70 128 70 122 76c-6 6-6 15 0 20" stroke="#6ee7b7" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M148 103C142 98 132 99 127 105" stroke="#6ee7b7" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M138 120C130 115 120 117 116 124" stroke="#6ee7b7" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M128 66C124 60 116 60 112 66" stroke="#6ee7b7" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M112 158L108 168" stroke="#34d399" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M100 156L100 168" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M92 168C95 170 97 171 100 171C103 171 105 170 108 168" stroke="#7c3aed" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="78" cy="86" r="3" fill="#3b82f6" opacity=".6"/>
+          <circle cx="60" cy="108" r="2.5" fill="#60a5fa" opacity=".5"/>
+          <circle cx="122" cy="86" r="3" fill="#34d399" opacity=".6"/>
+          <circle cx="140" cy="108" r="2.5" fill="#6ee7b7" opacity=".5"/>
+        </svg>
+        <div class="hero-tagline">Explore. Descubra.<br>Transforme.</div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><strong id="statTools">0</strong><span>Ferramentas</span></div></div>
+      <div class="stat-card"><div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16M4 20V10l8-7 8 7v10M9 20v-5h6v5"/></svg></div><div><strong id="statCats">0</strong><span>Categorias</span></div></div>
+      <div class="stat-card"><div class="stat-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><strong>3</strong><span>Níveis de acesso</span></div></div>
+      <div class="stat-card"><div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><strong>100%</strong><span>Foco em produtividade</span></div></div>
+    </div>
+
+    <!-- Destaques -->
+    <section class="section-mb">
+      <div class="sec-head"><h2>Destaques</h2><p>Ferramentas mais acessadas e recomendadas</p></div>
+      <div class="dest-grid" id="featuredGrid"></div>
+    </section>
+
+    <!-- Todas as ferramentas -->
+    <section>
+      <div class="sec-head"><h2 id="allToolsTitle">Todas as Ferramentas</h2></div>
+      <div class="tool-list" id="toolList"></div>
+      <div id="emptyState" class="empty hidden"><strong>Nenhuma ferramenta encontrada</strong>Ajuste a busca ou os filtros para ver mais resultados.</div>
+    </section>
+
+    <div class="footer">AI Index · Portal de Inteligência Artificial · Explore ferramentas, descubra possibilidades.</div>
+  </div>
+</main>
+</div>
+
+<script>
+const tools = [
+  {id:'1', name:'ChatGPT',         cats:['Produtividade'],         pricing:'Freemium',   link:'https://chatgpt.com/',                           desc:'Assistente de IA para criação de conteúdo, análise e resolução de problemas.',            domain:'chatgpt.com'},
+  {id:'2', name:'Microsoft Copilot',cats:['Produtividade'],        pricing:'Freemium',   link:'https://copilot.microsoft.com/',                 desc:'IA integrada ao Microsoft 365 para aumentar sua produtividade.',                         domain:'copilot.microsoft.com'},
+  {id:'3', name:'Claude',           cats:['Produtividade'],        pricing:'Freemium',   link:'https://claude.ai/',                             desc:'Assistente de IA para análise, redação e raciocínio avançado.',                         domain:'claude.ai'},
+  {id:'4', name:'Gemini',           cats:['Produtividade'],        pricing:'Freemium',   link:'https://gemini.google.com/',                     desc:'IA do Google para pesquisa, criação e análise de informações.',                         domain:'gemini.google.com'},
+  {id:'5', name:'Notion AI',        cats:['Produtividade'],        pricing:'Freemium',   link:'https://www.notion.so/',                         desc:'Organização, escrita e gestão de conhecimento com IA.',                                  domain:'notion.so'},
+  {id:'6', name:'Perplexity',       cats:['Produtividade'],        pricing:'Freemium',   link:'https://www.perplexity.ai/',                     desc:'Pesquisa conversacional na web com respostas acompanhadas de fontes.',                   domain:'perplexity.ai'},
+  {id:'7', name:'NotebookLM',       cats:['Produtividade'],        pricing:'Gratuito',   link:'https://notebooklm.google.com/',                 desc:'Organiza e resume documentos enviados pelo usuário com IA.',                            domain:'notebooklm.google.com'},
+  {id:'8', name:'Grammarly',        cats:['Produtividade'],        pricing:'Freemium',   link:'https://www.grammarly.com/',                     desc:'Correção gramatical e sugestões de escrita com inteligência artificial.',               domain:'grammarly.com'},
+  {id:'9', name:'DeepSeek',         cats:['Produtividade'],        pricing:'Gratuito',   link:'https://chat.deepseek.com/',                     desc:'Assistente de IA para raciocínio, pesquisa, matemática e programação.',                 domain:'deepseek.com'},
+  {id:'10',name:'Kimi',             cats:['Produtividade'],        pricing:'Freemium',   link:'https://kimi.com/',                              desc:'Assistente para leitura, pesquisa e trabalho com documentos extensos.',                  domain:'kimi.com'},
+  {id:'11',name:'Le Chat (Mistral)',cats:['Produtividade'],        pricing:'Freemium',   link:'https://chat.mistral.ai/',                       desc:'Assistente de IA para pesquisa, escrita, análise e programação.',                       domain:'mistral.ai'},
+  {id:'12',name:'Qwen',             cats:['Produtividade'],        pricing:'Variável',   link:'https://qwen.ai/',                               desc:'Família de modelos de IA para texto, raciocínio, programação e outras tarefas.',         domain:'qwen.ai'},
+  {id:'13',name:'Power BI',         cats:['Análise de Dados'],     pricing:'Freemium',   link:'https://powerbi.microsoft.com/',                 desc:'Visualização e análise de dados para melhores decisões.',                               domain:'powerbi.microsoft.com'},
+  {id:'14',name:'Julius AI',        cats:['Análise de Dados'],     pricing:'Freemium',   link:'https://julius.ai/',                             desc:'Analisa planilhas e dados, responde perguntas e cria gráficos.',                        domain:'julius.ai'},
+  {id:'15',name:'Google Sheets AI', cats:['Análise de Dados'],     pricing:'Gratuito',   link:'https://sheets.google.com/',                     desc:'Automação e integrações com Google Workspace via Apps Script.',                         domain:'sheets.google.com'},
+  {id:'16',name:'Tableau',          cats:['Análise de Dados'],     pricing:'Pago',       link:'https://www.tableau.com/',                       desc:'Plataforma líder em visualização e análise de dados.',                                  domain:'tableau.com'},
+  {id:'17',name:'Jupyter Notebook', cats:['Análise de Dados'],     pricing:'Gratuito',   link:'https://jupyter.org/',                           desc:'Ambiente para análise de dados e desenvolvimento em Python.',                           domain:'jupyter.org'},
+  {id:'18',name:'TensorFlow',       cats:['Análise de Dados'],     pricing:'Open Source',link:'https://www.tensorflow.org/',                   desc:'Biblioteca de Machine Learning e IA para projetos avançados.',                         domain:'tensorflow.org'},
+  {id:'19',name:'Apollo.io',        cats:['Análise de Dados'],     pricing:'Freemium',   link:'https://apollo.io/',                             desc:'Pesquisa de empresas e contatos B2B com inteligência de dados.',                        domain:'apollo.io'},
+  {id:'20',name:'Manusis',          cats:['Análise de Dados'],     pricing:'Pago',       link:'https://manusis4.com.br/',                       desc:'Plataforma de gestão de ativos e manutenção industrial.',                               domain:'manusis4.com.br'},
+  {id:'21',name:'GitHub Copilot',   cats:['Desenvolvimento'],      pricing:'Freemium',   link:'https://github.com/features/copilot',            desc:'Assistente de código com IA integrado ao editor para desenvolvedores.',                 domain:'github.com'},
+  {id:'22',name:'Cursor',           cats:['Desenvolvimento'],      pricing:'Freemium',   link:'https://cursor.com/',                            desc:'Editor de código com recursos de IA para gerar, explicar e refatorar projetos.',        domain:'cursor.com'},
+  {id:'23',name:'Bolt.new',         cats:['Desenvolvimento'],      pricing:'Freemium',   link:'https://bolt.new/',                              desc:'Cria e executa protótipos e aplicações web diretamente no navegador.',                   domain:'bolt.new'},
+  {id:'24',name:'Aider',            cats:['Desenvolvimento'],      pricing:'Open Source',link:'https://aider.chat/',                            desc:'Assistente de programação no terminal com suporte a repositórios Git.',                  domain:'aider.chat'},
+  {id:'25',name:'Cline',            cats:['Desenvolvimento'],      pricing:'Open Source',link:'https://cline.bot/',                             desc:'Agente de programação integrado ao editor para tarefas com vários arquivos.',            domain:'cline.bot'},
+  {id:'26',name:'CodeRabbit',       cats:['Desenvolvimento'],      pricing:'Freemium',   link:'https://coderabbit.ai/',                         desc:'Revisão de código assistida por IA para identificar problemas e melhorias.',            domain:'coderabbit.ai'},
+  {id:'27',name:'Base44',           cats:['Desenvolvimento'],      pricing:'Pago',       link:'https://base44.com/',                            desc:'Criação de aplicativos a partir de instruções em linguagem natural.',                   domain:'base44.com'},
+  {id:'28',name:'Zapier',           cats:['Automação'],            pricing:'Freemium',   link:'https://zapier.com/',                            desc:'Automação de processos entre diferentes aplicativos e serviços.',                       domain:'zapier.com'},
+  {id:'29',name:'Make',             cats:['Automação'],            pricing:'Freemium',   link:'https://www.make.com/',                          desc:'Plataforma visual de automação e integração entre sistemas.',                           domain:'make.com'},
+  {id:'30',name:'n8n',              cats:['Automação'],            pricing:'Open Source',link:'https://n8n.io/',                                desc:'Automação de fluxos de trabalho com suporte a código personalizado.',                   domain:'n8n.io'},
+  {id:'31',name:'OpenHands',        cats:['Automação'],            pricing:'Open Source',link:'https://github.com/All-Hands-AI/OpenHands',      desc:'Plataforma para agentes de IA auxiliarem em tarefas de engenharia de software.',        domain:'github.com'},
+  {id:'32',name:'Sweep',            cats:['Automação'],            pricing:'Freemium',   link:'https://sweep.dev/',                             desc:'Transforma tarefas e issues em alterações de código automaticamente.',                  domain:'sweep.dev'},
+  {id:'33',name:'Qodo',             cats:['Automação'],            pricing:'Freemium',   link:'https://qodo.ai/',                               desc:'Ferramentas de IA para testes, revisão e qualidade de código.',                        domain:'qodo.ai'},
+  {id:'34',name:'Intercom',         cats:['Atendimento'],          pricing:'Pago',       link:'https://www.intercom.com/',                      desc:'Plataforma de atendimento ao cliente com IA integrada.',                                domain:'intercom.com'},
+  {id:'35',name:'Zendesk AI',       cats:['Atendimento'],          pricing:'Pago',       link:'https://www.zendesk.com/',                       desc:'Suporte ao cliente com automação e IA para times de atendimento.',                      domain:'zendesk.com'},
+  {id:'36',name:'Tidio',            cats:['Atendimento'],          pricing:'Freemium',   link:'https://www.tidio.com/',                         desc:'Chatbot e live chat com IA para atendimento ao cliente.',                               domain:'tidio.com'},
+  {id:'37',name:'Freshdesk',        cats:['Atendimento'],          pricing:'Freemium',   link:'https://freshdesk.com/',                         desc:'Suporte ao cliente inteligente com automações e relatórios.',                          domain:'freshdesk.com'},
+  {id:'38',name:'Drift',            cats:['Atendimento'],          pricing:'Pago',       link:'https://www.drift.com/',                         desc:'Plataforma de marketing conversacional e atendimento ao cliente.',                      domain:'drift.com'},
+  {id:'39',name:'Seamless.AI',      cats:['Marketing e Vendas'],   pricing:'Pago',       link:'https://seamless.ai/',                           desc:'Ferramenta de prospecção comercial e descoberta de contatos.',                         domain:'seamless.ai'},
+  {id:'40',name:'HubSpot AI',       cats:['Marketing e Vendas'],   pricing:'Freemium',   link:'https://www.hubspot.com/',                       desc:'CRM e plataforma de marketing com recursos de IA integrados.',                         domain:'hubspot.com'},
+  {id:'41',name:'Copy.ai',          cats:['Marketing e Vendas'],   pricing:'Freemium',   link:'https://www.copy.ai/',                           desc:'Geração de copy, textos de marketing e conteúdo com IA.',                             domain:'copy.ai'},
+  {id:'42',name:'Jasper',           cats:['Marketing e Vendas'],   pricing:'Pago',       link:'https://www.jasper.ai/',                         desc:'IA para criação de conteúdo de marketing em escala.',                                  domain:'jasper.ai'},
+  {id:'43',name:'Monday.com AI',    cats:['Gestão e Negócios'],    pricing:'Pago',       link:'https://monday.com/',                            desc:'Gerenciamento de projetos e equipes com IA para automações.',                          domain:'monday.com'},
+  {id:'44',name:'ClickUp AI',       cats:['Gestão e Negócios'],    pricing:'Freemium',   link:'https://clickup.com/',                           desc:'Produtividade e gestão de tarefas com assistente de IA integrado.',                    domain:'clickup.com'},
+  {id:'45',name:'Asana AI',         cats:['Gestão e Negócios'],    pricing:'Freemium',   link:'https://asana.com/',                             desc:'Gestão de projetos com automações e insights gerados por IA.',                        domain:'asana.com'},
+  {id:'46',name:'Midjourney',       cats:['Design e Criatividade'],pricing:'Pago',       link:'https://www.midjourney.com/',                    desc:'Geração de imagens e conceitos visuais a partir de prompts.',                         domain:'midjourney.com'},
+  {id:'47',name:'Suno',             cats:['Design e Criatividade'],pricing:'Freemium',   link:'https://suno.com/',                              desc:'Criação de músicas a partir de descrições e ideias em texto.',                        domain:'suno.com'},
+  {id:'48',name:'Khanmigo',         cats:['Educação e Treinamento'],pricing:'Gratuito',  link:'https://www.khanacademy.org/',                   desc:'Tutor de IA para aprendizagem personalizada em diversas disciplinas.',                 domain:'khanacademy.org'},
+  {id:'49',name:'Duolingo Max',     cats:['Educação e Treinamento'],pricing:'Pago',      link:'https://www.duolingo.com/',                      desc:'Aprendizagem de idiomas com IA para feedback personalizado.',                         domain:'duolingo.com'},
+  {id:'50',name:'Ada Health',       cats:['Saúde e Bem-estar'],    pricing:'Gratuito',   link:'https://ada.com/',                               desc:'Assistente de saúde com IA para orientação de sintomas e cuidados.',                  domain:'ada.com'},
+];
+
+const catIcons={
+  'Produtividade':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
+  'Análise de Dados':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
+  'Desenvolvimento':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
+  'Automação':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>',
+  'Atendimento':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+  'Marketing e Vendas':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
+  'Gestão e Negócios':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+  'Design e Criatividade':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>',
+  'Educação e Treinamento':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
+  'Saúde e Bem-estar':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+};
+
+function tagClass(cat){
+  if(/dados|BI|sheet|tensor|jupyter|tableau/i.test(cat)) return 'tc-tag green';
+  if(/design|criativ/i.test(cat)) return 'tc-tag purple';
+  if(/vendas|marketing/i.test(cat)) return 'tc-tag orange';
+  if(/saúde|saude/i.test(cat)) return 'tc-tag pink';
+  if(/atendimento/i.test(cat)) return 'tc-tag gray';
+  return 'tc-tag blue';
+}
+
+let activeCategory='all';
+const $=id=>document.getElementById(id);
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function allCats(){return [...new Set(tools.flatMap(t=>t.cats))].sort((a,b)=>a.localeCompare(b,'pt-BR'));}
+
+// SVG logos inline — sem dependência de API externa
+const svgLogos = {
+'ChatGPT': `<svg viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="41" height="41" rx="10" fill="#10a37f"/><path d="M37.5 20.5a8.3 8.3 0 0 0-5.1-7.6 6.3 6.3 0 0 0-6.2-8.4 6.3 6.3 0 0 0-4.2 1.6 8.3 8.3 0 0 0-9.3 3.6 8.3 8.3 0 0 0 1 9.8 8.3 8.3 0 0 0 5.1 7.6 6.3 6.3 0 0 0 6.2 8.4 6.3 6.3 0 0 0 4.2-1.6 8.3 8.3 0 0 0 9.3-3.6 8.3 8.3 0 0 0-1-9.8zm-12.5 9.7a4.7 4.7 0 0 1-3-.8l.1-.1 5-2.9a.8.8 0 0 0 .4-.7v-7l2.1 1.2v5.9a4.7 4.7 0 0 1-4.6 4.4zm-9.9-4.3a4.7 4.7 0 0 1-.6-3.1l.2.1 5 2.9a.8.8 0 0 0 .8 0l6.1-3.5v2.4l-5.1 2.9a4.7 4.7 0 0 1-6.4-1.7zm-1.3-10.9a4.7 4.7 0 0 1 2.4-2l-.1 5.8v.1a.8.8 0 0 0 .4.7l6.1 3.5-2.1 1.2-5-2.9a4.7 4.7 0 0 1-1.7-6.4zm15.4 4-6.1-3.5 2.1-1.2 5 2.9a4.7 4.7 0 0 1-.7 8.5v-5.8a.8.8 0 0 0-.3-.9zm2.1-3.1-.2-.1-5-2.9a.8.8 0 0 0-.8 0L19.3 17v-2.4l5.1-2.9a4.7 4.7 0 0 1 7 4.1v.1zm-13.2-2.2-2.1-1.2V7.6a4.7 4.7 0 0 1 7.7-3.6l-.2.1-5 2.9a.8.8 0 0 0-.4.7v6zm1.1-2.4 2.7-1.6 2.7 1.6v3.1l-2.7 1.6-2.7-1.6V11.3z" fill="white"/></svg>`,
+
+'Microsoft Copilot': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#fff"/><path d="M20 6C12.3 6 6 12.3 6 20s6.3 14 14 14 14-6.3 14-14S27.7 6 20 6z" fill="none"/><path d="M20 8c-3.3 0-6 2.7-6 6v2c-2.2.7-4 2.8-4 5.3 0 3.1 2.5 5.6 5.6 5.6h1.2c.4 1.8 2 3.1 3.9 3.1h.6c2.2 0 4-1.8 4-4v-6.3l4.4 2.5c.3.2.6.1.7-.2.1-.3.2-.7.2-1 0-3.5-1.9-6.7-5-8.4A9.6 9.6 0 0 0 20 8z" fill="url(#cop1)"/><defs><linearGradient id="cop1" x1="10" y1="10" x2="30" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2563eb"/><stop offset="33%" stop-color="#7c3aed"/><stop offset="66%" stop-color="#db2777"/><stop offset="100%" stop-color="#ea580c"/></linearGradient></defs></svg>`,
+
+'Claude': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#D97757"/><text x="20" y="27" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">✦</text></svg>`,
+
+'Gemini': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#fff"/><path d="M20 6c0 7.7-6.3 14-14 14 7.7 0 14 6.3 14 14 0-7.7 6.3-14 14-14-7.7 0-14-6.3-14-14z" fill="url(#gem1)"/><defs><linearGradient id="gem1" x1="6" y1="6" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4285f4"/><stop offset="50%" stop-color="#9b59b6"/><stop offset="100%" stop-color="#ea4335"/></linearGradient></defs></svg>`,
+
+'Notion AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#fff"/><path d="M11 10h11.5c1.2 0 2.5.5 3.5 1.3l4.2 3.2c.8.6 1.3 1.5 1.3 2.4v13.2c0 1.5-1.2 2.7-2.7 2.7l-13.8.1c-1.5 0-2.7-1.2-2.7-2.7V12.7c0-1.5 1.2-2.7 2.7-2.7z" fill="#111"/><path d="M15 16h10v2H15zm0 4h10v2H15zm0 4h7v2h-7z" fill="#fff"/></svg>`,
+
+'Perplexity': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1a1a2e"/><path d="M20 8l4 7h-3v3l5 4-5 4v3h3l-4 7-4-7h3v-3l-5-4 5-4v-3h-3z" fill="#20c6b7"/></svg>`,
+
+'NotebookLM': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#fff"/><rect x="10" y="9" width="20" height="24" rx="3" fill="#4285f4"/><rect x="12" y="14" width="12" height="2" rx="1" fill="white"/><rect x="12" y="18" width="16" height="2" rx="1" fill="white" opacity=".7"/><rect x="12" y="22" width="14" height="2" rx="1" fill="white" opacity=".7"/><rect x="12" y="26" width="10" height="2" rx="1" fill="white" opacity=".5"/><rect x="8" y="11" width="3" height="20" rx="1.5" fill="#ea4335"/></svg>`,
+
+'Grammarly': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#15C39A"/><text x="20" y="27" font-family="Arial" font-size="22" font-weight="bold" fill="white" text-anchor="middle">G</text></svg>`,
+
+'DeepSeek': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1a56e5"/><path d="M20 10c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm0 4c1.7 0 3.2.6 4.4 1.5L13.5 24.4A6 6 0 0 1 14 20c0-3.3 2.7-6 6-6zm0 12c-1.7 0-3.2-.6-4.4-1.5l10.9-8.9A6 6 0 0 1 26 20c0 3.3-2.7 6-6 6z" fill="white"/></svg>`,
+
+'Kimi': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF6B35"/><text x="20" y="27" font-family="Arial" font-size="18" font-weight="bold" fill="white" text-anchor="middle">Ki</text></svg>`,
+
+'Le Chat (Mistral)': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF7000"/><path d="M12 14h4v12h-4zm6 0h4l4 6-4 6h-4l4-6z" fill="white"/></svg>`,
+
+'Qwen': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6554C0"/><text x="20" y="27" font-family="Arial" font-size="18" font-weight="bold" fill="white" text-anchor="middle">Qw</text></svg>`,
+
+'Power BI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#F2C811"/><rect x="10" y="22" width="5" height="10" rx="1" fill="#333"/><rect x="17" y="16" width="5" height="16" rx="1" fill="#333"/><rect x="24" y="10" width="5" height="22" rx="1" fill="#333"/></svg>`,
+
+'Julius AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6366f1"/><path d="M13 12h14v2l-6 6v8h-2v-8l-6-6z" fill="white"/></svg>`,
+
+'Google Sheets AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0f9d58"/><rect x="11" y="10" width="18" height="22" rx="2" fill="white"/><rect x="14" y="15" width="5" height="2" rx=".5" fill="#0f9d58"/><rect x="21" y="15" width="5" height="2" rx=".5" fill="#0f9d58"/><rect x="14" y="19" width="5" height="2" rx=".5" fill="#0f9d58"/><rect x="21" y="19" width="5" height="2" rx=".5" fill="#0f9d58"/><rect x="14" y="23" width="5" height="2" rx=".5" fill="#0f9d58"/><rect x="21" y="23" width="5" height="2" rx=".5" fill="#0f9d58"/></svg>`,
+
+'Tableau': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#E8762D"/><rect x="19" y="8" width="2" height="9" rx="1" fill="white"/><rect x="19" y="23" width="2" height="9" rx="1" fill="white"/><rect x="8" y="19" width="9" height="2" rx="1" fill="white"/><rect x="23" y="19" width="9" height="2" rx="1" fill="white"/><rect x="14" y="13" width="2" height="6" rx="1" fill="white" opacity=".7"/><rect x="24" y="13" width="2" height="6" rx="1" fill="white" opacity=".7"/><rect x="14" y="21" width="2" height="6" rx="1" fill="white" opacity=".7"/><rect x="24" y="21" width="2" height="6" rx="1" fill="white" opacity=".7"/></svg>`,
+
+'Jupyter Notebook': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#F37626"/><circle cx="20" cy="20" r="10" fill="white"/><circle cx="20" cy="14" r="3" fill="#F37626"/><circle cx="26" cy="23" r="3" fill="#9E9E9E"/><circle cx="14" cy="23" r="3" fill="#616161"/></svg>`,
+
+'TensorFlow': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF6F00"/><path d="M20 8l10 5.8v5.8L20 25l-10-5.4V13.8zm0 3.5L13 15v4.5l7 3.8 7-3.8V15zm0 16l-8-4.4v3.3L20 30l8-3.6V23z" fill="white"/></svg>`,
+
+'Apollo.io': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1a1a2e"/><path d="M20 10a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 3a7 7 0 1 1 0 14A7 7 0 0 1 20 13zm0 2a5 5 0 1 0 0 10A5 5 0 0 0 20 15z" fill="#f97316"/><circle cx="20" cy="20" r="2.5" fill="#f97316"/></svg>`,
+
+'Manusis': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0369a1"/><path d="M20 10a4 4 0 0 1 4 4v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2v-2a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v2h4v-2a2 2 0 0 0-2-2zm0 8a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" fill="white"/></svg>`,
+
+'GitHub Copilot': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#24292e"/><path d="M20 7C13 7 7 13 7 20c0 5.7 3.7 10.6 8.8 12.3.6.1.8-.3.8-.6v-2c-3.5.8-4.2-1.5-4.2-1.5-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.3.1 2 1.3 2 1.3 1.1 1.9 2.9 1.4 3.6 1 .1-.8.4-1.4.8-1.7-2.8-.3-5.7-1.4-5.7-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.4 1.3a11.8 11.8 0 0 1 6 0c2.4-1.6 3.4-1.3 3.4-1.3.7 1.7.2 3 .1 3.3.8.9 1.3 2 1.3 3.4 0 4.8-2.9 5.9-5.7 6.2.5.4.9 1.2.9 2.4v3.5c0 .3.2.7.8.6C29.3 30.6 33 25.7 33 20c0-7-6-13-13-13z" fill="white"/></svg>`,
+
+'Cursor': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#000"/><path d="M20 8l10 5.8-10 5.8L10 13.8zm0 12.4l10 5.8-10 5.8-10-5.8z" fill="white"/><path d="M10 13.8v5.8l10 5.8V19.6z" fill="#aaa"/><path d="M30 13.8v5.8L20 25.4V19.6z" fill="#555"/></svg>`,
+
+'Bolt.new': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1a1a1a"/><path d="M23 9l-8 12h7l-3 12 10-14h-8z" fill="#FFDD00"/></svg>`,
+
+'Aider': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#22c55e"/><path d="M12 28l8-18 8 18h-4l-4-9-4 9z" fill="white"/><rect x="15" y="22" width="10" height="2" rx="1" fill="white"/></svg>`,
+
+'Cline': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#7c3aed"/><path d="M11 14h5v2h-5zm0 5h5v2h-5zm0 5h5v2h-5zm6-12l10 7-10 7z" fill="white"/></svg>`,
+
+'CodeRabbit': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF6B47"/><ellipse cx="16" cy="12" rx="3" ry="5" fill="white"/><ellipse cx="24" cy="12" rx="3" ry="5" fill="white"/><ellipse cx="20" cy="22" rx="8" ry="7" fill="white"/><circle cx="17" cy="21" r="1.5" fill="#FF6B47"/><circle cx="23" cy="21" r="1.5" fill="#FF6B47"/><path d="M17 25c.8.8 2 1.3 3 1.3s2.2-.5 3-1.3" stroke="#FF6B47" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>`,
+
+'Base44': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#2563eb"/><text x="20" y="26" font-family="Arial" font-size="14" font-weight="bold" fill="white" text-anchor="middle">B44</text></svg>`,
+
+'Zapier': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF4A00"/><path d="M10 22h8l-8 8h20v-8h-8l8-8H10z" fill="white"/></svg>`,
+
+'Make': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6D00CC"/><circle cx="14" cy="20" r="4" fill="white"/><circle cx="26" cy="20" r="4" fill="white"/><rect x="18" y="19" width="4" height="2" fill="white"/></svg>`,
+
+'n8n': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#EA4B71"/><text x="20" y="26" font-family="Arial" font-size="16" font-weight="bold" fill="white" text-anchor="middle">n8n</text></svg>`,
+
+'OpenHands': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#24292e"/><path d="M20 7C13 7 7 13 7 20c0 5.7 3.7 10.6 8.8 12.3.6.1.8-.3.8-.6v-2c-3.5.8-4.2-1.5-4.2-1.5-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.3.1 2 1.3 2 1.3 1.1 1.9 2.9 1.4 3.6 1 .1-.8.4-1.4.8-1.7-2.8-.3-5.7-1.4-5.7-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.4 1.3a11.8 11.8 0 0 1 6 0c2.4-1.6 3.4-1.3 3.4-1.3.7 1.7.2 3 .1 3.3.8.9 1.3 2 1.3 3.4 0 4.8-2.9 5.9-5.7 6.2.5.4.9 1.2.9 2.4v3.5c0 .3.2.7.8.6C29.3 30.6 33 25.7 33 20c0-7-6-13-13-13z" fill="#e76f51"/></svg>`,
+
+'Sweep': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#4f46e5"/><path d="M12 28c4-4 8-8 16-8M12 22c3-3 7-6 14-6M14 32l14-14" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+
+'Qodo': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0f172a"/><rect x="11" y="14" width="18" height="3" rx="1.5" fill="#22d3ee"/><rect x="11" y="19" width="13" height="3" rx="1.5" fill="#22d3ee" opacity=".7"/><rect x="11" y="24" width="16" height="3" rx="1.5" fill="#22d3ee" opacity=".5"/></svg>`,
+
+'Intercom': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1F8DED"/><path d="M12 12h16a2 2 0 0 1 2 2v12l-4-3H12a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z" fill="white"/></svg>`,
+
+'Zendesk AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#03363D"/><path d="M20 10c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm-1 14.5L12 18h6.5V13l7.5 6.5H19.5v5z" fill="#F3C84A"/></svg>`,
+
+'Tidio': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#7B5EA7"/><path d="M10 14h20v12a2 2 0 0 1-2 2H10V14z" fill="white"/><circle cx="15" cy="20" r="2" fill="#7B5EA7"/><circle cx="20" cy="20" r="2" fill="#7B5EA7"/><circle cx="25" cy="20" r="2" fill="#7B5EA7"/></svg>`,
+
+'Freshdesk': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#25C16F"/><path d="M20 10a10 10 0 0 0-10 10v8l4-3h12a2 2 0 0 0 2-2v-3a10 10 0 0 0-8-10z" fill="white"/></svg>`,
+
+'Drift': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1B1B1F"/><path d="M10 14h14a6 6 0 0 1 0 12H14v4l-4-4V14z" fill="#5DAAFF"/></svg>`,
+
+'Seamless.AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#00A3FF"/><text x="20" y="26" font-family="Arial" font-size="14" font-weight="bold" fill="white" text-anchor="middle">S.AI</text></svg>`,
+
+'HubSpot AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF7A59"/><circle cx="26" cy="14" r="5" fill="white"/><circle cx="26" cy="14" r="2.5" fill="#FF7A59"/><path d="M26 19v4M26 19l-10 4v7h6v-4h4v4h6v-7z" fill="white" stroke="white" stroke-width=".5"/></svg>`,
+
+'Copy.ai': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6C3FC5"/><rect x="12" y="12" width="16" height="18" rx="2" fill="white"/><rect x="15" y="16" width="10" height="2" rx="1" fill="#6C3FC5"/><rect x="15" y="20" width="10" height="2" rx="1" fill="#6C3FC5"/><rect x="15" y="24" width="7" height="2" rx="1" fill="#6C3FC5"/></svg>`,
+
+'Jasper': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF4D00"/><path d="M20 9l5 10h-4v12h-2V19h-4z" fill="white"/></svg>`,
+
+'Monday.com AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#F62B54"/><circle cx="13" cy="20" r="4" fill="#FFCB00"/><circle cx="20" cy="20" r="4" fill="#00CA72"/><circle cx="27" cy="20" r="4" fill="#FF7A5C"/></svg>`,
+
+'ClickUp AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#7B68EE"/><path d="M10 22l5-8 5 6 5-4 5 6" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+
+'Asana AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#F06A6A"/><circle cx="20" cy="14" r="5" fill="white"/><circle cx="12" cy="25" r="5" fill="white"/><circle cx="28" cy="25" r="5" fill="white"/></svg>`,
+
+'Midjourney': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#000"/><path d="M12 28c2-4 4-8 8-10M20 18c4 2 6 6 8 10M20 10v8" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M14 28h12" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+
+'Suno': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1a1a2e"/><path d="M15 25V15l14 5z" fill="#a855f7"/><path d="M15 20h3M15 23h2" stroke="#a855f7" stroke-width="1.5" opacity=".5" stroke-linecap="round"/></svg>`,
+
+'Khanmigo': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#14BF96"/><path d="M12 28V12h4v7l7-7h5l-8 8 8 8h-5l-7-7v7z" fill="white"/></svg>`,
+
+'Duolingo Max': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#58CC02"/><ellipse cx="20" cy="19" rx="9" ry="8" fill="white"/><circle cx="16" cy="18" r="2.5" fill="#333"/><circle cx="24" cy="18" r="2.5" fill="#333"/><circle cx="16.8" cy="17.2" r="1" fill="white"/><circle cx="24.8" cy="17.2" r="1" fill="white"/><path d="M16 23c1 1.5 2.5 2 4 2s3-.5 4-2" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>`,
+
+'Ada Health': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#00205B"/><path d="M20 10l8 18h-5l-1.5-4h-3l-1.5 4h-5zm0 7l-1 4h2z" fill="white"/></svg>`,
+};
+
+function logoImg(domain, name, size=32){
+  const svg = svgLogos[name];
+  if(svg){
+    return `<span style="display:flex;align-items:center;justify-content:center;width:${size}px;height:${size}px">${svg.replace(/width="40"/g,`width="${size}"`).replace(/height="40"/g,`height="${size}"`)}</span>`;
+  }
+  // fallback: iniciais estilizadas
+  const fb = name.slice(0,2).toUpperCase();
+  const colors = ['#2563eb','#7c3aed','#059669','#d97706','#dc2626'];
+  const color = colors[name.charCodeAt(0) % colors.length];
+  return `<span style="display:flex;align-items:center;justify-content:center;width:${size}px;height:${size}px;background:${color};border-radius:8px;color:white;font-size:${size>30?13:10}px;font-weight:800">${fb}</span>`;
+}
+
+function renderSidebar(){
+  const cats=allCats();
+  $('categoryNav').innerHTML=cats.map(c=>{
+    const count=tools.filter(t=>t.cats.includes(c)).length;
+    const icon=catIcons[c]||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>';
+    return `<button class="cat-btn${activeCategory===c?' active':''}" onclick="filterByCategory('${esc(c)}')">${icon}<span>${esc(c)}</span><span class="cat-count">${count}</span></button>`;
+  }).join('');
+  $('allNav').classList.toggle('active',activeCategory==='all');
+}
+
+function getFiltered(){
+  const q=($('searchInput').value+' '+($('_sideSearch')?.value||'')).trim().toLocaleLowerCase('pt-BR');
+  const p=$('priceFilter').value,cat=$('categoryFilter').value;
+  const tech=$('technologyFilter').value,complex=$('complexityFilter').value;
+  return tools.filter(t=>{
+    const txt=[t.name,t.desc,t.pricing,...t.cats].join(' ').toLocaleLowerCase('pt-BR');
+    const hasDev=t.cats.some(c=>/desenvolvimento|automação/i.test(c));
+    const hasData=t.cats.some(c=>/dados/i.test(c));
+    const hasCreative=t.cats.some(c=>/design|criatividade/i.test(c));
+    const advanced=hasDev||t.pricing==='Open Source';
+    return (activeCategory==='all'||t.cats.includes(activeCategory))
+      &&(cat==='all'||t.cats.includes(cat))
+      &&(p==='all'||t.pricing===p)
+      &&(!q||txt.includes(q))
+      &&(tech==='all'||(tech==='dev'&&hasDev)||(tech==='data'&&hasData)||(tech==='creative'&&hasCreative))
+      &&(complex==='all'||(complex==='advanced'&&advanced)||(complex==='simple'&&!advanced));
+  });
+}
+
+function render(){
+  renderSidebar();
+  const filtered=getFiltered();
+
+  // List
+  $('toolList').innerHTML=filtered.map(t=>`
+    <div class="tool-row">
+      <div class="tool-logo">${logoImg(t.domain,t.name,32)}</div>
+      <div class="tool-info">
+        <strong>${esc(t.name)}</strong>
+        <p>${esc(t.desc)}</p>
+      </div>
+      <div class="tool-cats">${t.cats.map(c=>`<span class="${tagClass(c)}">${esc(c)}</span>`).join('')}</div>
+      <div class="tool-price">${esc(t.pricing)}</div>
+      <a class="tool-link" href="${esc(t.link)}" target="_blank" rel="noopener noreferrer" title="Abrir ${esc(t.name)}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>`).join('');
+
+  $('emptyState').classList.toggle('hidden',!!filtered.length);
+  $('toolList').classList.toggle('hidden',!filtered.length);
+
+  const label=`${filtered.length} ferramenta${filtered.length!==1?'s':''} encontrada${filtered.length!==1?'s':''}`;
+  $('resultCount').textContent=label;
+  $('allToolsTitle').textContent=activeCategory==='all'?'Todas as Ferramentas':activeCategory;
+}
+
+function filterByCategory(c){
+  activeCategory=c;
+  $('categoryFilter').value=c;
+  render();
+}
+function clearFilters(){
+  activeCategory='all';
+  $('searchInput').value='';
+  $('priceFilter').value='all';
+  $('categoryFilter').value='all';
+  $('technologyFilter').value='all';
+  $('complexityFilter').value='all';
+  render();
+}
+
+// Init
+$('categoryFilter').innerHTML='<option value="all">Todas as categorias</option>'+allCats().map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
+$('totalBadge').textContent=tools.length;
+$('statTools').textContent=tools.length;
+$('statCats').textContent=allCats().length;
+
+// Destaques
+$('featuredGrid').innerHTML=['ChatGPT','Microsoft Copilot','Power BI','GitHub Copilot'].map(n=>{
+  const t=tools.find(x=>x.name===n); if(!t)return '';
+  return `<div class="dest-card">
+    <div class="dest-logo">${logoImg(t.domain,t.name,32)}</div>
+    <div class="dest-info">
+      <strong>${esc(t.name)}</strong>
+      <p>${esc(t.desc)}</p>
+      <span>${esc(t.cats[0])}</span>
+    </div>
+  </div>`;
+}).join('');
+
+// Timestamp
+const now=new Date();
+$('lastUpdate').textContent=`Última atualização: ${now.toLocaleDateString('pt-BR')} ${now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}`;
+
+$('searchInput').addEventListener('input',render);
+['priceFilter','categoryFilter','technologyFilter','complexityFilter'].forEach(id=>
+  $(id).addEventListener('change',()=>{if(id==='categoryFilter')activeCategory=$(id).value;render();})
+);
+
+render();
+</script>
+</body>
+</html>
