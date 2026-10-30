@@ -255,7 +255,7 @@ main{min-width:0;display:flex;flex-direction:column}
           </div>
           <div class="hero-pt">
             <div class="hero-pt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#64b5d6" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
-            <div><strong style="display:block;font-size:11px">53 ferramentas</strong><span style="font-size:10.5px;color:#8fb4d0">em 10 categorias</span></div>
+            <div><strong style="display:block;font-size:11px">85 ferramentas</strong><span style="font-size:10.5px;color:#8fb4d0">em 10 categorias</span></div>
           </div>
         </div>
       </div>
@@ -364,6 +364,52 @@ const tools = [
   {id:'51',name:'Napkin AI',        cats:['Design e Criatividade'],pricing:'Freemium',   link:'https://napkin.ai/',                             desc:'Transforma textos e ideias em diagramas e visuais explicativos automaticamente.',      domain:'napkin.ai'},
   {id:'52',name:'Synthesia',        cats:['Design e Criatividade'],pricing:'Pago',       link:'https://www.synthesia.io/',                      desc:'Cria vídeos com avatares de IA a partir de roteiros de texto, sem câmera.',           domain:'synthesia.io'},
   {id:'53',name:'Pika',             cats:['Design e Criatividade'],pricing:'Freemium',   link:'https://pika.art/',                              desc:'Geração e edição de vídeos curtos com Inteligência Artificial a partir de prompts.',  domain:'pika.art'},
+
+  // ── Google ──
+  {id:'54',name:'Google AI Studio', cats:['Desenvolvimento'],      pricing:'Gratuito',   link:'https://aistudio.google.com/',                   desc:'Plataforma do Google para criar e testar prompts com Gemini via API.',                 domain:'aistudio.google.com'},
+  {id:'55',name:'ImageFX',          cats:['Design e Criatividade'],pricing:'Gratuito',   link:'https://aitestkitchen.withgoogle.com/tools/image-fx', desc:'Gerador de imagens do Google com Imagen 3, direto no navegador.',              domain:'aitestkitchen.withgoogle.com'},
+  {id:'56',name:'Whisk',            cats:['Design e Criatividade'],pricing:'Gratuito',   link:'https://labs.google/experiments/whisk',          desc:'Remixagem de imagens com IA: combine estilos, personagens e cenas facilmente.',       domain:'labs.google'},
+  {id:'57',name:'Google Vids',      cats:['Design e Criatividade'],pricing:'Freemium',   link:'https://workspace.google.com/products/vids/',    desc:'Criação de vídeos com IA integrada ao Google Workspace.',                            domain:'workspace.google.com'},
+  {id:'58',name:'MusicFX',          cats:['Design e Criatividade'],pricing:'Gratuito',   link:'https://aitestkitchen.withgoogle.com/tools/music-fx', desc:'Gerador de músicas e trilhas sonoras com IA do Google.',                      domain:'aitestkitchen.withgoogle.com'},
+
+  // ── Chinesas ──
+  {id:'59',name:'Ernie Bot',        cats:['Produtividade'],        pricing:'Freemium',   link:'https://yiyan.baidu.com/',                       desc:'Assistente de IA da Baidu com capacidade de conversação, análise e geração de conteúdo.',domain:'yiyan.baidu.com'},
+  {id:'60',name:'Doubao',           cats:['Produtividade'],        pricing:'Freemium',   link:'https://www.doubao.com/',                        desc:'Assistente de IA da ByteDance para texto, imagem, código e pesquisa.',               domain:'doubao.com'},
+  {id:'61',name:'Zhipu AI (GLM)',   cats:['Produtividade'],        pricing:'Freemium',   link:'https://chatglm.cn/',                            desc:'Modelo de linguagem chinês de alto desempenho para conversação e raciocínio.',        domain:'chatglm.cn'},
+  {id:'62',name:'Kling AI',         cats:['Design e Criatividade'],pricing:'Freemium',   link:'https://klingai.com/',                           desc:'Gerador de vídeos com IA da Kuaishou, com movimentos realistas e alta qualidade.',    domain:'klingai.com'},
+  {id:'63',name:'Hailuo AI',        cats:['Design e Criatividade'],pricing:'Freemium',   link:'https://hailuoai.video/',                        desc:'Gerador de vídeos com IA da MiniMax, líder em animação e vídeo curto.',              domain:'hailuoai.video'},
+  {id:'64',name:'Spark (iFlytek)',  cats:['Produtividade'],        pricing:'Freemium',   link:'https://xinghuo.xfyun.cn/',                      desc:'Assistente de IA da iFlytek especializado em voz, linguagem e educação.',            domain:'xinghuo.xfyun.cn'},
+  {id:'65',name:'Yi (01.AI)',       cats:['Produtividade'],        pricing:'Freemium',   link:'https://www.yi.ai/',                             desc:'Modelo de linguagem avançado da 01.AI para conversação e análise complexa.',          domain:'yi.ai'},
+  {id:'66',name:'MiniMax',          cats:['Produtividade'],        pricing:'Freemium',   link:'https://www.minimax.io/',                        desc:'Plataforma chinesa de IA com modelos para texto, voz, vídeo e imagem.',              domain:'minimax.io'},
+  {id:'67',name:'StepFun',          cats:['Produtividade'],        pricing:'Freemium',   link:'https://www.stepfun.com/',                       desc:'Assistente de IA multimodal chinês com contexto longo e raciocínio avançado.',       domain:'stepfun.com'},
+  {id:'68',name:'Janus Pro',        cats:['Design e Criatividade'],pricing:'Open Source',link:'https://github.com/deepseek-ai/Janus',           desc:'Modelo multimodal da DeepSeek para geração e compreensão de imagens.',               domain:'github.com'},
+
+  // ── Americanas (não listadas) ──
+  {id:'69',name:'Grok (xAI)',       cats:['Produtividade'],        pricing:'Freemium',   link:'https://grok.com/',                              desc:'Assistente de IA da xAI (Elon Musk) com acesso em tempo real ao X/Twitter.',        domain:'grok.com'},
+  {id:'70',name:'Meta AI',          cats:['Produtividade'],        pricing:'Gratuito',   link:'https://www.meta.ai/',                           desc:'Assistente da Meta baseado em Llama, integrado ao WhatsApp, Instagram e Facebook.',  domain:'meta.ai'},
+  {id:'71',name:'Pi (Inflection)',  cats:['Produtividade'],        pricing:'Gratuito',   link:'https://pi.ai/',                                 desc:'Assistente pessoal de IA com foco em conversas naturais e bem-estar emocional.',     domain:'pi.ai'},
+  {id:'72',name:'Cohere',           cats:['Desenvolvimento'],      pricing:'Freemium',   link:'https://cohere.com/',                            desc:'Plataforma de LLMs para empresas com embeddings, geração e pesquisa semântica.',     domain:'cohere.com'},
+  {id:'73',name:'Character.AI',     cats:['Produtividade'],        pricing:'Freemium',   link:'https://character.ai/',                          desc:'Plataforma para criar e conversar com personagens de IA com personalidades únicas.', domain:'character.ai'},
+  {id:'74',name:'Stability AI',     cats:['Design e Criatividade'],pricing:'Freemium',   link:'https://stability.ai/',                          desc:'Criadores do Stable Diffusion, com modelos de geração de imagem open source.',       domain:'stability.ai'},
+  {id:'75',name:'Runway',           cats:['Design e Criatividade'],pricing:'Freemium',   link:'https://runwayml.com/',                          desc:'Edição e geração de vídeos com IA, líder no mercado criativo profissional.',         domain:'runwayml.com'},
+  {id:'76',name:'ElevenLabs',       cats:['Design e Criatividade'],pricing:'Freemium',   link:'https://elevenlabs.io/',                         desc:'Síntese de voz ultra-realista com IA, clonagem de voz e audiobooks.',               domain:'elevenlabs.io'},
+
+  // ── Europeias ──
+  {id:'77',name:'Aleph Alpha',      cats:['Produtividade'],        pricing:'Pago',       link:'https://aleph-alpha.com/',                       desc:'Modelo de IA europeu (Alemanha) com foco em soberania de dados e conformidade.',     domain:'aleph-alpha.com'},
+  {id:'78',name:'Mistral (API)',    cats:['Desenvolvimento'],      pricing:'Freemium',   link:'https://mistral.ai/',                            desc:'Modelos de IA abertos e eficientes da francesa Mistral AI para uso via API.',        domain:'mistral.ai'},
+
+  // ── Japonesas ──
+  {id:'79',name:'Rinna',            cats:['Produtividade'],        pricing:'Freemium',   link:'https://rinna.co.jp/',                           desc:'Modelos de IA conversacional da Microsoft Japan especializados em japonês.',          domain:'rinna.co.jp'},
+  {id:'80',name:'Sakana AI',        cats:['Desenvolvimento'],      pricing:'Open Source',link:'https://sakana.ai/',                             desc:'Startup japonesa de IA com modelos inspirados em inteligência coletiva da natureza.',  domain:'sakana.ai'},
+  {id:'81',name:'Elyza',            cats:['Produtividade'],        pricing:'Freemium',   link:'https://elyza.ai/',                              desc:'Assistente de IA japonês da Llama, otimizado para língua e cultura japonesa.',       domain:'elyza.ai'},
+
+  // ── Oriente Médio / Outros ──
+  {id:'82',name:'Falcon (TII)',     cats:['Desenvolvimento'],      pricing:'Open Source',link:'https://falconllm.tii.ae/',                     desc:'Modelo de linguagem open source dos Emirados Árabes, destaque global em benchmarks.',  domain:'falconllm.tii.ae'},
+  {id:'83',name:'Jais',             cats:['Desenvolvimento'],      pricing:'Open Source',link:'https://huggingface.co/inceptionai/jais-13b',   desc:'Modelo bilíngue árabe-inglês do Mohamed bin Zayed University of AI (EAU).',          domain:'huggingface.co'},
+
+  // ── Coreanas ──
+  {id:'84',name:'HyperCLOVA X',    cats:['Produtividade'],        pricing:'Freemium',   link:'https://clova.ai/',                              desc:'Modelo de IA da Naver (Coreia), especializado em língua coreana e serviços locais.', domain:'clova.ai'},
+  {id:'85',name:'EXAONE (LG AI)',  cats:['Desenvolvimento'],      pricing:'Open Source',link:'https://huggingface.co/LGAI-EXAONE',            desc:'Modelo bilíngue coreano-inglês do LG AI Research com foco em especialização.',       domain:'huggingface.co'},
 ];
 
 const catIcons={
@@ -500,6 +546,52 @@ const svgLogos = {
 'Synthesia': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#7C4DFF"/><circle cx="20" cy="17" r="6" fill="white"/><circle cx="20" cy="17" r="3" fill="#7C4DFF"/><path d="M12 30c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="white"/></svg>`,
 
 'Pika': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0a0a0a"/><path d="M15 13h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H15a2 2 0 0 1-2-2V15a2 2 0 0 1 2-2z" fill="none" stroke="#e879f9" stroke-width="1.5"/><path d="M18 17l7 3-7 3z" fill="#e879f9"/></svg>`,
+
+// Google
+'Google AI Studio': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#fff"/><circle cx="20" cy="20" r="11" fill="none" stroke="#e0e0e0" stroke-width="1.5"/><path d="M20 9v11l7.8 4.5" stroke="#4285f4" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="20" cy="20" r="3" fill="#34a853"/><path d="M9 20h4M27 20h4M20 9v4M20 27v4" stroke="#fbbc04" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+'ImageFX': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#fff"/><rect x="8" y="10" width="24" height="20" rx="3" fill="#4285f4"/><circle cx="14" cy="16" r="2.5" fill="#fbbc04"/><path d="M8 24l7-7 5 5 3-3 7 7" fill="#34a853"/></svg>`,
+'Whisk': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#fff"/><path d="M20 8c-2 4-8 8-8 14a8 8 0 0 0 16 0c0-6-6-10-8-14z" fill="url(#wh1)"/><defs><linearGradient id="wh1" x1="12" y1="8" x2="28" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4285f4"/><stop offset="100%" stop-color="#34a853"/></linearGradient></defs></svg>`,
+'Google Vids': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#fff"/><rect x="7" y="12" width="18" height="16" rx="3" fill="#ea4335"/><path d="M25 16l8 4-8 4z" fill="#fbbc04"/></svg>`,
+'MusicFX': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#fff"/><path d="M14 28V14l16-4v14" stroke="#4285f4" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="11" cy="28" r="3" fill="#34a853"/><circle cx="27" cy="24" r="3" fill="#ea4335"/></svg>`,
+
+// Chinesas
+'Ernie Bot': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#2932E1"/><text x="20" y="26" font-family="Arial" font-size="13" font-weight="bold" fill="white" text-anchor="middle">文心</text></svg>`,
+'Doubao': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1C1C1E"/><path d="M12 14h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-4l-4 4-4-4h-4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z" fill="#5CE6C8"/><circle cx="16" cy="20" r="1.5" fill="#1C1C1E"/><circle cx="20" cy="20" r="1.5" fill="#1C1C1E"/><circle cx="24" cy="20" r="1.5" fill="#1C1C1E"/></svg>`,
+'Zhipu AI (GLM)': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#3B5BDB"/><text x="20" y="26" font-family="Arial" font-size="13" font-weight="bold" fill="white" text-anchor="middle">GLM</text></svg>`,
+'Kling AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0D0D0D"/><path d="M12 12h6v16h-6zm8 0l10 8-10 8z" fill="white"/></svg>`,
+'Hailuo AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1A1A2E"/><path d="M10 28c3-6 7-10 10-10s7 4 10 10" stroke="#00C4FF" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M13 23c2-3 4-5 7-5s5 2 7 5" stroke="#00C4FF" stroke-width="2" fill="none" stroke-linecap="round" opacity=".6"/></svg>`,
+'Spark (iFlytek)': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1472FF"/><path d="M21 9l-9 13h8l-2 11 11-14h-9z" fill="white"/></svg>`,
+'Yi (01.AI)': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#111"/><text x="20" y="27" font-family="Arial" font-size="18" font-weight="bold" fill="white" text-anchor="middle">Yi</text></svg>`,
+'MiniMax': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF4500"/><text x="20" y="26" font-family="Arial" font-size="12" font-weight="bold" fill="white" text-anchor="middle">MiniMax</text></svg>`,
+'StepFun': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0066FF"/><path d="M10 28V20h6v-6h6v-4h4v18" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+'Janus Pro': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1a56e5"/><circle cx="20" cy="20" r="8" fill="none" stroke="white" stroke-width="2"/><path d="M16 20h8M20 16v8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>`,
+
+// Americanas
+'Grok (xAI)': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#000"/><path d="M13 10l14 20M27 10L13 30" stroke="white" stroke-width="3" stroke-linecap="round"/></svg>`,
+'Meta AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0866FF"/><path d="M8 22c0-5 3-10 7-10 2 0 3.5 1.5 5 4 1.5-2.5 3-4 5-4 4 0 7 5 7 10 0 3-1.5 6-4 6-2 0-3.5-2-4-4-.5 2-2 4-4 4s-3.5-2-4-4c-.5 2-2 4-4 4-2.5 0-4-3-4-6z" fill="white"/></svg>`,
+'Pi (Inflection)': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6C63FF"/><text x="20" y="27" font-family="serif" font-size="22" font-weight="bold" fill="white" text-anchor="middle">π</text></svg>`,
+'Cohere': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#39594D"/><circle cx="20" cy="20" r="8" fill="none" stroke="#D4F0E0" stroke-width="2.5"/><circle cx="20" cy="20" r="4" fill="#D4F0E0"/></svg>`,
+'Character.AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0A0A0A"/><circle cx="20" cy="17" r="7" fill="white"/><circle cx="17" cy="15" r="2" fill="#0A0A0A"/><circle cx="23" cy="15" r="2" fill="#0A0A0A"/><path d="M16 20c1 2 3 2 4 2s3 0 4-2" stroke="#0A0A0A" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M11 30c0-4 4-7 9-7s9 3 9 7" fill="white"/></svg>`,
+'Stability AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1A1A1A"/><rect x="10" y="10" width="8" height="8" rx="2" fill="#7c3aed"/><rect x="22" y="10" width="8" height="8" rx="2" fill="#7c3aed" opacity=".7"/><rect x="10" y="22" width="8" height="8" rx="2" fill="#7c3aed" opacity=".7"/><rect x="22" y="22" width="8" height="8" rx="2" fill="#7c3aed" opacity=".4"/></svg>`,
+'Runway': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#000"/><rect x="8" y="14" width="16" height="14" rx="2" fill="white"/><path d="M24 17l8 4-8 5z" fill="white"/></svg>`,
+'ElevenLabs': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#111"/><rect x="13" y="10" width="4" height="20" rx="2" fill="white"/><rect x="23" y="10" width="4" height="20" rx="2" fill="white"/></svg>`,
+
+// Europeias
+'Aleph Alpha': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF4D00"/><text x="20" y="27" font-family="serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">α</text></svg>`,
+'Mistral (API)': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF7000"/><path d="M10 12h5v5h-5zm8 0h5v5h-5zm8 0h5v5h-5zM10 20h5v5h-5zm8 0h5v5h-5zm8 0h5v5h-5zM10 28h5v3h-5zm16 0h5v3h-5z" fill="white"/></svg>`,
+
+// Japonesas
+'Rinna': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#E6001A"/><text x="20" y="26" font-family="Arial" font-size="13" font-weight="bold" fill="white" text-anchor="middle">rinna</text></svg>`,
+'Sakana AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0ea5e9"/><path d="M28 20c-4 3-8 3-12 0 4-3 8-3 12 0z" fill="white"/><circle cx="27" cy="20" r="1.5" fill="white"/><path d="M16 14c1 2 1 4 0 6M20 12c1 3 1 6 0 9M24 14c-1 2-1 4 0 6" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".7"/></svg>`,
+'Elyza': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6C2DC7"/><text x="20" y="26" font-family="Arial" font-size="13" font-weight="bold" fill="white" text-anchor="middle">ELYZA</text></svg>`,
+
+// Oriente Médio
+'Falcon (TII)': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#006233"/><path d="M20 8l3 8h-2v4h4l-5 12-5-12h4v-4h-2z" fill="white"/></svg>`,
+'Jais': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1a3a5c"/><text x="20" y="26" font-family="Arial" font-size="15" font-weight="bold" fill="white" text-anchor="middle">Jais</text></svg>`,
+
+// Coreanas
+'HyperCLOVA X': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#03C75A"/><path d="M12 20a8 8 0 0 1 16 0" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="20" cy="24" r="4" fill="white"/></svg>`,
+'EXAONE (LG AI)': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#A50034"/><text x="20" y="26" font-family="Arial" font-size="12" font-weight="bold" fill="white" text-anchor="middle">EXAONE</text></svg>`,
 };
 
 function priceBadge(p){
