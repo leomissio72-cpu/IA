@@ -502,6 +502,7 @@ function priceBadge(p){
   if(p==='Gratuito') return `<span class="price-free">Gratuito</span>`;
   if(p==='Pago') return `<span class="price-paid">Pago</span>`;
   if(p==='Open Source') return `<span class="price-open">Open Source</span>`;
+  if(p==='Freemium') return `<span class="price-freemium">Grátis+</span>`;
   return `<span class="price-freemium">${esc(p)}</span>`;
 }
 
