@@ -148,7 +148,8 @@ main{min-width:0;display:flex;flex-direction:column}
 .skill-search{background:#1e2d4a;border:1px solid #2d4a7a;color:#e2e8f0;border-radius:8px;padding:8px 14px;font-size:13px;width:100%;margin-top:14px;outline:none}
 .skill-search::placeholder{color:#4a6080}
 .skill-group{margin-bottom:28px}
-.skill-group-title{font-size:11px;font-weight:700;color:#6b7fa3;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.skill-group-title{font-size:11px;font-weight:700;color:#6b7fa3;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px}
+.skill-group-title svg{width:13px;height:13px;flex-shrink:0}
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
 .skill-card{background:#fff;border:1px solid #dce8f5;border-radius:11px;padding:14px;cursor:pointer;transition:.15s;display:flex;flex-direction:column;gap:7px}
 .skill-card:hover{border-color:#3b82f6;box-shadow:0 2px 14px rgba(37,99,235,.10);transform:translateY(-1px)}
@@ -293,7 +294,7 @@ main{min-width:0;display:flex;flex-direction:column}
   <div id="skillsView">
     <div class="content">
       <div class="skills-hero">
-        <h2><svg viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" style="width:18px;height:18px;flex-shrink:0"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M16 3.5c1.5.5 2.5 2 2.5 3.5s-1 3-2.5 3.5"/></svg> Skills e Habilidades por IA</h2>
+        <h2>Skills e Habilidades por IA</h2>
         <p>Especialidade principal e capacidades de cada ferramenta. Clique para ver detalhes.</p>
         <input class="skill-search" id="skillSearchInput" placeholder="Buscar habilidade ou ferramenta..." oninput="renderSkillsView()">
       </div>
@@ -1155,7 +1156,7 @@ function renderSkillsView(){
     if(!catTools.length) return;
     const icon=catIcons[cat]||'';
     html+=`<div class="skill-group">
-      <div class="skill-group-title">${icon.replace(/width="24"/g,'width="14"').replace(/height="24"/g,'height="14"')} ${esc(cat)} <span style="color:#9bafc8;font-weight:400">(${catTools.length})</span></div>
+      <div class="skill-group-title">${icon} ${esc(cat)} <span style="color:#9bafc8;font-weight:400;text-transform:none;letter-spacing:0">(${catTools.length})</span></div>
       <div class="skills-grid">
         ${catTools.map(t=>{
           const ms=getMainSkill(t);
