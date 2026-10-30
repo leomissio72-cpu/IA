@@ -142,16 +142,17 @@ main{min-width:0;display:flex;flex-direction:column}
 /* ── Skills View ── */
 #skillsView{display:none}
 #catalogView{display:block}
-.skills-hero{background:linear-gradient(135deg,#0b1a2e,#1e1b4b);border-radius:14px;padding:28px 32px;margin-bottom:22px;color:#fff}
-.skills-hero h2{font-size:22px;font-weight:700;margin-bottom:6px}
-.skills-hero p{color:#a5b4fc;font-size:13px}
+.skills-hero{background:linear-gradient(135deg,#0b1a2e,#0f2d52);border-radius:14px;padding:24px 28px;margin-bottom:22px;color:#fff;border:1px solid #1e3a5f}
+.skills-hero h2{font-size:18px;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.skills-hero p{color:#7fa8cc;font-size:13px}
 .skill-search{background:#1e2d4a;border:1px solid #2d4a7a;color:#e2e8f0;border-radius:8px;padding:8px 14px;font-size:13px;width:100%;margin-top:14px;outline:none}
 .skill-search::placeholder{color:#4a6080}
 .skill-group{margin-bottom:28px}
 .skill-group-title{font-size:11px;font-weight:700;color:#6b7fa3;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
-.skill-card{background:#fff;border:1px solid #e0eaf6;border-radius:11px;padding:14px;cursor:pointer;transition:.15s;display:flex;flex-direction:column;gap:8px}
-.skill-card:hover{border-color:#2563eb;box-shadow:0 2px 12px rgba(37,99,235,.12);transform:translateY(-1px)}
+.skill-card{background:#fff;border:1px solid #dce8f5;border-radius:11px;padding:14px;cursor:pointer;transition:.15s;display:flex;flex-direction:column;gap:7px}
+.skill-card:hover{border-color:#3b82f6;box-shadow:0 2px 14px rgba(37,99,235,.10);transform:translateY(-1px)}
+.skill-main-label{font-size:12px;color:#1e3a6e;font-weight:500;line-height:1.4;border-left:2px solid #3b82f6;padding-left:7px}
 .skill-card-header{display:flex;align-items:center;gap:10px}
 .skill-card-name{font-weight:600;font-size:13px;color:#0f1f3d}
 .skill-chips{display:flex;flex-wrap:wrap;gap:4px}
@@ -221,7 +222,7 @@ main{min-width:0;display:flex;flex-direction:column}
       <span class="badge" id="totalBadge">0</span>
     </button>
     <button class="nav-btn" id="skillsNav" onclick="setView('skills')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M16 3.5c1.5.5 2.5 2 2.5 3.5s-1 3-2.5 3.5"/></svg>
       <span>Skills e Habilidades</span>
     </button>
   </div>
@@ -292,8 +293,8 @@ main{min-width:0;display:flex;flex-direction:column}
   <div id="skillsView">
     <div class="content">
       <div class="skills-hero">
-        <h2>⭐ Skills e Habilidades por IA</h2>
-        <p>Explore as habilidades específicas de cada ferramenta de inteligência artificial. Clique em qualquer card para ver detalhes completos.</p>
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" style="width:18px;height:18px;flex-shrink:0"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M16 3.5c1.5.5 2.5 2 2.5 3.5s-1 3-2.5 3.5"/></svg> Skills e Habilidades por IA</h2>
+        <p>Especialidade principal e capacidades de cada ferramenta. Clique para ver detalhes.</p>
         <input class="skill-search" id="skillSearchInput" placeholder="Buscar habilidade ou ferramenta..." oninput="renderSkillsView()">
       </div>
       <div id="skillsContent"></div>
@@ -910,6 +911,85 @@ $('searchInput').addEventListener('input',render);
   $(id).addEventListener('change',()=>{if(id==='categoryFilter')activeCategory=$(id).value;render();})
 );
 
+// ── Main Skill (especialidade principal de cada IA) ──
+const mainSkill = {
+  'ChatGPT':            'Assistente conversacional de uso geral',
+  'Claude':             'Análise profunda e escrita de longa extensão',
+  'Gemini':             'Pesquisa integrada ao ecossistema Google',
+  'Microsoft Copilot':  'Produtividade integrada ao Office 365',
+  'Perplexity':         'Busca inteligente com fontes verificadas',
+  'NotebookLM':         'Síntese e perguntas sobre seus documentos',
+  'Notion AI':          'Organização e geração de conteúdo em notas',
+  'Grammarly':          'Correção e aprimoramento de escrita em inglês',
+  'DeepSeek':           'Raciocínio matemático e programação avançada',
+  'GitHub Copilot':     'Autocomplete de código no editor',
+  'Cursor':             'IDE com IA que entende todo o projeto',
+  'Midjourney':         'Geração de imagens fotorrealistas e artísticas',
+  'DALL-E':             'Geração e edição de imagens por texto',
+  'Stable Diffusion':   'Geração local e customizável de imagens',
+  'ElevenLabs':         'Síntese e clonagem de voz ultrarrealista',
+  'Suno':               'Criação de músicas completas com letra e voz',
+  'Zapier':             'Automação de fluxos entre centenas de apps',
+  'n8n':                'Automação open source self-hosted com código',
+  'Make':               'Automação visual de cenários complexos',
+  'Power BI':           'Dashboards e relatórios de dados corporativos',
+  'Tableau':            'Visualização exploratória de dados',
+  'Julius AI':          'Análise de planilhas com perguntas em português',
+  'Jasper':             'Copywriting e marketing em escala',
+  'Copy.ai':            'Textos de vendas e anúncios em segundos',
+  'HubSpot AI':         'CRM e automação de marketing integrados',
+  'Intercom':           'Atendimento ao cliente com chatbot inteligente',
+  'Canva AI':           'Design gráfico acessível com IA generativa',
+  'Runway':             'Edição e geração de vídeo com IA avançada',
+  'Synthesia':          'Vídeos corporativos com avatares de IA',
+  'Fireflies.ai':       'Transcrição e resumo automático de reuniões',
+  'Otter.ai':           'Legendas e notas em tempo real em reuniões',
+  'Manus':              'Agente autônomo que executa tarefas complexas',
+  'Khanmigo':           'Tutoria socrática personalizada para estudantes',
+  'Socratic':           'Resolução de dúvidas escolares com explicação visual',
+  'Wysa':               'Suporte emocional e técnicas de saúde mental',
+  'Ada Health':         'Triagem de sintomas e orientação médica',
+  'Woebot':             'Terapia cognitivo-comportamental conversacional',
+  'Salesforce Einstein': 'Previsão de vendas e insights de CRM',
+  'Trello AI':          'Kanban inteligente com automação de tarefas',
+  'Notion Calendar':    'Agendamento inteligente integrado ao Notion',
+  'Reclaim.ai':         'Proteção automática de blocos de foco',
+  'Motion':             'Planejamento automático de tarefas e reuniões',
+  'Duolingo Max':       'Aprendizado de idiomas com conversação em IA',
+  'Photomath':          'Resolução passo a passo de equações matemáticas',
+  'Elicit':             'Revisão sistemática de literatura científica',
+  'Consensus':          'Busca de consenso em artigos acadêmicos',
+  'Cohere':             'APIs de linguagem para empresas (RAG, busca)',
+  'Mistral AI':         'Modelos de linguagem open source de alto desempenho',
+  'Grok':               'Assistente com acesso em tempo real ao X/Twitter',
+  'Meta AI':            'Assistente integrado ao WhatsApp e Instagram',
+  'Figma AI':           'Geração de UI e tradução design-para-código',
+  'Lovable':            'Criação de apps web completos por chat',
+  'v0.dev':             'Componentes React e Tailwind por descrição',
+  'Sora':               'Geração de vídeos realistas a partir de texto',
+  'Bardeen':            'Automação de navegador e web scraping com IA',
+  'Tome':               'Apresentações narrativas geradas por IA',
+  'Gamma':              'Documentos e apresentações visuais automáticos',
+  'Nano Banan':         'Geração de imagens criativas e arte expressiva',
+  'Adobe Firefly':      'Geração de imagens integrada ao Creative Cloud',
+  'Leonardo AI':        'Concept art e assets visuais para jogos',
+  'Ideogram':           'Texto tipográfico preciso dentro de imagens',
+  'Playground AI':      'Edição colaborativa de imagens com IA',
+  'Krea AI':            'Geração e upscaling de imagens em tempo real',
+  'Bolt.new':           'App web completo gerado e publicado por chat',
+  'Windsurf':           'IDE com agente IA que entende todo o contexto',
+  'Tabnine':            'Completions de código aprendidos do seu time',
+  'Writesonic':         'Artigos e copies otimizados para SEO',
+  'Rytr':               'Textos em múltiplos idiomas e tons rapidamente',
+  'Surfer SEO':         'Otimização de conteúdo baseada em análise de SERP',
+  'Clockwise':          'Reorganização automática do calendário para foco',
+  'Fliki':              'Conversão de texto em vídeo com voz realista',
+};
+
+function getMainSkill(t){
+  return mainSkill[t.name] || (catDefaultSkills[t.cats[0]]||[])[0] || 'Ferramenta de inteligência artificial';
+}
+
 // ── Skills Data ──
 const toolSkills = {
   'ChatGPT':           ['Redação criativa','Resumo de textos','Tradução','Análise de dados','Geração de código','Brainstorming','Chatbot conversacional','Criação de planilhas','Revisão gramatical','Criação de apresentações'],
@@ -1035,7 +1115,9 @@ function openToolModal(toolId){
         <div class="modal-desc">${esc(t.desc)}</div>
       </div>
       <div class="modal-section">
-        <div class="modal-section-title">⭐ Skills e Habilidades (${skills.length})</div>
+        <div class="modal-section-title">Especialidade principal</div>
+        <div style="font-size:13px;color:#1e3a6e;font-weight:500;background:#f0f6ff;border-left:3px solid #3b82f6;padding:8px 12px;border-radius:0 6px 6px 0;margin-bottom:14px">${esc(getMainSkill(t))}</div>
+        <div class="modal-section-title" style="margin-top:0">Outras habilidades (${skills.length})</div>
         <div class="modal-skills-grid">
           ${skills.map(s=>`<div class="modal-skill-item">${skillCheckSvg}${esc(s)}</div>`).join('')}
         </div>
@@ -1076,18 +1158,19 @@ function renderSkillsView(){
       <div class="skill-group-title">${icon.replace(/width="24"/g,'width="14"').replace(/height="24"/g,'height="14"')} ${esc(cat)} <span style="color:#9bafc8;font-weight:400">(${catTools.length})</span></div>
       <div class="skills-grid">
         ${catTools.map(t=>{
-          const skills=getToolSkills(t).slice(0,5);
+          const ms=getMainSkill(t);
+          const extraSkills=getToolSkills(t).slice(0,3);
           return `<div class="skill-card" onclick="openToolModal('${t.id}')">
             <div class="skill-card-header">
               ${logoImg(t.domain,t.name,28)}
-              <div>
+              <div style="min-width:0">
                 <div class="skill-card-name">${esc(t.name)}</div>
                 <div style="font-size:10px;color:#6b7fa3">${esc(t.pricing)}</div>
               </div>
             </div>
+            <div class="skill-main-label">${esc(ms)}</div>
             <div class="skill-chips">
-              ${skills.map(s=>`<span class="skill-chip">${esc(s)}</span>`).join('')}
-              ${getToolSkills(t).length>5?`<span class="skill-chip gray">+${getToolSkills(t).length-5} mais</span>`:''}
+              ${extraSkills.map(s=>`<span class="skill-chip">${esc(s)}</span>`).join('')}
             </div>
           </div>`;
         }).join('')}
