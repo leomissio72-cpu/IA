@@ -139,6 +139,48 @@ main{min-width:0;display:flex;flex-direction:column}
 @media(max-width:760px){.app{grid-template-columns:60px 1fr}.brand-text,.cat-label,.cat-btn span,.cat-count,.side-motto,.side-bottom .status-row div span{display:none}.brand{justify-content:center;padding:16px 10px}.cat-btn,.nav-btn{justify-content:center;padding:10px 8px}.badge{display:none}.dest-grid{grid-template-columns:1fr}.tool-cats,.tool-price{display:none}.hero-right{display:none}.hero h1{font-size:30px}}
 @media(max-width:500px){.stats-row{grid-template-columns:1fr 1fr}.filter-bar{gap:6px}}
 
+/* ── Skills View ── */
+#skillsView{display:none}
+#catalogView{display:block}
+.skills-hero{background:linear-gradient(135deg,#0b1a2e,#1e1b4b);border-radius:14px;padding:28px 32px;margin-bottom:22px;color:#fff}
+.skills-hero h2{font-size:22px;font-weight:700;margin-bottom:6px}
+.skills-hero p{color:#a5b4fc;font-size:13px}
+.skill-search{background:#1e2d4a;border:1px solid #2d4a7a;color:#e2e8f0;border-radius:8px;padding:8px 14px;font-size:13px;width:100%;margin-top:14px;outline:none}
+.skill-search::placeholder{color:#4a6080}
+.skill-group{margin-bottom:28px}
+.skill-group-title{font-size:11px;font-weight:700;color:#6b7fa3;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.skill-card{background:#fff;border:1px solid #e0eaf6;border-radius:11px;padding:14px;cursor:pointer;transition:.15s;display:flex;flex-direction:column;gap:8px}
+.skill-card:hover{border-color:#2563eb;box-shadow:0 2px 12px rgba(37,99,235,.12);transform:translateY(-1px)}
+.skill-card-header{display:flex;align-items:center;gap:10px}
+.skill-card-name{font-weight:600;font-size:13px;color:#0f1f3d}
+.skill-chips{display:flex;flex-wrap:wrap;gap:4px}
+.skill-chip{font-size:10px;background:#eff6ff;color:#1d4ed8;border-radius:99px;padding:2px 8px;font-weight:500;border:1px solid #bfdbfe}
+.skill-chip.green{background:#f0fdf4;color:#166534;border-color:#bbf7d0}
+.skill-chip.purple{background:#faf5ff;color:#6b21a8;border-color:#e9d5ff}
+.skill-chip.orange{background:#fff7ed;color:#9a3412;border-color:#fed7aa}
+.skill-chip.gray{background:#f8fafc;color:#475569;border-color:#e2e8f0}
+
+/* ── Tool Detail Modal ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:16px;width:100%;max-width:580px;max-height:88vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal-header{background:linear-gradient(135deg,#0b1a2e,#1e3a6e);padding:24px;border-radius:16px 16px 0 0;color:#fff;display:flex;align-items:center;gap:14px}
+.modal-header-info h3{font-size:18px;font-weight:700;margin-bottom:3px}
+.modal-header-info .modal-cats{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.modal-body{padding:22px}
+.modal-section{margin-bottom:20px}
+.modal-section-title{font-size:11px;font-weight:700;color:#6b7fa3;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.modal-skills-grid{display:flex;flex-wrap:wrap;gap:6px}
+.modal-skill-item{display:flex;align-items:center;gap:6px;background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:6px 10px;font-size:12px;color:#1e40af;font-weight:500}
+.modal-skill-item svg{width:13px;height:13px;flex-shrink:0;stroke:#3b82f6}
+.modal-desc{font-size:13px;color:#374151;line-height:1.6;background:#f9fafb;border-radius:8px;padding:12px}
+.modal-footer{padding:16px 22px;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.modal-close{background:none;border:none;color:#6b7280;cursor:pointer;font-size:20px;line-height:1;padding:4px}
+.modal-open-btn{background:#2563eb;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:7px;text-decoration:none}
+.modal-open-btn:hover{background:#1d4ed8}
+.modal-price-badge{font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px}
+
 /* ── Bottom Nav Bar (mobile only) ── */
 .bottom-nav-bar{display:none;position:fixed;bottom:0;left:0;right:0;height:62px;background:#0b1629;border-top:2px solid #1e2f4a;z-index:200;align-items:center;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;padding:0 4px;gap:2px;flex-wrap:nowrap}
 .bottom-nav-bar::-webkit-scrollbar{display:none}
@@ -169,14 +211,18 @@ main{min-width:0;display:flex;flex-direction:column}
     <div class="brand-text"><strong>AI Index</strong><small>Portal de Inteligência Artificial</small></div>
   </div>
   <div class="nav-section">
-    <button class="nav-btn active" id="allNav" onclick="filterByCategory('all')">
+    <button class="nav-btn active" id="allNav" onclick="setView('catalog');filterByCategory('all')">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
       <span>Início</span>
     </button>
-    <button class="nav-btn" onclick="filterByCategory('all')">
+    <button class="nav-btn" id="catalogNav" onclick="setView('catalog');filterByCategory('all')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
       <span>Catálogo Completo</span>
       <span class="badge" id="totalBadge">0</span>
+    </button>
+    <button class="nav-btn" id="skillsNav" onclick="setView('skills')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <span>Skills e Habilidades</span>
     </button>
   </div>
   <div class="cat-label">CATEGORIAS</div>
@@ -242,6 +288,20 @@ main{min-width:0;display:flex;flex-direction:column}
     <span class="result-count" id="resultCount"></span>
   </div>
 
+  <!-- SKILLS VIEW -->
+  <div id="skillsView">
+    <div class="content">
+      <div class="skills-hero">
+        <h2>⭐ Skills e Habilidades por IA</h2>
+        <p>Explore as habilidades específicas de cada ferramenta de inteligência artificial. Clique em qualquer card para ver detalhes completos.</p>
+        <input class="skill-search" id="skillSearchInput" placeholder="Buscar habilidade ou ferramenta..." oninput="renderSkillsView()">
+      </div>
+      <div id="skillsContent"></div>
+    </div>
+  </div>
+
+  <!-- CATALOG VIEW -->
+  <div id="catalogView">
   <div class="content">
     <!-- Hero -->
     <section class="hero">
@@ -318,7 +378,13 @@ main{min-width:0;display:flex;flex-direction:column}
 
     <div class="footer">AI Index · Portal de Inteligência Artificial · Explore ferramentas, descubra possibilidades.</div>
   </div>
+  </div><!-- /catalogView -->
 </main>
+
+<!-- TOOL DETAIL MODAL -->
+<div class="modal-overlay" id="toolModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box" id="toolModalBox"></div>
+</div>
 </div>
 
 <script>
@@ -766,7 +832,7 @@ function render(){
 
   // List
   $('toolList').innerHTML=filtered.map(t=>`
-    <div class="tool-row">
+    <div class="tool-row" style="cursor:pointer" onclick="openToolModal('${t.id}')">
       <div class="tool-logo">${logoImg(t.domain,t.name,32)}</div>
       <div class="tool-info">
         <strong>${esc(t.name)}</strong>
@@ -774,7 +840,7 @@ function render(){
       </div>
       <div class="tool-cats">${t.cats.map(c=>`<span class="${tagClass(c)}">${esc(c)}</span>`).join('')}</div>
       <div class="tool-price">${esc(t.pricing)}</div>
-      <a class="tool-link" href="${esc(t.link)}" target="_blank" rel="noopener noreferrer" title="Abrir ${esc(t.name)}">
+      <a class="tool-link" href="${esc(t.link)}" target="_blank" rel="noopener noreferrer" title="Abrir ${esc(t.name)}" onclick="event.stopPropagation()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>`).join('');
@@ -829,6 +895,194 @@ $('searchInput').addEventListener('input',render);
 ['priceFilter','categoryFilter','technologyFilter','complexityFilter'].forEach(id=>
   $(id).addEventListener('change',()=>{if(id==='categoryFilter')activeCategory=$(id).value;render();})
 );
+
+// ── Skills Data ──
+const toolSkills = {
+  'ChatGPT':           ['Redação criativa','Resumo de textos','Tradução','Análise de dados','Geração de código','Brainstorming','Chatbot conversacional','Criação de planilhas','Revisão gramatical','Criação de apresentações'],
+  'Claude':            ['Análise profunda','Raciocínio lógico','Escrita longa','Revisão de documentos','Código seguro','Pesquisa acadêmica','Síntese de informações','Resposta empática','Análise jurídica','Criação de relatórios'],
+  'Gemini':            ['Pesquisa na web','Análise de imagens','Geração de texto','Código Python','Integração Google','Análise de documentos','Criação de e-mails','Assistência criativa','Síntese multimodal','Resposta em tempo real'],
+  'Microsoft Copilot': ['Integração Office 365','Criação de apresentações PowerPoint','Análise Excel','Redação Word','Resumo de e-mails','Criação de código','Pesquisa Bing','Automação de tarefas','Reuniões Teams','Gestão de projetos'],
+  'Perplexity':        ['Pesquisa com fontes','Análise de notícias','Resposta contextual','Pesquisa acadêmica','Comparação de produtos','Análise de mercado','Citação automática','Atualização em tempo real','Síntese de artigos','Pesquisa técnica'],
+  'NotebookLM':        ['Organização de documentos','Resumo automático','Perguntas sobre PDFs','Criação de podcasts','Síntese de pesquisa','Análise de livros','Estudo guiado','Mapa mental','Notas inteligentes','Extração de insights'],
+  'Notion AI':         ['Organização de notas','Resumo de páginas','Criação de templates','Brainstorming','Tradução in-app','Geração de conteúdo','Gestão de projetos','Banco de dados','Wikis corporativos','Criação de tarefas'],
+  'Grammarly':         ['Correção gramatical','Sugestão de vocabulário','Verificação de plágio','Detecção de tom','Reescrita de frases','Clareza de escrita','Detecção de erros','Adaptação de estilo','Verificação ortográfica','Melhora de legibilidade'],
+  'DeepSeek':          ['Raciocínio matemático','Resolução de problemas','Programação avançada','Análise científica','Código eficiente','Pesquisa técnica','Modelagem de dados','Lógica formal','Algoritmos','Machine learning'],
+  'GitHub Copilot':    ['Autocomplete de código','Geração de funções','Documentação automática','Revisão de código','Sugestão de testes','Detecção de bugs','Refatoração','Suporte multi-linguagem','Integração IDE','Pair programming com IA'],
+  'Cursor':            ['Edição de código por IA','Chat com codebase','Geração de funções','Refatoração inteligente','Detecção de erros','Criação de testes','Sugestão de imports','Explicação de código','Multi-arquivo edição','Integração Git'],
+  'Midjourney':        ['Geração de imagens fotorrealistas','Arte digital','Ilustração','Design de personagens','Cenários fantásticos','Concept art','Texturas','Logotipos','Banners','Estilos artísticos variados'],
+  'DALL-E':            ['Geração de imagens','Edição de imagens','Variações criativas','Arte abstrata','Illustração de ideias','Design de produtos','Fotos conceituais','Arte para livros','Imagens para marketing','Composição personalizada'],
+  'Stable Diffusion':  ['Geração local de imagens','Fine-tuning de modelos','Inpainting','Outpainting','Img2Img','ControlNet','Estilos personalizados','Arte NSFW (controlada)','Integração API','Open source'],
+  'ElevenLabs':        ['Síntese de voz realista','Clonagem de voz','Narração de audiobooks','Dublagem de vídeos','Múltiplos idiomas','Emoções na voz','API de voz','Texto para fala','Voices marketplace','Ajuste de velocidade'],
+  'Suno':              ['Geração de músicas completas','Letras automáticas','Múltiplos gêneros musicais','Voz cantada','Instrumentação','Criação rápida','Personalização de estilo','Produção musical','Música para vídeos','Remix'],
+  'Zapier':            ['Integração de apps','Automação de fluxos','Webhooks','Ações condicionais','Agendamento de tarefas','Transferência de dados','Automação de e-mails','Integração CRM','Notificações automáticas','Multistep workflows'],
+  'n8n':               ['Automação open source','Self-hosted','Fluxos visuais','Código personalizado','Integrações API','Webhooks','Loops e condições','Banco de dados','Suporte multi-nuvem','Personalização total'],
+  'Make':              ['Automação visual','Cenários complexos','Integração de apps','Filtros e routers','Processamento de dados','API custom','Agendamento','Transformação de dados','Histórico de execução','Operações em lote'],
+  'Power BI':          ['Dashboards interativos','Relatórios visuais','Análise preditiva','Conexão de dados','DAX avançado','Compartilhamento corporativo','Atualização automática','KPIs em tempo real','Drill-down','Exportação de relatórios'],
+  'Tableau':           ['Visualização de dados','Mapas geográficos','Análise exploratória','Conexão SQL','Stories visuais','Filtros interativos','Cálculos avançados','Integração Salesforce','Publicação na nuvem','Preparação de dados'],
+  'Julius AI':         ['Análise de planilhas','Criação de gráficos','Interpretação estatística','Análise de CSV','Perguntas em linguagem natural','Python automático','Correlações','Regressões','Limpeza de dados','Insights automáticos'],
+  'Jasper':            ['Copywriting','Artigos de blog','Anúncios','E-mails marketing','Conteúdo para redes sociais','Scripts de vídeo','Landing pages','SEO copy','Descrições de produtos','Tom de marca'],
+  'Copy.ai':           ['Copies publicitárias','Conteúdo para redes sociais','E-mails de venda','Taglines','Descrições de produto','Blog posts','Headlines','CTAs','Scripts de vídeo','Brainstorming de marketing'],
+  'HubSpot AI':        ['CRM inteligente','E-mails automatizados','Scoring de leads','Chatbots de vendas','Relatórios de vendas','Sequências de nutrição','Gestão de pipeline','Segmentação de clientes','Análise de conversão','Integração de marketing'],
+  'Intercom':          ['Atendimento automatizado','Chatbot de suporte','Tickets inteligentes','Roteamento de conversas','Base de conhecimento','Análise de satisfação','Integração CRM','Chat ao vivo','Campanhas in-app','Feedback de produto'],
+  'Midjourney':        ['Geração de imagens fotorrealistas','Arte digital','Concept art','Design de personagens','Illustração','Logotipos','Texturas','Banners','Estilos artísticos','Upscaling'],
+  'Canva AI':          ['Design gráfico','Apresentações','Remoção de fundo','Geração de imagens','Redimensionamento','Animações','Vídeos curtos','Identidade visual','Redes sociais','Templates profissionais'],
+  'Runway':            ['Edição de vídeo com IA','Geração de vídeo','Remoção de fundo em vídeo','Inpainting em vídeo','Efeitos especiais','Tracking de movimento','Animação','Color grading','Upscaling de vídeo','Gen-2 text-to-video'],
+  'Synthesia':         ['Avatares de IA','Vídeos corporativos','Treinamentos em vídeo','Múltiplos idiomas','Dublagem automática','Personalização de avatar','Scripts automáticos','Vídeos de onboarding','Apresentações em vídeo','API de vídeo'],
+  'Fireflies.ai':      ['Gravação de reuniões','Transcrição automática','Resumo de reuniões','Action items','Pesquisa em transcrições','Integração Zoom/Meet','Análise de sentimento','Comentários em reuniões','CRM sync','Share de notas'],
+  'Otter.ai':          ['Transcrição em tempo real','Resumo automático','Destaques de reunião','Integração com calendário','Colaboração em notas','Exportação de transcrições','Identificação de falantes','Pesquisa em transcrições','Gravação automática','Legendas ao vivo'],
+  'Manus':             ['Agente autônomo','Pesquisa web autônoma','Execução de código','Análise de documentos','Criação de relatórios','Multi-step tasks','Tomada de decisão','Automação complexa','Geração de conteúdo','Pesquisa profunda'],
+  'Khanmigo':          ['Tutoria personalizada','Matemática','Ciências','História','Feedback de redação','Preparação para provas','Aprendizagem adaptativa','Explicação passo a passo','Perguntas socráticas','Revisão de conceitos'],
+  'Socratic':          ['Resolução de dúvidas','Matemática','Física','Química','Biologia','Explicação visual','Reconhecimento de problemas','Busca de exemplos','Aprendizagem colaborativa','Suporte multimatéria'],
+  'Wysa':              ['Saúde mental','Redução de ansiedade','Técnicas de respiração','CBT guiada','Diário de humor','Check-in emocional','Suporte ao estresse','Mindfulness','Estratégias de enfrentamento','Conexão com terapeutas'],
+  'Ada Health':        ['Verificação de sintomas','Triagem médica','Histórico de saúde','Orientação preventiva','Diagnóstico preliminar','Recomendação de especialistas','Monitoramento de condições','Informações de medicamentos','Urgência médica','Saúde familiar'],
+  'Woebot':            ['Terapia cognitivo-comportamental','Diário emocional','Técnicas de relaxamento','Suporte ao sono','Gerenciamento de estresse','Humor tracking','Exercícios de mindfulness','Recursos de saúde mental','Suporte 24/7','Conversas empáticas'],
+  'Salesforce Einstein':['Previsão de vendas','Scoring de leads','Recomendação de produtos','Análise de e-mails','Automação de CRM','Insights de clientes','Próxima ação recomendada','Detecção de anomalias','Análise de conversas','Forecast inteligente'],
+  'Trello AI':         ['Kanban inteligente','Sugestão de tarefas','Automação Butler','Estimativa de tempo','Categorização automática','Integração de apps','Checklists inteligentes','Notificações contextuais','Relatórios de projetos','Colaboração em equipe'],
+  'Notion Calendar':   ['Agendamento inteligente','Integração com Notion','Blocos de tempo','Priorização automática','Reuniões contextuais','Lembretes adaptativos','Visão de semana/mês','Sync com Google','Colaboração','Gestão de projetos'],
+  'Reclaim.ai':        ['Agendamento automático','Blocos de foco','Reuniões eficientes','Sincronização de calendários','Tarefas prioritárias','Buffer automático','Hábitos agendados','Proteção de tempo pessoal','Analytics de tempo','Integração Slack'],
+  'Motion':            ['Planejamento automático','Reorganização de tarefas','Gestão de projetos','Agendamento de reuniões','Estimativa automática','Priorização por IA','Calendário inteligente','Tracking de progresso','Relatórios de produtividade','Integração de equipes'],
+  'Duolingo Max':      ['Aprendizagem de idiomas','Conversação com IA','Explicação de erros','Roleplay interativo','Gramática contextual','Vocabulário adaptativo','Pronúncia','Feedback instantâneo','Jogos educativos','Trilha personalizada'],
+  'Photomath':         ['Resolução de equações','Cálculo passo a passo','Geometria','Álgebra','Trigonometria','Cálculo diferencial','Estatística','Gráficos de funções','Verificação de respostas','Explicação detalhada'],
+  'Elicit':            ['Revisão de literatura','Extração de dados','Resumo de artigos','Comparação de estudos','Perguntas de pesquisa','Identificação de tendências','Análise de metodologias','Síntese de evidências','Mapeamento sistemático','Citação automática'],
+  'Consensus':         ['Busca em artigos científicos','Consenso acadêmico','Perguntas de saúde','Síntese de evidências','Citação de fontes','Análise de estudos','Verificação de afirmações','Resumo de pesquisa','Confiabilidade de dados','Busca por nutrição/medicina'],
+  'Cohere':            ['Classificação de texto','Busca semântica','Geração de embeddings','RAG (retrieval)','Análise de sentimento','Extração de entidades','Sumarização','Respostas contextuais','Fine-tuning','API corporativa'],
+  'Mistral AI':        ['Modelos open source','Código eficiente','Análise de documentos','Raciocínio lógico','Multilíngue','API rápida','Fine-tuning','Baixo custo','Alta performance','Privacidade de dados'],
+  'Grok':              ['Análise de tweets','Tendências em tempo real','Humor e sarcasmo','Pesquisa atual','Análise de X/Twitter','Código','Respostas sem censura','Personalidade única','Notícias recentes','Debate de ideias'],
+  'Meta AI':           ['Assistência via WhatsApp','Criação de imagens','Pesquisa conversacional','Resposta em redes sociais','Integração Meta','Tradução','Resumo de conteúdo','Código','Assistência criativa','Respostas rápidas'],
+  'Figma AI':          ['Geração de UI','Sugestão de componentes','Tradução design-código','Prototipagem rápida','Variações de layout','Design system','Anotações automáticas','Renomeação inteligente','Acessibilidade','Exportação para React'],
+  'Canva AI':          ['Design com IA','Magic Resize','Text to image','Remoção de fundo','Apresentações automáticas','Animações','Templates inteligentes','Tradução de design','Branding automático','Criação de vídeos'],
+  'Lovable':           ['App web completo','Frontend React','Backend automático','Banco de dados','Deploy automático','Iteração por chat','Integração APIs','Design responsivo','Autenticação','Criação sem código'],
+  'v0.dev':            ['Componentes React','Tailwind CSS','Shadcn UI','Design to code','Prototipagem rápida','Iteração visual','Acessibilidade','Responsividade','Dark mode','Exportação de código'],
+  'Sora':              ['Vídeo realista','Text to video','Cenas complexas','Personagens consistentes','Física realista','Duração até 60s','Alta resolução','Estilos variados','Narrativa visual','Referência de cena'],
+  'Bardeen':           ['Automação de browser','Web scraping','Formulários automáticos','Extração de dados','Integração apps','Playbooks de IA','Trigger automático','Enriquecimento de leads','CRM sync','Pesquisa automática'],
+  'Tome':              ['Apresentações com IA','Narrativa visual','Conteúdo automático','Design adaptativo','Páginas interativas','Exportação','Colaboração','Integração de dados','Templates modernos','One-page sites'],
+  'Gamma':             ['Apresentações automáticas','Documentos visuais','Cards interativos','Design com IA','Múltiplos formatos','Colaboração','Exportação PDF','Embed de mídia','Edição fácil','Compartilhamento rápido'],
+};
+
+// Default skills by category
+const catDefaultSkills = {
+  'Assistentes':       ['Conversação','Análise de texto','Resposta a perguntas','Resumo','Tradução','Código','Brainstorming'],
+  'Escrita e Texto':   ['Redação','Revisão','Paráfrase','SEO','Copywriting','E-mails','Blog posts'],
+  'Imagem e Vídeo':    ['Geração de imagens','Edição de vídeo','Arte digital','Concept art','Animação','Upscaling'],
+  'Áudio e Música':    ['Síntese de voz','Geração musical','Transcrição','Remoção de ruído','Podcasts'],
+  'Código':            ['Autocomplete','Geração de funções','Revisão de código','Testes automáticos','Documentação','Debug'],
+  'Dados e Análise':   ['Visualização','Relatórios','Machine learning','Análise preditiva','Dashboards','ETL'],
+  'Automação':         ['Workflows','Integração de apps','Webhooks','Triggers','Agendamento','APIs'],
+  'Marketing e Vendas':['Copywriting','E-mail marketing','Lead scoring','CRM','Anúncios','SEO'],
+  'Atendimento':       ['Chatbot','Tickets','Respostas automáticas','Análise de satisfação','Roteamento','Base de conhecimento'],
+  'Design':            ['UI/UX','Logos','Identidade visual','Prototipagem','Paletas de cor','Mockups'],
+  'Gestão e Negócios': ['Gestão de projetos','KPIs','Relatórios','Kanban','OKRs','Apresentações'],
+  'Produtividade':     ['Agendamento','Transcrição de reuniões','Organização de notas','Foco','Gestão de tempo'],
+  'Educação':          ['Tutoria','Exercícios','Explicações','Feedback','Quiz','Aprendizagem adaptativa'],
+  'Saúde':             ['Triagem de sintomas','Saúde mental','Monitoramento','Orientação médica','Coaching de saúde'],
+};
+
+function getToolSkills(t){
+  if(toolSkills[t.name]) return toolSkills[t.name];
+  // Build from categories
+  const skills = new Set();
+  t.cats.forEach(c => (catDefaultSkills[c]||[]).forEach(s=>skills.add(s)));
+  return [...skills].slice(0,8);
+}
+
+function openToolModal(toolId){
+  const t = tools.find(x=>x.id===toolId);
+  if(!t) return;
+  const skills = getToolSkills(t);
+  const priceColors = {'Gratuito':'#059669','Freemium':'#d97706','Pago':'#dc2626','Open Source':'#7c3aed'};
+  const priceColor = priceColors[t.pricing]||'#6b7280';
+  const skillCheckSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>`;
+  $('toolModalBox').innerHTML = `
+    <div class="modal-header">
+      <div style="flex-shrink:0">${logoImg(t.domain,t.name,48)}</div>
+      <div class="modal-header-info">
+        <h3>${esc(t.name)}</h3>
+        <div class="modal-cats">${t.cats.map(c=>`<span style="background:rgba(255,255,255,.15);color:#e2e8f0;font-size:10px;padding:2px 8px;border-radius:99px">${esc(c)}</span>`).join('')}</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()" style="margin-left:auto;color:#9ca3af">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Sobre a ferramenta</div>
+        <div class="modal-desc">${esc(t.desc)}</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">⭐ Skills e Habilidades (${skills.length})</div>
+        <div class="modal-skills-grid">
+          ${skills.map(s=>`<div class="modal-skill-item">${skillCheckSvg}${esc(s)}</div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <span class="modal-price-badge" style="color:${priceColor};background:${priceColor}18;border:1px solid ${priceColor}40">${esc(t.pricing)}</span>
+      <a class="modal-open-btn" href="${esc(t.link)}" target="_blank" rel="noopener">
+        Acessar ferramenta
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>`;
+  $('toolModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  $('toolModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+// ── Skills View ──
+function renderSkillsView(){
+  const q=($('skillSearchInput')?.value||'').toLowerCase();
+  const cats=allCats();
+  let html='';
+  cats.forEach(cat=>{
+    const catTools=tools.filter(t=>t.cats.includes(cat)).filter(t=>{
+      if(!q) return true;
+      const skills=getToolSkills(t);
+      return t.name.toLowerCase().includes(q)||skills.some(s=>s.toLowerCase().includes(q));
+    });
+    if(!catTools.length) return;
+    const icon=catIcons[cat]||'';
+    html+=`<div class="skill-group">
+      <div class="skill-group-title">${icon.replace(/width="24"/g,'width="14"').replace(/height="24"/g,'height="14"')} ${esc(cat)} <span style="color:#9bafc8;font-weight:400">(${catTools.length})</span></div>
+      <div class="skills-grid">
+        ${catTools.map(t=>{
+          const skills=getToolSkills(t).slice(0,5);
+          return `<div class="skill-card" onclick="openToolModal('${t.id}')">
+            <div class="skill-card-header">
+              ${logoImg(t.domain,t.name,28)}
+              <div>
+                <div class="skill-card-name">${esc(t.name)}</div>
+                <div style="font-size:10px;color:#6b7fa3">${esc(t.pricing)}</div>
+              </div>
+            </div>
+            <div class="skill-chips">
+              ${skills.map(s=>`<span class="skill-chip">${esc(s)}</span>`).join('')}
+              ${getToolSkills(t).length>5?`<span class="skill-chip gray">+${getToolSkills(t).length-5} mais</span>`:''}
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  });
+  $('skillsContent').innerHTML=html||'<p style="color:#6b7fa3;text-align:center;padding:40px">Nenhum resultado encontrado.</p>';
+}
+
+let currentView='catalog';
+function setView(view){
+  currentView=view;
+  $('catalogView').style.display=view==='catalog'?'block':'none';
+  $('skillsView').style.display=view==='skills'?'block':'none';
+  // Update sidebar active state
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  if(view==='skills'){
+    $('skillsNav').classList.add('active');
+    renderSkillsView();
+  } else {
+    $('allNav').classList.add('active');
+  }
+}
 
 render();
 
