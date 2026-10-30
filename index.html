@@ -138,6 +138,65 @@ main{min-width:0;display:flex;flex-direction:column}
 @media(max-width:1100px){.dest-grid{grid-template-columns:repeat(2,1fr)}.stats-row{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.app{grid-template-columns:60px 1fr}.brand-text,.cat-label,.cat-btn span,.cat-count,.side-motto,.side-bottom .status-row div span{display:none}.brand{justify-content:center;padding:16px 10px}.cat-btn,.nav-btn{justify-content:center;padding:10px 8px}.badge{display:none}.dest-grid{grid-template-columns:1fr}.tool-cats,.tool-price{display:none}.hero-right{display:none}.hero h1{font-size:30px}}
 @media(max-width:500px){.stats-row{grid-template-columns:1fr 1fr}.filter-bar{gap:6px}}
+
+/* ── Skills View ── */
+#skillsView{display:none}
+#catalogView{display:block}
+.skills-hero{background:linear-gradient(135deg,#0b1a2e,#0f2d52);border-radius:14px;padding:24px 28px;margin-bottom:22px;color:#fff;border:1px solid #1e3a5f}
+.skills-hero h2{font-size:18px;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.skills-hero p{color:#7fa8cc;font-size:13px}
+.skill-search{background:#1e2d4a;border:1px solid #2d4a7a;color:#e2e8f0;border-radius:8px;padding:8px 14px;font-size:13px;width:100%;margin-top:14px;outline:none}
+.skill-search::placeholder{color:#4a6080}
+.skill-group{margin-bottom:28px}
+.skill-group-title{font-size:11px;font-weight:700;color:#6b7fa3;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px}
+.skill-group-title svg{width:13px;height:13px;flex-shrink:0}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.skill-card{background:#fff;border:1px solid #dce8f5;border-radius:11px;padding:14px;cursor:pointer;transition:.15s;display:flex;flex-direction:column;gap:7px}
+.skill-card:hover{border-color:#3b82f6;box-shadow:0 2px 14px rgba(37,99,235,.10);transform:translateY(-1px)}
+.skill-main-label{font-size:12px;color:#1e3a6e;font-weight:500;line-height:1.4;border-left:2px solid #3b82f6;padding-left:7px}
+.skill-card-header{display:flex;align-items:center;gap:10px}
+.skill-card-name{font-weight:600;font-size:13px;color:#0f1f3d}
+.skill-chips{display:flex;flex-wrap:wrap;gap:4px}
+.skill-chip{font-size:10px;background:#eff6ff;color:#1d4ed8;border-radius:99px;padding:2px 8px;font-weight:500;border:1px solid #bfdbfe}
+.skill-chip.green{background:#f0fdf4;color:#166534;border-color:#bbf7d0}
+.skill-chip.purple{background:#faf5ff;color:#6b21a8;border-color:#e9d5ff}
+.skill-chip.orange{background:#fff7ed;color:#9a3412;border-color:#fed7aa}
+.skill-chip.gray{background:#f8fafc;color:#475569;border-color:#e2e8f0}
+
+/* ── Tool Detail Modal ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:16px;width:100%;max-width:580px;max-height:88vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal-header{background:linear-gradient(135deg,#0b1a2e,#1e3a6e);padding:24px;border-radius:16px 16px 0 0;color:#fff;display:flex;align-items:center;gap:14px}
+.modal-header-info h3{font-size:18px;font-weight:700;margin-bottom:3px}
+.modal-header-info .modal-cats{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.modal-body{padding:22px}
+.modal-section{margin-bottom:20px}
+.modal-section-title{font-size:11px;font-weight:700;color:#6b7fa3;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.modal-skills-grid{display:flex;flex-wrap:wrap;gap:6px}
+.modal-skill-item{display:flex;align-items:center;gap:6px;background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:6px 10px;font-size:12px;color:#1e40af;font-weight:500}
+.modal-skill-item svg{width:13px;height:13px;flex-shrink:0;stroke:#3b82f6}
+.modal-desc{font-size:13px;color:#374151;line-height:1.6;background:#f9fafb;border-radius:8px;padding:12px}
+.modal-footer{padding:16px 22px;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.modal-close{background:none;border:none;color:#6b7280;cursor:pointer;font-size:20px;line-height:1;padding:4px}
+.modal-open-btn{background:#2563eb;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:7px;text-decoration:none}
+.modal-open-btn:hover{background:#1d4ed8}
+.modal-price-badge{font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px}
+
+/* ── Bottom Nav Bar (mobile only) ── */
+.bottom-nav-bar{display:none;position:fixed;bottom:0;left:0;right:0;height:62px;background:#0b1629;border-top:2px solid #1e2f4a;z-index:200;align-items:center;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;padding:0 4px;gap:2px;flex-wrap:nowrap}
+.bottom-nav-bar::-webkit-scrollbar{display:none}
+.bnav-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:transparent;border:none;outline:none;-webkit-appearance:none;appearance:none;color:#7a96bf;padding:6px 10px;border-radius:8px;font-size:9.5px;cursor:pointer;white-space:nowrap;flex-shrink:0;min-width:56px;font-family:inherit}
+.bnav-btn svg{width:20px;height:20px;flex-shrink:0;stroke:currentColor}
+.bnav-btn.active{color:#60a5fa;background:#1e3a6e}
+.bnav-btn:hover{color:#c8d8f0}
+@media(max-width:700px){
+  .bottom-nav-bar{display:flex}
+  main{padding-bottom:70px}
+  .filter-bar{padding:8px 10px;gap:6px;top:54px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .filter-bar::-webkit-scrollbar{display:none}
+  .topbar{padding:0 12px}
+}
 </style>
 </head>
 <body>
@@ -154,14 +213,18 @@ main{min-width:0;display:flex;flex-direction:column}
     <div class="brand-text"><strong>AI Index</strong><small>Portal de Inteligência Artificial</small></div>
   </div>
   <div class="nav-section">
-    <button class="nav-btn active" id="allNav" onclick="filterByCategory('all')">
+    <button class="nav-btn active" id="allNav" onclick="setView('catalog');filterByCategory('all')">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
       <span>Início</span>
     </button>
-    <button class="nav-btn" onclick="filterByCategory('all')">
+    <button class="nav-btn" id="catalogNav" onclick="setView('catalog');filterByCategory('all')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
       <span>Catálogo Completo</span>
       <span class="badge" id="totalBadge">0</span>
+    </button>
+    <button class="nav-btn" id="skillsNav" onclick="setView('skills')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M16 3.5c1.5.5 2.5 2 2.5 3.5s-1 3-2.5 3.5"/></svg>
+      <span>Skills e Habilidades</span>
     </button>
   </div>
   <div class="cat-label">CATEGORIAS</div>
@@ -227,6 +290,20 @@ main{min-width:0;display:flex;flex-direction:column}
     <span class="result-count" id="resultCount"></span>
   </div>
 
+  <!-- SKILLS VIEW -->
+  <div id="skillsView">
+    <div class="content">
+      <div class="skills-hero">
+        <h2>Skills e Habilidades por IA</h2>
+        <p>Especialidade principal e capacidades de cada ferramenta. Clique para ver detalhes.</p>
+        <input class="skill-search" id="skillSearchInput" placeholder="Buscar habilidade ou ferramenta..." oninput="renderSkillsView()">
+      </div>
+      <div id="skillsContent"></div>
+    </div>
+  </div>
+
+  <!-- CATALOG VIEW -->
+  <div id="catalogView">
   <div class="content">
     <!-- Hero -->
     <section class="hero">
@@ -303,82 +380,217 @@ main{min-width:0;display:flex;flex-direction:column}
 
     <div class="footer">AI Index · Portal de Inteligência Artificial · Explore ferramentas, descubra possibilidades.</div>
   </div>
+  </div><!-- /catalogView -->
 </main>
+
+<!-- TOOL DETAIL MODAL -->
+<div class="modal-overlay" id="toolModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box" id="toolModalBox"></div>
+</div>
 </div>
 
 <script>
 const tools = [
-  {id:'1', name:'ChatGPT',         cats:['Produtividade'],         pricing:'Freemium',   link:'https://chatgpt.com/',                           desc:'Assistente de IA para criação de conteúdo, análise e resolução de problemas.',            domain:'chatgpt.com'},
-  {id:'2', name:'Microsoft Copilot',cats:['Produtividade'],        pricing:'Freemium',   link:'https://copilot.microsoft.com/',                 desc:'IA integrada ao Microsoft 365 para aumentar sua produtividade.',                         domain:'copilot.microsoft.com'},
-  {id:'3', name:'Claude',           cats:['Produtividade'],        pricing:'Freemium',   link:'https://claude.ai/',                             desc:'Assistente de IA para análise, redação e raciocínio avançado.',                         domain:'claude.ai'},
-  {id:'4', name:'Gemini',           cats:['Produtividade'],        pricing:'Freemium',   link:'https://gemini.google.com/',                     desc:'IA do Google para pesquisa, criação e análise de informações.',                         domain:'gemini.google.com'},
-  {id:'5', name:'Notion AI',        cats:['Produtividade'],        pricing:'Freemium',   link:'https://www.notion.so/',                         desc:'Organização, escrita e gestão de conhecimento com IA.',                                  domain:'notion.so'},
-  {id:'6', name:'Perplexity',       cats:['Produtividade'],        pricing:'Freemium',   link:'https://www.perplexity.ai/',                     desc:'Pesquisa conversacional na web com respostas acompanhadas de fontes.',                   domain:'perplexity.ai'},
-  {id:'7', name:'NotebookLM',       cats:['Produtividade'],        pricing:'Gratuito',   link:'https://notebooklm.google.com/',                 desc:'Organiza e resume documentos enviados pelo usuário com IA.',                            domain:'notebooklm.google.com'},
-  {id:'8', name:'Grammarly',        cats:['Produtividade'],        pricing:'Freemium',   link:'https://www.grammarly.com/',                     desc:'Correção gramatical e sugestões de escrita com inteligência artificial.',               domain:'grammarly.com'},
-  {id:'9', name:'DeepSeek',         cats:['Produtividade'],        pricing:'Gratuito',   link:'https://chat.deepseek.com/',                     desc:'Assistente de IA para raciocínio, pesquisa, matemática e programação.',                 domain:'deepseek.com'},
-  {id:'10',name:'Kimi',             cats:['Produtividade'],        pricing:'Freemium',   link:'https://kimi.com/',                              desc:'Assistente para leitura, pesquisa e trabalho com documentos extensos.',                  domain:'kimi.com'},
-  {id:'11',name:'Le Chat (Mistral)',cats:['Produtividade'],        pricing:'Freemium',   link:'https://chat.mistral.ai/',                       desc:'Assistente de IA para pesquisa, escrita, análise e programação.',                       domain:'mistral.ai'},
-  {id:'12',name:'Qwen',             cats:['Produtividade'],        pricing:'Variável',   link:'https://qwen.ai/',                               desc:'Família de modelos de IA para texto, raciocínio, programação e outras tarefas.',         domain:'qwen.ai'},
-  {id:'13',name:'Power BI',         cats:['Análise de Dados'],     pricing:'Freemium',   link:'https://powerbi.microsoft.com/',                 desc:'Visualização e análise de dados para melhores decisões.',                               domain:'powerbi.microsoft.com'},
-  {id:'14',name:'Julius AI',        cats:['Análise de Dados'],     pricing:'Freemium',   link:'https://julius.ai/',                             desc:'Analisa planilhas e dados, responde perguntas e cria gráficos.',                        domain:'julius.ai'},
-  {id:'15',name:'Google Sheets AI', cats:['Análise de Dados'],     pricing:'Gratuito',   link:'https://sheets.google.com/',                     desc:'Automação e integrações com Google Workspace via Apps Script.',                         domain:'sheets.google.com'},
-  {id:'16',name:'Tableau',          cats:['Análise de Dados'],     pricing:'Pago',       link:'https://www.tableau.com/',                       desc:'Plataforma líder em visualização e análise de dados.',                                  domain:'tableau.com'},
-  {id:'17',name:'Jupyter Notebook', cats:['Análise de Dados'],     pricing:'Gratuito',   link:'https://jupyter.org/',                           desc:'Ambiente para análise de dados e desenvolvimento em Python.',                           domain:'jupyter.org'},
-  {id:'18',name:'TensorFlow',       cats:['Análise de Dados'],     pricing:'Open Source',link:'https://www.tensorflow.org/',                   desc:'Biblioteca de Machine Learning e IA para projetos avançados.',                         domain:'tensorflow.org'},
-  {id:'19',name:'Apollo.io',        cats:['Análise de Dados'],     pricing:'Freemium',   link:'https://apollo.io/',                             desc:'Pesquisa de empresas e contatos B2B com inteligência de dados.',                        domain:'apollo.io'},
-  {id:'20',name:'Manusis',          cats:['Análise de Dados'],     pricing:'Pago',       link:'https://manusis4.com.br/',                       desc:'Plataforma de gestão de ativos e manutenção industrial.',                               domain:'manusis4.com.br'},
-  {id:'21',name:'GitHub Copilot',   cats:['Desenvolvimento'],      pricing:'Freemium',   link:'https://github.com/features/copilot',            desc:'Assistente de código com IA integrado ao editor para desenvolvedores.',                 domain:'github.com'},
-  {id:'22',name:'Cursor',           cats:['Desenvolvimento'],      pricing:'Freemium',   link:'https://cursor.com/',                            desc:'Editor de código com recursos de IA para gerar, explicar e refatorar projetos.',        domain:'cursor.com'},
-  {id:'23',name:'Bolt.new',         cats:['Desenvolvimento'],      pricing:'Freemium',   link:'https://bolt.new/',                              desc:'Cria e executa protótipos e aplicações web diretamente no navegador.',                   domain:'bolt.new'},
-  {id:'24',name:'Aider',            cats:['Desenvolvimento'],      pricing:'Open Source',link:'https://aider.chat/',                            desc:'Assistente de programação no terminal com suporte a repositórios Git.',                  domain:'aider.chat'},
-  {id:'25',name:'Cline',            cats:['Desenvolvimento'],      pricing:'Open Source',link:'https://cline.bot/',                             desc:'Agente de programação integrado ao editor para tarefas com vários arquivos.',            domain:'cline.bot'},
-  {id:'26',name:'CodeRabbit',       cats:['Desenvolvimento'],      pricing:'Freemium',   link:'https://coderabbit.ai/',                         desc:'Revisão de código assistida por IA para identificar problemas e melhorias.',            domain:'coderabbit.ai'},
-  {id:'27',name:'Base44',           cats:['Desenvolvimento'],      pricing:'Pago',       link:'https://base44.com/',                            desc:'Criação de aplicativos a partir de instruções em linguagem natural.',                   domain:'base44.com'},
-  {id:'28',name:'Zapier',           cats:['Automação'],            pricing:'Freemium',   link:'https://zapier.com/',                            desc:'Automação de processos entre diferentes aplicativos e serviços.',                       domain:'zapier.com'},
-  {id:'29',name:'Make',             cats:['Automação'],            pricing:'Freemium',   link:'https://www.make.com/',                          desc:'Plataforma visual de automação e integração entre sistemas.',                           domain:'make.com'},
-  {id:'30',name:'n8n',              cats:['Automação'],            pricing:'Open Source',link:'https://n8n.io/',                                desc:'Automação de fluxos de trabalho com suporte a código personalizado.',                   domain:'n8n.io'},
-  {id:'31',name:'OpenHands',        cats:['Automação'],            pricing:'Open Source',link:'https://github.com/All-Hands-AI/OpenHands',      desc:'Plataforma para agentes de IA auxiliarem em tarefas de engenharia de software.',        domain:'github.com'},
-  {id:'32',name:'Sweep',            cats:['Automação'],            pricing:'Freemium',   link:'https://sweep.dev/',                             desc:'Transforma tarefas e issues em alterações de código automaticamente.',                  domain:'sweep.dev'},
-  {id:'33',name:'Qodo',             cats:['Automação'],            pricing:'Freemium',   link:'https://qodo.ai/',                               desc:'Ferramentas de IA para testes, revisão e qualidade de código.',                        domain:'qodo.ai'},
-  {id:'34',name:'Intercom',         cats:['Atendimento'],          pricing:'Pago',       link:'https://www.intercom.com/',                      desc:'Plataforma de atendimento ao cliente com IA integrada.',                                domain:'intercom.com'},
-  {id:'35',name:'Zendesk AI',       cats:['Atendimento'],          pricing:'Pago',       link:'https://www.zendesk.com/',                       desc:'Suporte ao cliente com automação e IA para times de atendimento.',                      domain:'zendesk.com'},
-  {id:'36',name:'Tidio',            cats:['Atendimento'],          pricing:'Freemium',   link:'https://www.tidio.com/',                         desc:'Chatbot e live chat com IA para atendimento ao cliente.',                               domain:'tidio.com'},
-  {id:'37',name:'Freshdesk',        cats:['Atendimento'],          pricing:'Freemium',   link:'https://freshdesk.com/',                         desc:'Suporte ao cliente inteligente com automações e relatórios.',                          domain:'freshdesk.com'},
-  {id:'38',name:'Drift',            cats:['Atendimento'],          pricing:'Pago',       link:'https://www.drift.com/',                         desc:'Plataforma de marketing conversacional e atendimento ao cliente.',                      domain:'drift.com'},
-  {id:'39',name:'Seamless.AI',      cats:['Marketing e Vendas'],   pricing:'Pago',       link:'https://seamless.ai/',                           desc:'Ferramenta de prospecção comercial e descoberta de contatos.',                         domain:'seamless.ai'},
-  {id:'40',name:'HubSpot AI',       cats:['Marketing e Vendas'],   pricing:'Freemium',   link:'https://www.hubspot.com/',                       desc:'CRM e plataforma de marketing com recursos de IA integrados.',                         domain:'hubspot.com'},
-  {id:'41',name:'Copy.ai',          cats:['Marketing e Vendas'],   pricing:'Freemium',   link:'https://www.copy.ai/',                           desc:'Geração de copy, textos de marketing e conteúdo com IA.',                             domain:'copy.ai'},
-  {id:'42',name:'Jasper',           cats:['Marketing e Vendas'],   pricing:'Pago',       link:'https://www.jasper.ai/',                         desc:'IA para criação de conteúdo de marketing em escala.',                                  domain:'jasper.ai'},
-  {id:'43',name:'Monday.com AI',    cats:['Gestão e Negócios'],    pricing:'Pago',       link:'https://monday.com/',                            desc:'Gerenciamento de projetos e equipes com IA para automações.',                          domain:'monday.com'},
-  {id:'44',name:'ClickUp AI',       cats:['Gestão e Negócios'],    pricing:'Freemium',   link:'https://clickup.com/',                           desc:'Produtividade e gestão de tarefas com assistente de IA integrado.',                    domain:'clickup.com'},
-  {id:'45',name:'Asana AI',         cats:['Gestão e Negócios'],    pricing:'Freemium',   link:'https://asana.com/',                             desc:'Gestão de projetos com automações e insights gerados por IA.',                        domain:'asana.com'},
-  {id:'46',name:'Midjourney',       cats:['Design e Criatividade'],pricing:'Pago',       link:'https://www.midjourney.com/',                    desc:'Geração de imagens e conceitos visuais a partir de prompts.',                         domain:'midjourney.com'},
-  {id:'47',name:'Suno',             cats:['Design e Criatividade'],pricing:'Freemium',   link:'https://suno.com/',                              desc:'Criação de músicas a partir de descrições e ideias em texto.',                        domain:'suno.com'},
-  {id:'48',name:'Khanmigo',         cats:['Educação e Treinamento'],pricing:'Gratuito',  link:'https://www.khanacademy.org/',                   desc:'Tutor de IA para aprendizagem personalizada em diversas disciplinas.',                 domain:'khanacademy.org'},
-  {id:'49',name:'Duolingo Max',     cats:['Educação e Treinamento'],pricing:'Pago',      link:'https://www.duolingo.com/',                      desc:'Aprendizagem de idiomas com IA para feedback personalizado.',                         domain:'duolingo.com'},
-  {id:'50',name:'Ada Health',       cats:['Saúde e Bem-estar'],    pricing:'Gratuito',   link:'https://ada.com/',                               desc:'Assistente de saúde com IA para orientação de sintomas e cuidados.',                  domain:'ada.com'},
+  // ── Assistentes ──
+  {id:'1', name:'ChatGPT',         cats:['Assistentes','Escrita e Texto','Código','Produtividade'],             pricing:'Freemium',   link:'https://chatgpt.com/',                        desc:'Assistente de IA para criação de conteúdo, análise, código e resolução de problemas.',    domain:'chatgpt.com'},
+  {id:'2', name:'Microsoft Copilot',cats:['Assistentes','Produtividade','Código'],                              pricing:'Freemium',   link:'https://copilot.microsoft.com/',              desc:'IA integrada ao Microsoft 365 para aumentar sua produtividade.',                          domain:'copilot.microsoft.com'},
+  {id:'3', name:'Claude',           cats:['Assistentes','Escrita e Texto','Código','Produtividade'],            pricing:'Freemium',   link:'https://claude.ai/',                          desc:'Assistente de IA para análise, redação e raciocínio avançado.',                           domain:'claude.ai'},
+  {id:'4', name:'Gemini',           cats:['Assistentes','Escrita e Texto','Imagem e Vídeo','Produtividade'],    pricing:'Freemium',   link:'https://gemini.google.com/',                  desc:'IA do Google para pesquisa, criação de conteúdo, imagens e análise.',                     domain:'gemini.google.com'},
+  {id:'5', name:'Notion AI',        cats:['Produtividade','Escrita e Texto','Gestão e Negócios'],               pricing:'Freemium',   link:'https://www.notion.so/',                      desc:'Organização, escrita e gestão de conhecimento com IA.',                                   domain:'notion.so'},
+  {id:'6', name:'Perplexity',       cats:['Assistentes','Produtividade'],                                       pricing:'Freemium',   link:'https://www.perplexity.ai/',                  desc:'Pesquisa conversacional na web com respostas acompanhadas de fontes.',                    domain:'perplexity.ai'},
+  {id:'7', name:'NotebookLM',       cats:['Produtividade','Educação'],                                          pricing:'Gratuito',   link:'https://notebooklm.google.com/',              desc:'Organiza e resume documentos enviados pelo usuário com IA do Google.',                    domain:'notebooklm.google.com'},
+  {id:'8', name:'Grammarly',        cats:['Escrita e Texto','Produtividade'],                                   pricing:'Freemium',   link:'https://www.grammarly.com/',                  desc:'Correção gramatical e sugestões de escrita com inteligência artificial.',                 domain:'grammarly.com'},
+  {id:'9', name:'DeepSeek',         cats:['Assistentes','Código','Dados e Análise'],                            pricing:'Gratuito',   link:'https://chat.deepseek.com/',                  desc:'Assistente de IA para raciocínio, pesquisa, matemática e programação.',                  domain:'deepseek.com'},
+  {id:'10',name:'Kimi',             cats:['Assistentes','Produtividade'],                                       pricing:'Freemium',   link:'https://kimi.com/',                           desc:'Assistente para leitura, pesquisa e trabalho com documentos extensos.',                   domain:'kimi.com'},
+  {id:'11',name:'Le Chat (Mistral)',cats:['Assistentes','Escrita e Texto','Código'],                             pricing:'Freemium',   link:'https://chat.mistral.ai/',                    desc:'Assistente de IA europeu para pesquisa, escrita, análise e programação.',                domain:'mistral.ai'},
+  {id:'12',name:'Qwen',             cats:['Assistentes','Código'],                                              pricing:'Freemium',   link:'https://qwen.ai/',                            desc:'Modelos de IA da Alibaba para texto, raciocínio, programação e tarefas diversas.',        domain:'qwen.ai'},
+  // ── Dados e Análise ──
+  {id:'13',name:'Power BI',         cats:['Dados e Análise','Produtividade'],                                   pricing:'Freemium',   link:'https://powerbi.microsoft.com/',              desc:'Visualização e análise de dados para melhores decisões.',                                 domain:'powerbi.microsoft.com'},
+  {id:'14',name:'Julius AI',        cats:['Dados e Análise'],                                                   pricing:'Freemium',   link:'https://julius.ai/',                          desc:'Analisa planilhas e dados, responde perguntas e cria gráficos automaticamente.',          domain:'julius.ai'},
+  {id:'15',name:'Google Sheets AI', cats:['Dados e Análise','Produtividade'],                                   pricing:'Gratuito',   link:'https://sheets.google.com/',                  desc:'Planilhas com IA integrada para automação e análise no Google Workspace.',                domain:'sheets.google.com'},
+  {id:'16',name:'Tableau',          cats:['Dados e Análise'],                                                   pricing:'Pago',       link:'https://www.tableau.com/',                    desc:'Plataforma líder em visualização e análise de dados corporativos.',                       domain:'tableau.com'},
+  {id:'17',name:'Jupyter Notebook', cats:['Dados e Análise','Código'],                                          pricing:'Gratuito',   link:'https://jupyter.org/',                        desc:'Ambiente interativo para análise de dados e desenvolvimento em Python.',                  domain:'jupyter.org'},
+  {id:'18',name:'TensorFlow',       cats:['Dados e Análise','Código'],                                          pricing:'Open Source',link:'https://www.tensorflow.org/',                desc:'Biblioteca de Machine Learning e Deep Learning para projetos avançados.',                 domain:'tensorflow.org'},
+  {id:'19',name:'Apollo.io',        cats:['Marketing e Vendas','Dados e Análise'],                              pricing:'Freemium',   link:'https://apollo.io/',                          desc:'Pesquisa de empresas e contatos B2B com inteligência de dados.',                          domain:'apollo.io'},
+  {id:'20',name:'Manusis',          cats:['Dados e Análise','Gestão e Negócios'],                               pricing:'Pago',       link:'https://manusis4.com.br/',                    desc:'Plataforma brasileira de gestão de ativos e manutenção industrial com IA.',               domain:'manusis4.com.br'},
+  // ── Código ──
+  {id:'21',name:'GitHub Copilot',   cats:['Código','Produtividade'],                                            pricing:'Freemium',   link:'https://github.com/features/copilot',         desc:'Assistente de código com IA integrado ao editor para desenvolvedores.',                   domain:'github.com'},
+  {id:'22',name:'Cursor',           cats:['Código'],                                                            pricing:'Freemium',   link:'https://cursor.com/',                         desc:'Editor de código com recursos de IA para gerar, explicar e refatorar projetos.',          domain:'cursor.com'},
+  {id:'23',name:'Bolt.new',         cats:['Código'],                                                            pricing:'Freemium',   link:'https://bolt.new/',                           desc:'Cria e executa protótipos e aplicações web diretamente no navegador com IA.',             domain:'bolt.new'},
+  {id:'24',name:'Aider',            cats:['Código'],                                                            pricing:'Open Source',link:'https://aider.chat/',                         desc:'Assistente de programação no terminal com suporte a repositórios Git.',                   domain:'aider.chat'},
+  {id:'25',name:'Cline',            cats:['Código'],                                                            pricing:'Open Source',link:'https://cline.bot/',                          desc:'Agente de programação integrado ao editor para tarefas com vários arquivos.',             domain:'cline.bot'},
+  {id:'26',name:'CodeRabbit',       cats:['Código','Automação'],                                                pricing:'Freemium',   link:'https://coderabbit.ai/',                      desc:'Revisão de código assistida por IA para identificar problemas e melhorias.',              domain:'coderabbit.ai'},
+  {id:'27',name:'Base44',           cats:['Código'],                                                            pricing:'Pago',       link:'https://base44.com/',                         desc:'Criação de aplicativos completos a partir de instruções em linguagem natural.',            domain:'base44.com'},
+  {id:'51',name:'Windsurf',         cats:['Código'],                                                            pricing:'Freemium',   link:'https://codeium.com/windsurf',                desc:'Editor de código com agente de IA para fluxos de desenvolvimento completos.',             domain:'codeium.com'},
+  {id:'52',name:'Replit AI',        cats:['Código','Educação'],                                                 pricing:'Freemium',   link:'https://replit.com/',                         desc:'Plataforma online de codificação com IA integrada para criar e hospedar apps.',           domain:'replit.com'},
+  // ── Automação ──
+  {id:'28',name:'Zapier',           cats:['Automação','Produtividade'],                                         pricing:'Freemium',   link:'https://zapier.com/',                         desc:'Automação de processos entre diferentes aplicativos e serviços na nuvem.',                domain:'zapier.com'},
+  {id:'29',name:'Make',             cats:['Automação'],                                                         pricing:'Freemium',   link:'https://www.make.com/',                       desc:'Plataforma visual de automação e integração entre sistemas.',                             domain:'make.com'},
+  {id:'30',name:'n8n',              cats:['Automação','Código'],                                                pricing:'Open Source',link:'https://n8n.io/',                             desc:'Automação de fluxos de trabalho open source com suporte a código personalizado.',        domain:'n8n.io'},
+  {id:'31',name:'OpenHands',        cats:['Automação','Código'],                                                pricing:'Open Source',link:'https://github.com/All-Hands-AI/OpenHands', desc:'Agentes de IA para automação de tarefas de engenharia de software.',                     domain:'github.com'},
+  {id:'32',name:'Sweep',            cats:['Automação','Código'],                                                pricing:'Freemium',   link:'https://sweep.dev/',                          desc:'Transforma tarefas e issues em alterações de código automaticamente.',                    domain:'sweep.dev'},
+  {id:'33',name:'Qodo',             cats:['Automação','Código'],                                                pricing:'Freemium',   link:'https://qodo.ai/',                            desc:'Ferramentas de IA para testes, revisão e garantia de qualidade de código.',               domain:'qodo.ai'},
+  // ── Atendimento ──
+  {id:'34',name:'Intercom',         cats:['Atendimento','Marketing e Vendas'],                                  pricing:'Pago',       link:'https://www.intercom.com/',                   desc:'Plataforma de atendimento ao cliente com IA integrada para suporte e vendas.',            domain:'intercom.com'},
+  {id:'35',name:'Zendesk AI',       cats:['Atendimento'],                                                       pricing:'Pago',       link:'https://www.zendesk.com/',                    desc:'Suporte ao cliente com automação e IA para times de atendimento.',                        domain:'zendesk.com'},
+  {id:'36',name:'Tidio',            cats:['Atendimento'],                                                       pricing:'Freemium',   link:'https://www.tidio.com/',                      desc:'Chatbot e live chat com IA para atendimento ao cliente em lojas virtuais.',               domain:'tidio.com'},
+  {id:'37',name:'Freshdesk',        cats:['Atendimento'],                                                       pricing:'Freemium',   link:'https://freshdesk.com/',                      desc:'Suporte ao cliente inteligente com automações, relatórios e IA.',                        domain:'freshdesk.com'},
+  {id:'38',name:'Drift',            cats:['Atendimento','Marketing e Vendas'],                                  pricing:'Pago',       link:'https://www.drift.com/',                      desc:'Plataforma de marketing conversacional e atendimento ao cliente com IA.',                 domain:'drift.com'},
+  // ── Marketing e Vendas ──
+  {id:'39',name:'Seamless.AI',      cats:['Marketing e Vendas','Dados e Análise'],                              pricing:'Pago',       link:'https://seamless.ai/',                        desc:'Ferramenta de prospecção comercial e descoberta de contatos B2B.',                        domain:'seamless.ai'},
+  {id:'40',name:'HubSpot AI',       cats:['Marketing e Vendas','Atendimento'],                                  pricing:'Freemium',   link:'https://www.hubspot.com/',                    desc:'CRM e plataforma de marketing com recursos de IA integrados.',                           domain:'hubspot.com'},
+  {id:'41',name:'Copy.ai',          cats:['Marketing e Vendas','Escrita e Texto'],                              pricing:'Freemium',   link:'https://www.copy.ai/',                        desc:'Geração de copy, textos de marketing e conteúdo publicitário com IA.',                   domain:'copy.ai'},
+  {id:'42',name:'Jasper',           cats:['Marketing e Vendas','Escrita e Texto'],                              pricing:'Pago',       link:'https://www.jasper.ai/',                      desc:'IA para criação de conteúdo de marketing em escala.',                                     domain:'jasper.ai'},
+  // ── Gestão e Negócios ──
+  {id:'43',name:'Monday.com AI',    cats:['Gestão e Negócios','Produtividade','Automação'],                     pricing:'Pago',       link:'https://monday.com/',                         desc:'Gerenciamento de projetos e equipes com IA para automações e relatórios.',                domain:'monday.com'},
+  {id:'44',name:'ClickUp AI',       cats:['Gestão e Negócios','Produtividade'],                                 pricing:'Freemium',   link:'https://clickup.com/',                        desc:'Produtividade e gestão de tarefas com assistente de IA integrado.',                       domain:'clickup.com'},
+  {id:'45',name:'Asana AI',         cats:['Gestão e Negócios','Produtividade'],                                 pricing:'Freemium',   link:'https://asana.com/',                          desc:'Gestão de projetos com automações e insights gerados por IA.',                           domain:'asana.com'},
+  // ── Imagem e Vídeo ──
+  {id:'46',name:'Midjourney',       cats:['Imagem e Vídeo','Design'],                                           pricing:'Pago',       link:'https://www.midjourney.com/',                 desc:'Geração de imagens artísticas e conceitos visuais a partir de prompts de texto.',        domain:'midjourney.com'},
+  {id:'53',name:'DALL-E',           cats:['Imagem e Vídeo','Design'],                                           pricing:'Freemium',   link:'https://openai.com/dall-e-3',                 desc:'Geração de imagens realistas e artísticas a partir de descrições textuais da OpenAI.',   domain:'openai.com'},
+  {id:'54',name:'Adobe Firefly',    cats:['Imagem e Vídeo','Design'],                                           pricing:'Freemium',   link:'https://firefly.adobe.com/',                  desc:'IA generativa da Adobe para criação de imagens, efeitos e edição criativa.',             domain:'firefly.adobe.com'},
+  {id:'55',name:'Canva AI',         cats:['Imagem e Vídeo','Design','Marketing e Vendas'],                      pricing:'Freemium',   link:'https://www.canva.com/',                      desc:'Design gráfico com IA para criar imagens, apresentações e conteúdo visual.',             domain:'canva.com'},
+  {id:'56',name:'Leonardo AI',      cats:['Imagem e Vídeo','Design'],                                           pricing:'Freemium',   link:'https://leonardo.ai/',                        desc:'Geração de imagens e assets visuais para jogos, arte e design com IA.',                  domain:'leonardo.ai'},
+  {id:'57',name:'Runway',           cats:['Imagem e Vídeo','Design'],                                           pricing:'Freemium',   link:'https://runwayml.com/',                       desc:'Geração e edição de vídeos com IA, incluindo efeitos visuais e geração texto-para-vídeo.',domain:'runwayml.com'},
+  {id:'58',name:'Synthesia',        cats:['Imagem e Vídeo','Marketing e Vendas'],                               pricing:'Pago',       link:'https://www.synthesia.io/',                   desc:'Criação de vídeos com avatares de IA sem câmera nem estúdio.',                           domain:'synthesia.io'},
+  {id:'59',name:'Pika',             cats:['Imagem e Vídeo'],                                                    pricing:'Freemium',   link:'https://pika.art/',                           desc:'Geração e edição de vídeos curtos com IA a partir de texto ou imagens.',                 domain:'pika.art'},
+  {id:'60',name:'Stable Diffusion', cats:['Imagem e Vídeo','Design'],                                           pricing:'Open Source',link:'https://stability.ai/',                      desc:'Modelo open source para geração de imagens de alta qualidade a partir de texto.',        domain:'stability.ai'},
+  {id:'61',name:'Napkin AI',        cats:['Imagem e Vídeo','Produtividade','Dados e Análise'],                  pricing:'Freemium',   link:'https://www.napkin.ai/',                      desc:'Transforma texto em diagramas, fluxogramas e visuais explicativos automaticamente.',      domain:'napkin.ai'},
+  // ── Áudio e Música ──
+  {id:'47',name:'Suno',             cats:['Áudio e Música'],                                                    pricing:'Freemium',   link:'https://suno.com/',                           desc:'Criação de músicas completas (voz + instrumentos) a partir de descrições em texto.',     domain:'suno.com'},
+  {id:'62',name:'ElevenLabs',       cats:['Áudio e Música'],                                                    pricing:'Freemium',   link:'https://elevenlabs.io/',                      desc:'Síntese de voz com IA ultra-realista, clonagem de voz e texto para áudio.',              domain:'elevenlabs.io'},
+  {id:'63',name:'Udio',             cats:['Áudio e Música'],                                                    pricing:'Freemium',   link:'https://www.udio.com/',                       desc:'Geração de músicas originais com qualidade profissional a partir de prompts.',            domain:'udio.com'},
+  {id:'64',name:'Murf AI',          cats:['Áudio e Música','Marketing e Vendas'],                               pricing:'Freemium',   link:'https://murf.ai/',                            desc:'Criação de narrações e vozes em off com IA para vídeos, podcasts e apresentações.',      domain:'murf.ai'},
+  {id:'65',name:'Descript',         cats:['Áudio e Música','Imagem e Vídeo'],                                   pricing:'Freemium',   link:'https://www.descript.com/',                   desc:'Edição de áudio e vídeo por texto com transcrição automática e IA.',                     domain:'descript.com'},
+  // ── Escrita e Texto ──
+  {id:'66',name:'Writesonic',       cats:['Escrita e Texto','Marketing e Vendas'],                              pricing:'Freemium',   link:'https://writesonic.com/',                     desc:'Geração de conteúdo, artigos, anúncios e copies com IA para marketing.',                 domain:'writesonic.com'},
+  {id:'67',name:'Rytr',             cats:['Escrita e Texto','Marketing e Vendas'],                              pricing:'Freemium',   link:'https://rytr.me/',                            desc:'Assistente de escrita com IA para criar conteúdo em diferentes tons e formatos.',         domain:'rytr.me'},
+  {id:'68',name:'QuillBot',         cats:['Escrita e Texto','Educação'],                                        pricing:'Freemium',   link:'https://quillbot.com/',                       desc:'Parafraseador, resumidor e verificador gramatical alimentado por IA.',                    domain:'quillbot.com'},
+  // ── Educação ──
+  {id:'48',name:'Khanmigo',         cats:['Educação'],                                                          pricing:'Gratuito',   link:'https://www.khanacademy.org/',                desc:'Tutor de IA da Khan Academy para aprendizagem personalizada em diversas disciplinas.',    domain:'khanacademy.org'},
+  {id:'49',name:'Duolingo Max',     cats:['Educação'],                                                          pricing:'Pago',       link:'https://www.duolingo.com/',                   desc:'Aprendizagem de idiomas com IA para feedback e conversação personalizados.',              domain:'duolingo.com'},
+  {id:'69',name:'Socratic',         cats:['Educação'],                                                          pricing:'Gratuito',   link:'https://socratic.org/',                       desc:'App do Google que usa IA para ajudar estudantes a resolver dúvidas em diversas matérias.',domain:'socratic.org'},
+  {id:'70',name:'Coursera AI',      cats:['Educação','Produtividade'],                                          pricing:'Freemium',   link:'https://www.coursera.org/',                   desc:'Plataforma de cursos online com coach de IA para aprendizagem guiada.',                  domain:'coursera.org'},
+  {id:'71',name:'Photomath',        cats:['Educação'],                                                          pricing:'Freemium',   link:'https://photomath.com/',                      desc:'Resolve problemas matemáticos fotografados com passo a passo explicado por IA.',         domain:'photomath.com'},
+  {id:'72',name:'Elicit',           cats:['Educação','Dados e Análise'],                                        pricing:'Freemium',   link:'https://elicit.com/',                         desc:'Assistente de pesquisa acadêmica que resume e analisa artigos científicos com IA.',       domain:'elicit.com'},
+  {id:'73',name:'Consensus',        cats:['Educação','Assistentes'],                                            pricing:'Freemium',   link:'https://consensus.app/',                      desc:'Busca respostas em pesquisas científicas usando IA para encontrar consenso acadêmico.',   domain:'consensus.app'},
+  // ── Produtividade ──
+  {id:'74',name:'Otter.ai',         cats:['Produtividade'],                                                     pricing:'Freemium',   link:'https://otter.ai/',                           desc:'Transcrição automática de reuniões e conversas com resumo e insights por IA.',            domain:'otter.ai'},
+  {id:'75',name:'Mem.ai',           cats:['Produtividade','Escrita e Texto'],                                   pricing:'Freemium',   link:'https://mem.ai/',                             desc:'Bloco de notas com IA que organiza e conecta suas anotações automaticamente.',            domain:'mem.ai'},
+  {id:'76',name:'Reclaim.ai',       cats:['Produtividade','Gestão e Negócios'],                                 pricing:'Freemium',   link:'https://reclaim.ai/',                         desc:'IA que agenda tarefas e reuniões automaticamente no Google Calendar.',                    domain:'reclaim.ai'},
+  {id:'77',name:'Motion',           cats:['Produtividade','Gestão e Negócios'],                                 pricing:'Pago',       link:'https://www.usemotion.com/',                  desc:'Planejamento automático de tarefas e reuniões com IA para máxima produtividade.',         domain:'usemotion.com'},
+  {id:'78',name:'Fireflies.ai',     cats:['Produtividade','Marketing e Vendas'],                                pricing:'Freemium',   link:'https://fireflies.ai/',                       desc:'Grava, transcreve e analisa reuniões com IA, gerando resumos e action items.',            domain:'fireflies.ai'},
+  {id:'79',name:'Taskade',          cats:['Produtividade','Gestão e Negócios'],                                 pricing:'Freemium',   link:'https://www.taskade.com/',                    desc:'Workspace colaborativo com IA para listas, projetos, mapas mentais e automações.',        domain:'taskade.com'},
+  // ── Gestão e Negócios ──
+  {id:'80',name:'Salesforce Einstein',cats:['Gestão e Negócios','Marketing e Vendas','Dados e Análise'],        pricing:'Pago',       link:'https://www.salesforce.com/products/einstein/', desc:'IA nativa do Salesforce para previsões de vendas, automação e insights de CRM.',        domain:'salesforce.com'},
+  {id:'81',name:'Pipedrive AI',     cats:['Gestão e Negócios','Marketing e Vendas'],                            pricing:'Pago',       link:'https://www.pipedrive.com/',                  desc:'CRM com IA para gestão de pipeline de vendas, previsões e automações.',                  domain:'pipedrive.com'},
+  {id:'82',name:'Trello AI',        cats:['Gestão e Negócios','Produtividade'],                                 pricing:'Freemium',   link:'https://trello.com/',                         desc:'Quadros Kanban com automações e sugestões de IA para gestão de projetos.',               domain:'trello.com'},
+  {id:'83',name:'Notion Calendar',  cats:['Gestão e Negócios','Produtividade'],                                 pricing:'Gratuito',   link:'https://www.notion.so/product/calendar',      desc:'Calendário integrado ao Notion com IA para organização de compromissos e tarefas.',       domain:'notion.so'},
+  // ── Saúde ──
+  {id:'50',name:'Ada Health',       cats:['Saúde'],                                                             pricing:'Gratuito',   link:'https://ada.com/',                            desc:'Assistente de saúde com IA para orientação de sintomas e cuidados preventivos.',         domain:'ada.com'},
+  {id:'84',name:'Woebot',           cats:['Saúde'],                                                             pricing:'Gratuito',   link:'https://woebothealth.com/',                    desc:'Chatbot de saúde mental com TCC (terapia cognitivo-comportamental) baseada em IA.',       domain:'woebothealth.com'},
+  {id:'85',name:'Wysa',             cats:['Saúde'],                                                             pricing:'Freemium',   link:'https://www.wysa.com/',                        desc:'Chatbot de saúde mental com IA para ansiedade, estresse e bem-estar emocional.',          domain:'wysa.com'},
+  {id:'86',name:'Spring Health',    cats:['Saúde'],                                                             pricing:'Pago',       link:'https://springhealth.com/',                    desc:'Plataforma de saúde mental com IA para triagem e conexão com terapeutas.',                domain:'springhealth.com'},
+  {id:'87',name:'K Health',         cats:['Saúde'],                                                             pricing:'Freemium',   link:'https://www.khealth.com/',                     desc:'Diagnóstico e consultas médicas online com IA baseada em histórico clínico.',             domain:'khealth.com'},
+  // ── Atendimento (reforço) ──
+  {id:'88',name:'Chatfuel',         cats:['Atendimento','Marketing e Vendas'],                                  pricing:'Freemium',   link:'https://chatfuel.com/',                        desc:'Criação de chatbots com IA para WhatsApp, Instagram e Facebook sem programação.',         domain:'chatfuel.com'},
+  {id:'89',name:'ManyChat',         cats:['Atendimento','Marketing e Vendas'],                                  pricing:'Freemium',   link:'https://manychat.com/',                        desc:'Automação de conversas e marketing via WhatsApp, Instagram e Messenger com IA.',          domain:'manychat.com'},
+  // ── Mais Assistentes ──
+  {id:'90',name:'Grok',             cats:['Assistentes','Dados e Análise'],                                     pricing:'Freemium',   link:'https://grok.com/',                            desc:'IA da xAI com acesso em tempo real ao X/Twitter para pesquisa e análise.',               domain:'grok.com'},
+  {id:'91',name:'Meta AI',          cats:['Assistentes','Escrita e Texto'],                                     pricing:'Gratuito',   link:'https://www.meta.ai/',                          desc:'Assistente de IA do Meta integrado ao WhatsApp, Instagram e Facebook.',                  domain:'meta.ai'},
+  {id:'92',name:'Pi',               cats:['Assistentes'],                                                       pricing:'Gratuito',   link:'https://pi.ai/',                               desc:'Assistente pessoal de IA focado em conversas empáticas e apoio emocional.',               domain:'pi.ai'},
+  {id:'93',name:'You.com',          cats:['Assistentes','Dados e Análise'],                                     pricing:'Freemium',   link:'https://you.com/',                             desc:'Motor de busca com IA que sintetiza respostas e cita fontes em tempo real.',              domain:'you.com'},
+  // ── Mais Código ──
+  {id:'94',name:'Tabnine',          cats:['Código'],                                                            pricing:'Freemium',   link:'https://www.tabnine.com/',                     desc:'Autocomplete de código com IA compatível com todas as IDEs populares.',                  domain:'tabnine.com'},
+  {id:'95',name:'AWS CodeWhisperer',cats:['Código'],                                                            pricing:'Freemium',   link:'https://aws.amazon.com/codewhisperer/',        desc:'Sugestões de código com IA da Amazon integradas à AWS e IDEs.',                          domain:'aws.amazon.com'},
+  {id:'96',name:'Lovable',          cats:['Código','Design'],                                                   pricing:'Freemium',   link:'https://lovable.dev/',                         desc:'Cria apps web completos a partir de descrição em linguagem natural.',                     domain:'lovable.dev'},
+  {id:'97',name:'v0.dev',           cats:['Código','Design'],                                                   pricing:'Freemium',   link:'https://v0.dev/',                              desc:'Gerador de componentes UI em React e Tailwind a partir de prompts da Vercel.',            domain:'v0.dev'},
+  // ── Mais Imagem e Vídeo ──
+  {id:'98',name:'Sora',             cats:['Imagem e Vídeo'],                                                    pricing:'Freemium',   link:'https://sora.com/',                            desc:'Gerador de vídeos de alta qualidade com IA da OpenAI a partir de texto.',                domain:'sora.com'},
+  {id:'99',name:'Kling AI',         cats:['Imagem e Vídeo'],                                                    pricing:'Freemium',   link:'https://klingai.com/',                         desc:'Geração de vídeos e imagens com IA da Kuaishou com alta fidelidade visual.',             domain:'klingai.com'},
+  {id:'100',name:'HeyGen',          cats:['Imagem e Vídeo','Marketing e Vendas'],                               pricing:'Freemium',   link:'https://www.heygen.com/',                      desc:'Criação de vídeos com avatares realistas e tradução automática com IA.',                 domain:'heygen.com'},
+  // ── Mais Áudio e Música ──
+  {id:'101',name:'Speechify',       cats:['Áudio e Música','Produtividade'],                                    pricing:'Freemium',   link:'https://speechify.com/',                       desc:'Transforma textos em áudio com vozes realistas para ouvir conteúdo enquanto se move.',   domain:'speechify.com'},
+  {id:'102',name:'Adobe Podcast AI',cats:['Áudio e Música'],                                                   pricing:'Gratuito',   link:'https://podcast.adobe.com/',                   desc:'Remove ruídos e melhora qualidade de áudio de podcasts com IA da Adobe.',                domain:'podcast.adobe.com'},
+  {id:'103',name:'Boomy',           cats:['Áudio e Música'],                                                    pricing:'Freemium',   link:'https://boomy.com/',                           desc:'Criação de músicas originais com IA em segundos sem conhecimento musical.',               domain:'boomy.com'},
+  // ── Mais Marketing e Vendas ──
+  {id:'104',name:'AdCreative.ai',   cats:['Marketing e Vendas','Design'],                                       pricing:'Pago',       link:'https://www.adcreative.ai/',                   desc:'Geração automática de criativos e anúncios de alta conversão com IA.',                   domain:'adcreative.ai'},
+  {id:'105',name:'Persado',         cats:['Marketing e Vendas','Escrita e Texto'],                              pricing:'Pago',       link:'https://www.persado.com/',                     desc:'Otimiza mensagens de marketing com IA para aumentar engajamento e conversão.',           domain:'persado.com'},
+  {id:'106',name:'Seventh Sense',   cats:['Marketing e Vendas'],                                                pricing:'Pago',       link:'https://www.theseventhsense.com/',             desc:'IA que determina o melhor horário para envio de e-mails de marketing.',                  domain:'theseventhsense.com'},
+  // ── Mais Design ──
+  {id:'107',name:'Figma AI',        cats:['Design','Código'],                                                   pricing:'Freemium',   link:'https://www.figma.com/',                       desc:'IA integrada ao Figma para gerar layouts, sugerir componentes e traduzir design em código.',domain:'figma.com'},
+  {id:'108',name:'Looka',           cats:['Design','Marketing e Vendas'],                                       pricing:'Pago',       link:'https://looka.com/',                           desc:'Criação de logotipos e identidade visual completa com IA.',                              domain:'looka.com'},
+  {id:'109',name:'Khroma',          cats:['Design'],                                                            pricing:'Gratuito',   link:'https://www.khroma.co/',                       desc:'IA que aprende suas preferências de cor e sugere paletas personalizadas.',                domain:'khroma.co'},
+  // ── Mais Dados e Análise ──
+  {id:'110',name:'Akkio',           cats:['Dados e Análise','Automação'],                                       pricing:'Freemium',   link:'https://www.akkio.com/',                       desc:'Plataforma no-code de machine learning para previsões e análise de dados.',              domain:'akkio.com'},
+  {id:'111',name:'Obviously AI',    cats:['Dados e Análise'],                                                   pricing:'Pago',       link:'https://www.obviously.ai/',                    desc:'Criação de modelos preditivos com IA sem código em minutos.',                            domain:'obviously.ai'},
+  {id:'112',name:'MonkeyLearn',     cats:['Dados e Análise','Automação'],                                       pricing:'Freemium',   link:'https://monkeylearn.com/',                     desc:'Análise de texto com IA: classificação, extração e análise de sentimento.',              domain:'monkeylearn.com'},
+  // ── Mais Automação ──
+  {id:'113',name:'Bardeen',         cats:['Automação','Produtividade'],                                         pricing:'Freemium',   link:'https://www.bardeen.ai/',                      desc:'Automação de tarefas no navegador com IA: scraping, formulários e integrações.',         domain:'bardeen.ai'},
+  {id:'114',name:'Relay.app',       cats:['Automação','Produtividade'],                                         pricing:'Freemium',   link:'https://www.relay.app/',                       desc:'Automação de workflows com IA e colaboração humana integrada.',                          domain:'relay.app'},
+  {id:'115',name:'Levity',          cats:['Automação','Dados e Análise'],                                       pricing:'Freemium',   link:'https://levity.ai/',                           desc:'Automatiza tarefas repetitivas de classificação e análise de documentos com IA.',        domain:'levity.ai'},
+  // ── Mais Gestão e Negócios ──
+  {id:'116',name:'Tome',            cats:['Gestão e Negócios','Escrita e Texto'],                               pricing:'Freemium',   link:'https://tome.app/',                            desc:'Criação de apresentações e relatórios estratégicos com IA de forma rápida.',             domain:'tome.app'},
+  {id:'117',name:'Gamma',           cats:['Gestão e Negócios','Escrita e Texto'],                               pricing:'Freemium',   link:'https://gamma.app/',                           desc:'Geração de apresentações, documentos e páginas web com IA a partir de texto.',           domain:'gamma.app'},
+  {id:'118',name:'Beautiful.ai',    cats:['Gestão e Negócios','Design'],                                        pricing:'Freemium',   link:'https://www.beautiful.ai/',                    desc:'Criação de apresentações profissionais com design automático por IA.',                   domain:'beautiful.ai'},
+  // ── Mais Saúde ──
+  {id:'119',name:'Infermedica',     cats:['Saúde'],                                                             pricing:'Pago',       link:'https://infermedica.com/',                     desc:'Triagem médica com IA e verificação de sintomas para plataformas de saúde.',             domain:'infermedica.com'},
+  {id:'120',name:'Noom',            cats:['Saúde','Produtividade'],                                             pricing:'Pago',       link:'https://www.noom.com/',                        desc:'Programa de perda de peso com coaching de IA e psicologia comportamental.',              domain:'noom.com'},
+  // ── Mais Atendimento ──
+  {id:'121',name:'LivePerson',      cats:['Atendimento'],                                                       pricing:'Pago',       link:'https://www.liveperson.com/',                  desc:'Plataforma de atendimento conversacional com IA para grandes empresas.',                 domain:'liveperson.com'},
+  {id:'122',name:'Forethought',     cats:['Atendimento'],                                                       pricing:'Pago',       link:'https://forethought.ai/',                      desc:'IA para suporte ao cliente com triagem, resolução e análise de tickets automatizados.',   domain:'forethought.ai'},
+  {id:'123',name:'Cohere',          cats:['Código','Dados e Análise'],                                          pricing:'Freemium',   link:'https://cohere.com/',                          desc:'Modelos de linguagem natural para empresas: classificação, busca semântica e geração.',   domain:'cohere.com'},
+  {id:'124',name:'Mistral AI',      cats:['Assistentes','Código'],                                              pricing:'Freemium',   link:'https://mistral.ai/',                          desc:'Modelos de linguagem open source de alta performance para uso empresarial.',              domain:'mistral.ai'},
+  {id:'130',name:'Manus',           cats:['Assistentes','Automação','Código'],                                  pricing:'Freemium',   link:'https://manus.im/',                            desc:'Agente de IA autônomo que executa tarefas complexas como pesquisa, código e análise.',    domain:'manus.im'},
+  {id:'131',name:'Nano Banan',      cats:['Imagem e Vídeo'],                                                    pricing:'Freemium',   link:'https://www.nanobanan.com/',                   desc:'Plataforma criativa de geração de imagens com IA, focada em arte e design visual expressivo.',  domain:'nanobanan.com'},
+  {id:'132',name:'Adobe Firefly',   cats:['Imagem e Vídeo','Design'],                                           pricing:'Freemium',   link:'https://firefly.adobe.com/',                   desc:'Gerador de imagens e efeitos visuais da Adobe, integrado ao Photoshop e Creative Cloud.',  domain:'firefly.adobe.com'},
+  {id:'133',name:'Leonardo AI',     cats:['Imagem e Vídeo','Design'],                                           pricing:'Freemium',   link:'https://leonardo.ai/',                         desc:'Plataforma de geração de imagens com IA para concept art, personagens e assets de jogos.',  domain:'leonardo.ai'},
+  {id:'134',name:'Ideogram',        cats:['Imagem e Vídeo','Design'],                                           pricing:'Freemium',   link:'https://ideogram.ai/',                         desc:'Gerador de imagens com IA especializado em texto preciso dentro das imagens e tipografia.',  domain:'ideogram.ai'},
+  {id:'135',name:'Playground AI',   cats:['Imagem e Vídeo'],                                                    pricing:'Freemium',   link:'https://playground.com/',                      desc:'Editor de imagens com IA para criação e edição colaborativa de arte digital.',   domain:'playground.com'},
+  {id:'136',name:'Krea AI',         cats:['Imagem e Vídeo','Design'],                                           pricing:'Freemium',   link:'https://www.krea.ai/',                         desc:'Geração e upscaling de imagens em tempo real com IA, ideal para conceitos visuais rápidos.',  domain:'krea.ai'},
+  {id:'137',name:'Bolt.new',        cats:['Código','Automação'],                                                 pricing:'Freemium',   link:'https://bolt.new/',                            desc:'Cria e implanta apps web completos em segundos a partir de prompts de texto com IA.',  domain:'bolt.new'},
+  {id:'138',name:'Windsurf',        cats:['Código'],                                                            pricing:'Freemium',   link:'https://codeium.com/windsurf',                 desc:'IDE com IA da Codeium que entende todo o contexto do projeto para sugestões precisas.',  domain:'codeium.com'},
+  {id:'139',name:'Tabnine',         cats:['Código'],                                                            pricing:'Freemium',   link:'https://www.tabnine.com/',                     desc:'Assistente de código com IA que aprende o estilo do seu time e sugere completions personalizados.',  domain:'tabnine.com'},
+  {id:'140',name:'Writesonic',      cats:['Escrita e Texto','Marketing e Vendas'],                               pricing:'Freemium',   link:'https://writesonic.com/',                      desc:'Plataforma de criação de conteúdo com IA para artigos, anúncios e páginas de vendas.',  domain:'writesonic.com'},
+  {id:'141',name:'Rytr',            cats:['Escrita e Texto'],                                                   pricing:'Freemium',   link:'https://rytr.me/',                             desc:'Assistente de escrita com IA para criar conteúdo de qualidade em múltiplos idiomas e tons.',  domain:'rytr.me'},
+  {id:'142',name:'Surfer SEO',      cats:['Marketing e Vendas'],                                                pricing:'Pago',       link:'https://surferseo.com/',                        desc:'Otimização de conteúdo para SEO com IA que analisa SERPs e sugere melhorias em tempo real.',  domain:'surferseo.com'},
+  {id:'143',name:'Clockwise',       cats:['Produtividade','Gestão e Negócios'],                                  pricing:'Freemium',   link:'https://www.getclockwise.com/',                desc:'Otimiza automaticamente o calendário da equipe com IA para maximizar blocos de foco.',  domain:'getclockwise.com'},
+  {id:'144',name:'Fliki',           cats:['Áudio e Música','Imagem e Vídeo'],                                   pricing:'Freemium',   link:'https://fliki.ai/',                            desc:'Transforma texto em vídeos profissionais com narração de voz realista gerada por IA.',  domain:'fliki.ai'},
+  // ── Mais Áudio e Música ──
+  {id:'125',name:'Audacity AI',     cats:['Áudio e Música'],                                                    pricing:'Gratuito',   link:'https://www.audacityteam.org/',                desc:'Editor de áudio open source com plugins de IA para remoção de ruídos e masterização.',   domain:'audacityteam.org'},
+  {id:'126',name:'Resemble AI',     cats:['Áudio e Música','Marketing e Vendas'],                               pricing:'Freemium',   link:'https://www.resemble.ai/',                     desc:'Clonagem e síntese de voz com IA para dublagem, podcasts e assistentes de voz.',         domain:'resemble.ai'},
+  {id:'127',name:'Aiva',            cats:['Áudio e Música'],                                                    pricing:'Freemium',   link:'https://www.aiva.ai/',                         desc:'Composição musical com IA para trilhas sonoras de jogos, filmes e vídeos.',              domain:'aiva.ai'},
+  // ── Mais Saúde ──
+  {id:'128',name:'Iodine Software', cats:['Saúde'],                                                             pricing:'Pago',       link:'https://www.iodinesoftware.com/',              desc:'IA para documentação clínica e codificação médica em hospitais.',                       domain:'iodinesoftware.com'},
+  {id:'129',name:'Nuance DAX',      cats:['Saúde'],                                                             pricing:'Pago',       link:'https://www.nuance.com/healthcare/ambient-ai.html', desc:'Documentação médica ambient com IA da Microsoft para reduzir burocracia clínica.',   domain:'nuance.com'},
 ];
 
 const catIcons={
-  'Produtividade':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
-  'Análise de Dados':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
-  'Desenvolvimento':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
-  'Automação':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>',
-  'Atendimento':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+  'Assistentes':      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>',
+  'Escrita e Texto':  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>',
+  'Imagem e Vídeo':   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>',
+  'Áudio e Música':   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>',
+  'Código':           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
+  'Dados e Análise':  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
+  'Automação':        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>',
   'Marketing e Vendas':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
+  'Atendimento':      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+  'Design':           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>',
   'Gestão e Negócios':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
-  'Design e Criatividade':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>',
-  'Educação e Treinamento':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
-  'Saúde e Bem-estar':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  'Produtividade':    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
+  'Educação':         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
+  'Saúde':            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
 };
 
 function tagClass(cat){
-  if(/dados|BI|sheet|tensor|jupyter|tableau/i.test(cat)) return 'tc-tag green';
-  if(/design|criativ/i.test(cat)) return 'tc-tag purple';
-  if(/vendas|marketing/i.test(cat)) return 'tc-tag orange';
-  if(/saúde|saude/i.test(cat)) return 'tc-tag pink';
+  if(/dados|análise/i.test(cat)) return 'tc-tag green';
+  if(/imagem|vídeo|áudio|música/i.test(cat)) return 'tc-tag purple';
+  if(/design/i.test(cat)) return 'tc-tag purple';
+  if(/marketing|vendas/i.test(cat)) return 'tc-tag orange';
+  if(/saúde/i.test(cat)) return 'tc-tag pink';
   if(/atendimento/i.test(cat)) return 'tc-tag gray';
+  if(/código/i.test(cat)) return 'tc-tag blue';
+  if(/escrita|texto/i.test(cat)) return 'tc-tag green';
   return 'tc-tag blue';
 }
 
@@ -488,6 +700,105 @@ const svgLogos = {
 'Duolingo Max': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#58CC02"/><ellipse cx="20" cy="19" rx="9" ry="8" fill="white"/><circle cx="16" cy="18" r="2.5" fill="#333"/><circle cx="24" cy="18" r="2.5" fill="#333"/><circle cx="16.8" cy="17.2" r="1" fill="white"/><circle cx="24.8" cy="17.2" r="1" fill="white"/><path d="M16 23c1 1.5 2.5 2 4 2s3-.5 4-2" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>`,
 
 'Ada Health': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#00205B"/><path d="M20 10l8 18h-5l-1.5-4h-3l-1.5 4h-5zm0 7l-1 4h2z" fill="white"/></svg>`,
+
+'DALL-E': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#10a37f"/><circle cx="20" cy="16" r="7" fill="none" stroke="white" stroke-width="2"/><circle cx="20" cy="16" r="3" fill="white"/><path d="M13 28c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
+
+'Adobe Firefly': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF0000"/><path d="M20 8c-1 5-5 8-8 9 3 0 5 2 5 5 0-4 2-8 3-14z" fill="#FF8C00"/><path d="M20 8c1 5 5 8 8 9-3 0-5 2-5 5 0-4-2-8-3-14z" fill="#FFD700"/><circle cx="20" cy="24" r="4" fill="white" opacity=".9"/></svg>`,
+
+'Canva AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#00C4CC"/><path d="M20 10a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 3a7 7 0 0 1 6 3.4L14 22.7A7 7 0 0 1 20 13zm0 14a7 7 0 0 1-6-3.4L26 17.3A7 7 0 0 1 20 27z" fill="white"/></svg>`,
+
+'Leonardo AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1a1a2e"/><path d="M20 8l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z" fill="#c084fc"/></svg>`,
+
+'Runway': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#000"/><rect x="10" y="12" width="20" height="4" rx="2" fill="white"/><rect x="10" y="19" width="14" height="4" rx="2" fill="white" opacity=".7"/><path d="M26 21l8 6-8 6V21z" fill="white"/></svg>`,
+
+'Synthesia': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6100FF"/><circle cx="20" cy="16" r="6" fill="white"/><path d="M12 30c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="white"/></svg>`,
+
+'Pika': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0d0d0d"/><path d="M15 12h10v4l4 4-4 4v4H15v-4l-4-4 4-4z" fill="#e040fb" opacity=".9"/><circle cx="20" cy="20" r="3" fill="white"/></svg>`,
+
+'Stable Diffusion': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1e1e2e"/><circle cx="20" cy="20" r="10" fill="none" stroke="#7c3aed" stroke-width="2"/><circle cx="20" cy="20" r="6" fill="none" stroke="#a855f7" stroke-width="2"/><circle cx="20" cy="20" r="2" fill="#c084fc"/></svg>`,
+
+'Napkin AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#f0f0f0"/><rect x="10" y="14" width="20" height="2" rx="1" fill="#333"/><rect x="10" y="19" width="14" height="2" rx="1" fill="#333"/><circle cx="28" cy="26" r="5" fill="#3b82f6"/><path d="M26 26h4M28 24v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+
+'ElevenLabs': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#000"/><rect x="13" y="10" width="4" height="20" rx="2" fill="white"/><rect x="23" y="10" width="4" height="20" rx="2" fill="white"/></svg>`,
+
+'Udio': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0f0f23"/><path d="M14 14v8a6 6 0 0 0 12 0v-8" stroke="#a78bfa" stroke-width="2.5" fill="none" stroke-linecap="round"/><line x1="20" y1="28" x2="20" y2="32" stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round"/><line x1="16" y1="32" x2="24" y2="32" stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+
+'Murf AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#7C3AED"/><path d="M14 16h12v8a6 6 0 0 1-12 0v-8z" fill="white"/><circle cx="20" cy="22" r="2.5" fill="#7C3AED"/><line x1="20" y1="30" x2="20" y2="33" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>`,
+
+'Descript': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1A1A1A"/><rect x="11" y="13" width="12" height="3" rx="1.5" fill="#22d3ee"/><rect x="11" y="19" width="18" height="3" rx="1.5" fill="#22d3ee" opacity=".7"/><rect x="11" y="25" width="15" height="3" rx="1.5" fill="#22d3ee" opacity=".5"/></svg>`,
+
+'Windsurf': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0ea5e9"/><path d="M10 28L20 10l10 18H10z" fill="white"/><path d="M15 22l5-8 5 8" fill="#0ea5e9"/></svg>`,
+
+'Replit AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#F26207"/><path d="M12 10h10v8H12zm0 8h16v8H12zm0 8h10v8H12z" fill="white"/></svg>`,
+
+'Writesonic': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6941C6"/><path d="M12 14h16v2H12zm0 5h12v2H12zm0 5h14v2H12z" fill="white"/><circle cx="28" cy="24" r="5" fill="#a78bfa"/><path d="M26 24l2 2 3-3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+
+'Rytr': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6E42CA"/><text x="20" y="27" font-family="Arial" font-size="18" font-weight="bold" fill="white" text-anchor="middle">R</text></svg>`,
+
+'QuillBot': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#2bbc8a"/><path d="M20 10c-5 0-9 4-9 9 0 3 1.5 5.5 3.8 7l-1.8 4 4-1.8A9 9 0 1 0 20 10zm0 14a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" fill="white"/></svg>`,
+
+'Socratic': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#4285F4"/><path d="M12 20a8 8 0 1 1 16 0 8 8 0 0 1-16 0zm8-5v5l4 2" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
+'Coursera AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0056D2"/><path d="M20 10a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-2 14v-8l7 4z" fill="white"/></svg>`,
+'Photomath': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FC1F1F"/><rect x="10" y="12" width="20" height="16" rx="3" fill="white"/><path d="M15 20h10M20 15v10" stroke="#FC1F1F" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+'Elicit': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#7459D9"/><path d="M12 14h16M12 19h12M12 24h14M12 29h10" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>`,
+'Consensus': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#2563EB"/><circle cx="20" cy="20" r="8" fill="none" stroke="white" stroke-width="2"/><path d="M16 20l3 3 5-6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+'Otter.ai': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#3D5AFE"/><ellipse cx="20" cy="21" rx="8" ry="6" fill="white"/><circle cx="17" cy="19" r="1.5" fill="#3D5AFE"/><circle cx="23" cy="19" r="1.5" fill="#3D5AFE"/><path d="M17 23c.8.8 2 1.2 3 1.2s2.2-.4 3-1.2" stroke="#3D5AFE" stroke-width="1.2" fill="none" stroke-linecap="round"/><ellipse cx="13" cy="18" rx="3" ry="2" fill="white"/><ellipse cx="27" cy="18" rx="3" ry="2" fill="white"/></svg>`,
+'Mem.ai': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0F0F0F"/><path d="M11 14h18v14H11z" fill="none" stroke="white" stroke-width="1.5" rx="2"/><path d="M15 19h10M15 23h7" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="28" cy="13" r="4" fill="#6366f1"/><text x="28" y="16" font-size="6" fill="white" text-anchor="middle">AI</text></svg>`,
+'Reclaim.ai': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#5B4CF5"/><rect x="10" y="12" width="20" height="18" rx="3" fill="none" stroke="white" stroke-width="1.5"/><path d="M10 17h20" stroke="white" stroke-width="1.5"/><circle cx="20" cy="25" r="4" fill="#a78bfa"/><path d="M18 25l2 2 3-3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+'Motion': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1C1C1E"/><circle cx="20" cy="20" r="10" fill="none" stroke="#5E5CE6" stroke-width="2.5"/><path d="M20 14v6l4 4" stroke="#5E5CE6" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`,
+'Fireflies.ai': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6B2D8B"/><circle cx="20" cy="18" r="7" fill="white"/><path d="M16 30l4-5 4 5" fill="white"/><circle cx="17" cy="17" r="2" fill="#6B2D8B"/><circle cx="23" cy="17" r="2" fill="#6B2D8B"/></svg>`,
+'Taskade': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#7B2FBE"/><path d="M13 14h14M13 19h10M13 24h12" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="27" cy="24" r="5" fill="#a855f7"/><path d="M25 24l2 2 3-3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+'Salesforce Einstein': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#00A1E0"/><path d="M20 8a7 7 0 0 1 7 7c0 2-.7 3.8-1.8 5.2L30 28h-5l-2.5-4.5A7 7 0 1 1 20 8zm0 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="white"/></svg>`,
+'Pipedrive AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#2D3E50"/><circle cx="14" cy="20" r="4" fill="#26B87F"/><circle cx="26" cy="20" r="4" fill="#26B87F"/><rect x="18" y="19" width="4" height="2" fill="#26B87F"/><path d="M14 16v-4M26 16v-4M14 28v-4M26 28v-4" stroke="#26B87F" stroke-width="2" stroke-linecap="round"/></svg>`,
+'Trello AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0052CC"/><rect x="10" y="11" width="8" height="18" rx="2" fill="white"/><rect x="22" y="11" width="8" height="12" rx="2" fill="white"/></svg>`,
+'Notion Calendar': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#fff" stroke="#e5e5e5"/><rect x="10" y="12" width="20" height="18" rx="2" fill="#111"/><path d="M10 17h20" stroke="white" stroke-width="1.5"/><circle cx="16" cy="23" r="2" fill="white"/><circle cx="24" cy="23" r="2" fill="white"/></svg>`,
+'Woebot': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#5C6BC0"/><circle cx="20" cy="17" r="7" fill="white"/><circle cx="17" cy="16" r="1.5" fill="#5C6BC0"/><circle cx="23" cy="16" r="1.5" fill="#5C6BC0"/><path d="M17 20c.8 1.2 2 1.8 3 1.8s2.2-.6 3-1.8" stroke="#5C6BC0" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M15 24h10v5a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-5z" fill="white"/></svg>`,
+'Wysa': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#00BFA5"/><path d="M12 26c2-4 4-8 8-10 4 2 6 6 8 10M16 22c1-2 2.5-3.5 4-4 1.5.5 3 2 4 4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="20" cy="14" r="3" fill="white"/></svg>`,
+'Spring Health': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#00A878"/><circle cx="20" cy="18" r="7" fill="none" stroke="white" stroke-width="2"/><path d="M17 18l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 25v5" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M16 28h8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>`,
+'K Health': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1565C0"/><path d="M13 12v16M13 20l7-8M13 20l8 8" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+'Chatfuel': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1F77FF"/><path d="M10 14h20a2 2 0 0 1 2 2v10l-4-3H10a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2z" fill="white"/><circle cx="16" cy="21" r="1.5" fill="#1F77FF"/><circle cx="20" cy="21" r="1.5" fill="#1F77FF"/><circle cx="24" cy="21" r="1.5" fill="#1F77FF"/></svg>`,
+'ManyChat': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF5630"/><path d="M20 10a10 10 0 0 0-10 10c0 2.5.9 4.8 2.4 6.6L10 30l3.8-1.6A9.9 9.9 0 0 0 20 30a10 10 0 0 0 0-20zm-3 11.5L14.5 19l7-5-1.5 5.5 3 2.5-7 4 3-4.5z" fill="white"/></svg>`,
+'Grok': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#000"/><path d="M12 28L20 12l8 16M15 22h10" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+'Meta AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0866FF"/><path d="M10 25c0-5 3-10 6-10 2 0 3 1.5 4 3 1-1.5 2-3 4-3 3 0 6 5 6 10 0 2-1 3-2 3-2 0-3-2-4-5-1 3-2 5-4 5s-3-2-4-5c-1 3-2 5-4 5-1 0-2-1-2-3z" fill="white"/></svg>`,
+'Pi': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6C3CE1"/><circle cx="20" cy="20" r="9" fill="none" stroke="white" stroke-width="2"/><circle cx="20" cy="20" r="4" fill="white"/></svg>`,
+'You.com': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#00B4D8"/><path d="M20 11a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 14a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" fill="white"/><circle cx="20" cy="20" r="2" fill="white"/></svg>`,
+'Tabnine': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#2B2B6B"/><path d="M10 14h12M10 19h8M10 24h10M24 19l4 4-4 4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+'AWS CodeWhisperer': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF9900"/><path d="M20 10l10 5v10l-10 5-10-5V15z" fill="none" stroke="white" stroke-width="1.5"/><path d="M20 10v10M30 15l-10 5M10 15l10 5" stroke="white" stroke-width="1.5"/></svg>`,
+'Lovable': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF4785"/><path d="M20 28s-9-5.5-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-9 12-9 12z" fill="white"/></svg>`,
+'v0.dev': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#000"/><text x="7" y="28" font-size="18" fill="white" font-family="monospace" font-weight="bold">v0</text></svg>`,
+'Sora': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#10A37F"/><rect x="9" y="14" width="22" height="14" rx="3" fill="none" stroke="white" stroke-width="1.5"/><path d="M15 21l4-3v6z" fill="white"/><circle cx="27" cy="21" r="3" fill="white"/></svg>`,
+'Kling AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1A1A2E"/><path d="M13 12v16M13 20l7-8M13 20l8 8" stroke="#7C3AED" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="28" cy="20" r="5" fill="#7C3AED"/></svg>`,
+'HeyGen': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#5B21B6"/><circle cx="20" cy="15" r="5" fill="white"/><path d="M10 30c0-5.5 4.5-10 10-10s10 4.5 10 10" fill="none" stroke="white" stroke-width="2"/></svg>`,
+'Speechify': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF6B35"/><path d="M12 16v8M17 13v14M22 16v8M27 14v12" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+'Adobe Podcast AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#E40010"/><circle cx="20" cy="17" r="5" fill="none" stroke="white" stroke-width="2"/><path d="M14 17c0 3.3 2.7 6 6 6s6-2.7 6-6M20 23v4M17 27h6" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>`,
+'Boomy': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#8B5CF6"/><path d="M20 10c0 5-3 8-7 9 2 1 4 3 4 6 0-3 1.5-5.5 3-7 1.5 1.5 3 4 3 7 0-3 2-5 4-6-4-1-7-4-7-9z" fill="white"/></svg>`,
+'AdCreative.ai': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF4500"/><rect x="9" y="12" width="22" height="16" rx="2" fill="none" stroke="white" stroke-width="1.5"/><path d="M14 24l4-8 3 5 2-3 3 6" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+'Persado': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#2563EB"/><path d="M11 14h12a4 4 0 0 1 0 8H11V14zM11 22h10" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
+'Seventh Sense': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0F172A"/><circle cx="20" cy="20" r="8" fill="none" stroke="#38BDF8" stroke-width="2"/><path d="M20 12v2M20 26v2M12 20h2M26 20h2" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="20" r="3" fill="#38BDF8"/></svg>`,
+'Figma AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1E1E1E"/><circle cx="20" cy="15" r="4" fill="#A259FF"/><circle cx="15" cy="20" r="4" fill="#F24E1E"/><circle cx="25" cy="20" r="4" fill="#FF7262"/><circle cx="15" cy="25" r="4" fill="#0ACF83"/><circle cx="25" cy="25" r="4" fill="#1ABCFE"/></svg>`,
+'Looka': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#2563EB"/><path d="M20 10l3.5 7 7.5 1-5.5 5.5 1.5 7.5L20 27l-7 4 1.5-7.5L9 18l7.5-1z" fill="white"/></svg>`,
+'Khroma': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#111"/><circle cx="15" cy="15" r="6" fill="#FF6B6B"/><circle cx="25" cy="15" r="6" fill="#4ECDC4"/><circle cx="20" cy="25" r="6" fill="#FFE66D"/></svg>`,
+'Akkio': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#5B21B6"/><path d="M20 12l-8 16h16z" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round"/><circle cx="20" cy="12" r="2" fill="white"/></svg>`,
+'Obviously AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#059669"/><path d="M10 26l6-8 5 5 4-7 5 10" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+'MonkeyLearn': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1A73E8"/><circle cx="20" cy="18" r="6" fill="none" stroke="white" stroke-width="2"/><circle cx="17" cy="17" r="1.5" fill="white"/><circle cx="23" cy="17" r="1.5" fill="white"/><path d="M17 22c.8 1 2 1.5 3 1.5s2.2-.5 3-1.5" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M14 12c-2-1-4 0-4 2s2 3 4 2M26 12c2-1 4 0 4 2s-2 3-4 2" stroke="white" stroke-width="1.5" fill="none"/></svg>`,
+'Bardeen': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6C2BD9"/><path d="M12 20a8 8 0 0 1 8-8v4a4 4 0 0 0-4 4H12z" fill="white"/><path d="M28 20a8 8 0 0 1-8 8v-4a4 4 0 0 0 4-4h4z" fill="white" opacity=".7"/></svg>`,
+'Relay.app': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0EA5E9"/><circle cx="12" cy="20" r="3" fill="white"/><circle cx="28" cy="20" r="3" fill="white"/><circle cx="20" cy="20" r="3" fill="white"/><path d="M15 20h2M23 20h2" stroke="white" stroke-width="2"/></svg>`,
+'Levity': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#7C3AED"/><path d="M14 26V14l6 8 6-8v12" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+'Tome': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1C1C1C"/><rect x="11" y="12" width="8" height="16" rx="1.5" fill="white"/><rect x="21" y="12" width="8" height="16" rx="1.5" fill="white" opacity=".5"/></svg>`,
+'Gamma': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6D28D9"/><path d="M12 14h16v2H12zM12 19h12v2H12zM12 24h14v2H12z" fill="white"/></svg>`,
+'Beautiful.ai': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF4081"/><rect x="10" y="12" width="20" height="16" rx="2" fill="none" stroke="white" stroke-width="1.5"/><circle cx="16" cy="20" r="3" fill="white"/><rect x="21" y="17" width="7" height="2" rx="1" fill="white"/><rect x="21" y="21" width="5" height="2" rx="1" fill="white"/></svg>`,
+'Infermedica': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1E40AF"/><path d="M20 10v6M17 13h6M14 22h12M16 26h8" stroke="white" stroke-width="2" stroke-linecap="round"/><rect x="13" y="18" width="14" height="10" rx="2" fill="none" stroke="white" stroke-width="1.5"/></svg>`,
+'Noom': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#00BF6F"/><path d="M12 28V16l8 8 8-8v12" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+'LivePerson': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#FF6B00"/><path d="M10 14h20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H22l-4 4v-4H10a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z" fill="white"/><circle cx="15" cy="20" r="1.5" fill="#FF6B00"/><circle cx="20" cy="20" r="1.5" fill="#FF6B00"/><circle cx="25" cy="20" r="1.5" fill="#FF6B00"/></svg>`,
+'Forethought': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#7B2FBE"/><circle cx="20" cy="16" r="5" fill="white"/><path d="M13 30c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M20 21v3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>`,
+'Cohere': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#39594D"/><circle cx="20" cy="20" r="8" fill="none" stroke="white" stroke-width="2"/><circle cx="20" cy="20" r="4" fill="white"/><circle cx="20" cy="20" r="1.5" fill="#39594D"/></svg>`,
+'Mistral AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#F05A28"/><rect x="10" y="10" width="6" height="6" fill="white"/><rect x="24" y="10" width="6" height="6" fill="white"/><rect x="17" y="17" width="6" height="6" fill="white"/><rect x="10" y="24" width="6" height="6" fill="white"/><rect x="24" y="24" width="6" height="6" fill="white"/></svg>`,
+'Manus': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1a1a2e"/><circle cx="20" cy="14" r="5" fill="none" stroke="#818cf8" stroke-width="2"/><path d="M13 28c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#818cf8" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M20 21v3M17 24h6" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="14" r="2" fill="#818cf8"/></svg>`,
+'Audacity AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0000CC"/><path d="M8 20c0-6.6 5.4-12 12-12s12 5.4 12 12-5.4 12-12 12S8 26.6 8 20z" fill="none" stroke="white" stroke-width="1.5"/><path d="M14 24V16l6 8 6-8v8" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+'Resemble AI': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#6B21A8"/><path d="M12 22c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="20" cy="14" r="3" fill="white"/><path d="M14 26h12M17 29h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+'Aiva': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#1A1A2E"/><path d="M10 28l5-12 5 8 3-5 7 9" stroke="#C084FC" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+'Iodine Software': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0D4F8C"/><rect x="14" y="10" width="12" height="20" rx="2" fill="none" stroke="white" stroke-width="1.5"/><path d="M17 15h6M17 19h6M17 23h4" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="10" r="2" fill="white"/></svg>`,
+'Nuance DAX': `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="10" fill="#0078D4"/><circle cx="20" cy="17" r="5" fill="none" stroke="white" stroke-width="2"/><path d="M14 17c0 3.3 2.7 6 6 6s6-2.7 6-6M20 23v4" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M8 25c3-2 5-4 12-4s9 2 12 4" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>`,
 };
 
 function logoImg(domain, name, size=32){
@@ -537,7 +848,7 @@ function render(){
 
   // List
   $('toolList').innerHTML=filtered.map(t=>`
-    <div class="tool-row">
+    <div class="tool-row" style="cursor:pointer" onclick="openToolModal('${t.id}')">
       <div class="tool-logo">${logoImg(t.domain,t.name,32)}</div>
       <div class="tool-info">
         <strong>${esc(t.name)}</strong>
@@ -545,7 +856,7 @@ function render(){
       </div>
       <div class="tool-cats">${t.cats.map(c=>`<span class="${tagClass(c)}">${esc(c)}</span>`).join('')}</div>
       <div class="tool-price">${esc(t.pricing)}</div>
-      <a class="tool-link" href="${esc(t.link)}" target="_blank" rel="noopener noreferrer" title="Abrir ${esc(t.name)}">
+      <a class="tool-link" href="${esc(t.link)}" target="_blank" rel="noopener noreferrer" title="Abrir ${esc(t.name)}" onclick="event.stopPropagation()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>`).join('');
@@ -601,7 +912,366 @@ $('searchInput').addEventListener('input',render);
   $(id).addEventListener('change',()=>{if(id==='categoryFilter')activeCategory=$(id).value;render();})
 );
 
+// ── Main Skill (especialidade principal de cada IA) ──
+const mainSkill = {
+  'ChatGPT':            'Assistente conversacional de uso geral',
+  'Claude':             'Análise profunda e escrita de longa extensão',
+  'Gemini':             'Pesquisa integrada ao ecossistema Google',
+  'Microsoft Copilot':  'Produtividade integrada ao Office 365',
+  'Perplexity':         'Busca inteligente com fontes verificadas',
+  'NotebookLM':         'Síntese e perguntas sobre seus documentos',
+  'Notion AI':          'Organização e geração de conteúdo em notas',
+  'Grammarly':          'Correção e aprimoramento de escrita em inglês',
+  'DeepSeek':           'Raciocínio matemático e programação avançada',
+  'GitHub Copilot':     'Autocomplete de código no editor',
+  'Cursor':             'IDE com IA que entende todo o projeto',
+  'Midjourney':         'Geração de imagens fotorrealistas e artísticas',
+  'DALL-E':             'Geração e edição de imagens por texto',
+  'Stable Diffusion':   'Geração local e customizável de imagens',
+  'ElevenLabs':         'Síntese e clonagem de voz ultrarrealista',
+  'Suno':               'Criação de músicas completas com letra e voz',
+  'Zapier':             'Automação de fluxos entre centenas de apps',
+  'n8n':                'Automação open source self-hosted com código',
+  'Make':               'Automação visual de cenários complexos',
+  'Power BI':           'Dashboards e relatórios de dados corporativos',
+  'Tableau':            'Visualização exploratória de dados',
+  'Julius AI':          'Análise de planilhas com perguntas em português',
+  'Jasper':             'Copywriting e marketing em escala',
+  'Copy.ai':            'Textos de vendas e anúncios em segundos',
+  'HubSpot AI':         'CRM e automação de marketing integrados',
+  'Intercom':           'Atendimento ao cliente com chatbot inteligente',
+  'Canva AI':           'Design gráfico acessível com IA generativa',
+  'Runway':             'Edição e geração de vídeo com IA avançada',
+  'Synthesia':          'Vídeos corporativos com avatares de IA',
+  'Fireflies.ai':       'Transcrição e resumo automático de reuniões',
+  'Otter.ai':           'Legendas e notas em tempo real em reuniões',
+  'Manus':              'Agente autônomo que executa tarefas complexas',
+  'Khanmigo':           'Tutoria socrática personalizada para estudantes',
+  'Socratic':           'Resolução de dúvidas escolares com explicação visual',
+  'Wysa':               'Suporte emocional e técnicas de saúde mental',
+  'Ada Health':         'Triagem de sintomas e orientação médica',
+  'Woebot':             'Terapia cognitivo-comportamental conversacional',
+  'Salesforce Einstein': 'Previsão de vendas e insights de CRM',
+  'Trello AI':          'Kanban inteligente com automação de tarefas',
+  'Notion Calendar':    'Agendamento inteligente integrado ao Notion',
+  'Reclaim.ai':         'Proteção automática de blocos de foco',
+  'Motion':             'Planejamento automático de tarefas e reuniões',
+  'Duolingo Max':       'Aprendizado de idiomas com conversação em IA',
+  'Photomath':          'Resolução passo a passo de equações matemáticas',
+  'Elicit':             'Revisão sistemática de literatura científica',
+  'Consensus':          'Busca de consenso em artigos acadêmicos',
+  'Cohere':             'APIs de linguagem para empresas (RAG, busca)',
+  'Mistral AI':         'Modelos de linguagem open source de alto desempenho',
+  'Grok':               'Assistente com acesso em tempo real ao X/Twitter',
+  'Meta AI':            'Assistente integrado ao WhatsApp e Instagram',
+  'Figma AI':           'Geração de UI e tradução design-para-código',
+  'Lovable':            'Criação de apps web completos por chat',
+  'v0.dev':             'Componentes React e Tailwind por descrição',
+  'Sora':               'Geração de vídeos realistas a partir de texto',
+  'Bardeen':            'Automação de navegador e web scraping com IA',
+  'Tome':               'Apresentações narrativas geradas por IA',
+  'Gamma':              'Documentos e apresentações visuais automáticos',
+  'Nano Banan':         'Geração de imagens criativas e arte expressiva',
+  'Adobe Firefly':      'Geração de imagens integrada ao Creative Cloud',
+  'Leonardo AI':        'Concept art e assets visuais para jogos',
+  'Ideogram':           'Texto tipográfico preciso dentro de imagens',
+  'Playground AI':      'Edição colaborativa de imagens com IA',
+  'Krea AI':            'Geração e upscaling de imagens em tempo real',
+  'Bolt.new':           'App web completo gerado e publicado por chat',
+  'Windsurf':           'IDE com agente IA que entende todo o contexto',
+  'Tabnine':            'Completions de código aprendidos do seu time',
+  'Writesonic':         'Artigos e copies otimizados para SEO',
+  'Rytr':               'Textos em múltiplos idiomas e tons rapidamente',
+  'Surfer SEO':         'Otimização de conteúdo baseada em análise de SERP',
+  'Clockwise':          'Reorganização automática do calendário para foco',
+  'Fliki':              'Conversão de texto em vídeo com voz realista',
+};
+
+function getMainSkill(t){
+  return mainSkill[t.name] || (catDefaultSkills[t.cats[0]]||[])[0] || 'Ferramenta de inteligência artificial';
+}
+
+// ── Skills Data ──
+const toolSkills = {
+  'ChatGPT':           ['Redação criativa','Resumo de textos','Tradução','Análise de dados','Geração de código','Brainstorming','Chatbot conversacional','Criação de planilhas','Revisão gramatical','Criação de apresentações'],
+  'Claude':            ['Análise profunda','Raciocínio lógico','Escrita longa','Revisão de documentos','Código seguro','Pesquisa acadêmica','Síntese de informações','Resposta empática','Análise jurídica','Criação de relatórios'],
+  'Gemini':            ['Pesquisa na web','Análise de imagens','Geração de texto','Código Python','Integração Google','Análise de documentos','Criação de e-mails','Assistência criativa','Síntese multimodal','Resposta em tempo real'],
+  'Microsoft Copilot': ['Integração Office 365','Criação de apresentações PowerPoint','Análise Excel','Redação Word','Resumo de e-mails','Criação de código','Pesquisa Bing','Automação de tarefas','Reuniões Teams','Gestão de projetos'],
+  'Perplexity':        ['Pesquisa com fontes','Análise de notícias','Resposta contextual','Pesquisa acadêmica','Comparação de produtos','Análise de mercado','Citação automática','Atualização em tempo real','Síntese de artigos','Pesquisa técnica'],
+  'NotebookLM':        ['Organização de documentos','Resumo automático','Perguntas sobre PDFs','Criação de podcasts','Síntese de pesquisa','Análise de livros','Estudo guiado','Mapa mental','Notas inteligentes','Extração de insights'],
+  'Notion AI':         ['Organização de notas','Resumo de páginas','Criação de templates','Brainstorming','Tradução in-app','Geração de conteúdo','Gestão de projetos','Banco de dados','Wikis corporativos','Criação de tarefas'],
+  'Grammarly':         ['Correção gramatical','Sugestão de vocabulário','Verificação de plágio','Detecção de tom','Reescrita de frases','Clareza de escrita','Detecção de erros','Adaptação de estilo','Verificação ortográfica','Melhora de legibilidade'],
+  'DeepSeek':          ['Raciocínio matemático','Resolução de problemas','Programação avançada','Análise científica','Código eficiente','Pesquisa técnica','Modelagem de dados','Lógica formal','Algoritmos','Machine learning'],
+  'GitHub Copilot':    ['Autocomplete de código','Geração de funções','Documentação automática','Revisão de código','Sugestão de testes','Detecção de bugs','Refatoração','Suporte multi-linguagem','Integração IDE','Pair programming com IA'],
+  'Cursor':            ['Edição de código por IA','Chat com codebase','Geração de funções','Refatoração inteligente','Detecção de erros','Criação de testes','Sugestão de imports','Explicação de código','Multi-arquivo edição','Integração Git'],
+  'Midjourney':        ['Geração de imagens fotorrealistas','Arte digital','Ilustração','Design de personagens','Cenários fantásticos','Concept art','Texturas','Logotipos','Banners','Estilos artísticos variados'],
+  'DALL-E':            ['Geração de imagens','Edição de imagens','Variações criativas','Arte abstrata','Illustração de ideias','Design de produtos','Fotos conceituais','Arte para livros','Imagens para marketing','Composição personalizada'],
+  'Stable Diffusion':  ['Geração local de imagens','Fine-tuning de modelos','Inpainting','Outpainting','Img2Img','ControlNet','Estilos personalizados','Arte NSFW (controlada)','Integração API','Open source'],
+  'ElevenLabs':        ['Síntese de voz realista','Clonagem de voz','Narração de audiobooks','Dublagem de vídeos','Múltiplos idiomas','Emoções na voz','API de voz','Texto para fala','Voices marketplace','Ajuste de velocidade'],
+  'Suno':              ['Geração de músicas completas','Letras automáticas','Múltiplos gêneros musicais','Voz cantada','Instrumentação','Criação rápida','Personalização de estilo','Produção musical','Música para vídeos','Remix'],
+  'Zapier':            ['Integração de apps','Automação de fluxos','Webhooks','Ações condicionais','Agendamento de tarefas','Transferência de dados','Automação de e-mails','Integração CRM','Notificações automáticas','Multistep workflows'],
+  'n8n':               ['Automação open source','Self-hosted','Fluxos visuais','Código personalizado','Integrações API','Webhooks','Loops e condições','Banco de dados','Suporte multi-nuvem','Personalização total'],
+  'Make':              ['Automação visual','Cenários complexos','Integração de apps','Filtros e routers','Processamento de dados','API custom','Agendamento','Transformação de dados','Histórico de execução','Operações em lote'],
+  'Power BI':          ['Dashboards interativos','Relatórios visuais','Análise preditiva','Conexão de dados','DAX avançado','Compartilhamento corporativo','Atualização automática','KPIs em tempo real','Drill-down','Exportação de relatórios'],
+  'Tableau':           ['Visualização de dados','Mapas geográficos','Análise exploratória','Conexão SQL','Stories visuais','Filtros interativos','Cálculos avançados','Integração Salesforce','Publicação na nuvem','Preparação de dados'],
+  'Julius AI':         ['Análise de planilhas','Criação de gráficos','Interpretação estatística','Análise de CSV','Perguntas em linguagem natural','Python automático','Correlações','Regressões','Limpeza de dados','Insights automáticos'],
+  'Jasper':            ['Copywriting','Artigos de blog','Anúncios','E-mails marketing','Conteúdo para redes sociais','Scripts de vídeo','Landing pages','SEO copy','Descrições de produtos','Tom de marca'],
+  'Copy.ai':           ['Copies publicitárias','Conteúdo para redes sociais','E-mails de venda','Taglines','Descrições de produto','Blog posts','Headlines','CTAs','Scripts de vídeo','Brainstorming de marketing'],
+  'HubSpot AI':        ['CRM inteligente','E-mails automatizados','Scoring de leads','Chatbots de vendas','Relatórios de vendas','Sequências de nutrição','Gestão de pipeline','Segmentação de clientes','Análise de conversão','Integração de marketing'],
+  'Intercom':          ['Atendimento automatizado','Chatbot de suporte','Tickets inteligentes','Roteamento de conversas','Base de conhecimento','Análise de satisfação','Integração CRM','Chat ao vivo','Campanhas in-app','Feedback de produto'],
+  'Midjourney':        ['Geração de imagens fotorrealistas','Arte digital','Concept art','Design de personagens','Illustração','Logotipos','Texturas','Banners','Estilos artísticos','Upscaling'],
+  'Canva AI':          ['Design gráfico','Apresentações','Remoção de fundo','Geração de imagens','Redimensionamento','Animações','Vídeos curtos','Identidade visual','Redes sociais','Templates profissionais'],
+  'Runway':            ['Edição de vídeo com IA','Geração de vídeo','Remoção de fundo em vídeo','Inpainting em vídeo','Efeitos especiais','Tracking de movimento','Animação','Color grading','Upscaling de vídeo','Gen-2 text-to-video'],
+  'Synthesia':         ['Avatares de IA','Vídeos corporativos','Treinamentos em vídeo','Múltiplos idiomas','Dublagem automática','Personalização de avatar','Scripts automáticos','Vídeos de onboarding','Apresentações em vídeo','API de vídeo'],
+  'Fireflies.ai':      ['Gravação de reuniões','Transcrição automática','Resumo de reuniões','Action items','Pesquisa em transcrições','Integração Zoom/Meet','Análise de sentimento','Comentários em reuniões','CRM sync','Share de notas'],
+  'Otter.ai':          ['Transcrição em tempo real','Resumo automático','Destaques de reunião','Integração com calendário','Colaboração em notas','Exportação de transcrições','Identificação de falantes','Pesquisa em transcrições','Gravação automática','Legendas ao vivo'],
+  'Manus':             ['Agente autônomo','Pesquisa web autônoma','Execução de código','Análise de documentos','Criação de relatórios','Multi-step tasks','Tomada de decisão','Automação complexa','Geração de conteúdo','Pesquisa profunda'],
+  'Khanmigo':          ['Tutoria personalizada','Matemática','Ciências','História','Feedback de redação','Preparação para provas','Aprendizagem adaptativa','Explicação passo a passo','Perguntas socráticas','Revisão de conceitos'],
+  'Socratic':          ['Resolução de dúvidas','Matemática','Física','Química','Biologia','Explicação visual','Reconhecimento de problemas','Busca de exemplos','Aprendizagem colaborativa','Suporte multimatéria'],
+  'Wysa':              ['Saúde mental','Redução de ansiedade','Técnicas de respiração','CBT guiada','Diário de humor','Check-in emocional','Suporte ao estresse','Mindfulness','Estratégias de enfrentamento','Conexão com terapeutas'],
+  'Ada Health':        ['Verificação de sintomas','Triagem médica','Histórico de saúde','Orientação preventiva','Diagnóstico preliminar','Recomendação de especialistas','Monitoramento de condições','Informações de medicamentos','Urgência médica','Saúde familiar'],
+  'Woebot':            ['Terapia cognitivo-comportamental','Diário emocional','Técnicas de relaxamento','Suporte ao sono','Gerenciamento de estresse','Humor tracking','Exercícios de mindfulness','Recursos de saúde mental','Suporte 24/7','Conversas empáticas'],
+  'Salesforce Einstein':['Previsão de vendas','Scoring de leads','Recomendação de produtos','Análise de e-mails','Automação de CRM','Insights de clientes','Próxima ação recomendada','Detecção de anomalias','Análise de conversas','Forecast inteligente'],
+  'Trello AI':         ['Kanban inteligente','Sugestão de tarefas','Automação Butler','Estimativa de tempo','Categorização automática','Integração de apps','Checklists inteligentes','Notificações contextuais','Relatórios de projetos','Colaboração em equipe'],
+  'Notion Calendar':   ['Agendamento inteligente','Integração com Notion','Blocos de tempo','Priorização automática','Reuniões contextuais','Lembretes adaptativos','Visão de semana/mês','Sync com Google','Colaboração','Gestão de projetos'],
+  'Reclaim.ai':        ['Agendamento automático','Blocos de foco','Reuniões eficientes','Sincronização de calendários','Tarefas prioritárias','Buffer automático','Hábitos agendados','Proteção de tempo pessoal','Analytics de tempo','Integração Slack'],
+  'Motion':            ['Planejamento automático','Reorganização de tarefas','Gestão de projetos','Agendamento de reuniões','Estimativa automática','Priorização por IA','Calendário inteligente','Tracking de progresso','Relatórios de produtividade','Integração de equipes'],
+  'Duolingo Max':      ['Aprendizagem de idiomas','Conversação com IA','Explicação de erros','Roleplay interativo','Gramática contextual','Vocabulário adaptativo','Pronúncia','Feedback instantâneo','Jogos educativos','Trilha personalizada'],
+  'Photomath':         ['Resolução de equações','Cálculo passo a passo','Geometria','Álgebra','Trigonometria','Cálculo diferencial','Estatística','Gráficos de funções','Verificação de respostas','Explicação detalhada'],
+  'Elicit':            ['Revisão de literatura','Extração de dados','Resumo de artigos','Comparação de estudos','Perguntas de pesquisa','Identificação de tendências','Análise de metodologias','Síntese de evidências','Mapeamento sistemático','Citação automática'],
+  'Consensus':         ['Busca em artigos científicos','Consenso acadêmico','Perguntas de saúde','Síntese de evidências','Citação de fontes','Análise de estudos','Verificação de afirmações','Resumo de pesquisa','Confiabilidade de dados','Busca por nutrição/medicina'],
+  'Cohere':            ['Classificação de texto','Busca semântica','Geração de embeddings','RAG (retrieval)','Análise de sentimento','Extração de entidades','Sumarização','Respostas contextuais','Fine-tuning','API corporativa'],
+  'Mistral AI':        ['Modelos open source','Código eficiente','Análise de documentos','Raciocínio lógico','Multilíngue','API rápida','Fine-tuning','Baixo custo','Alta performance','Privacidade de dados'],
+  'Grok':              ['Análise de tweets','Tendências em tempo real','Humor e sarcasmo','Pesquisa atual','Análise de X/Twitter','Código','Respostas sem censura','Personalidade única','Notícias recentes','Debate de ideias'],
+  'Meta AI':           ['Assistência via WhatsApp','Criação de imagens','Pesquisa conversacional','Resposta em redes sociais','Integração Meta','Tradução','Resumo de conteúdo','Código','Assistência criativa','Respostas rápidas'],
+  'Figma AI':          ['Geração de UI','Sugestão de componentes','Tradução design-código','Prototipagem rápida','Variações de layout','Design system','Anotações automáticas','Renomeação inteligente','Acessibilidade','Exportação para React'],
+  'Canva AI':          ['Design com IA','Magic Resize','Text to image','Remoção de fundo','Apresentações automáticas','Animações','Templates inteligentes','Tradução de design','Branding automático','Criação de vídeos'],
+  'Lovable':           ['App web completo','Frontend React','Backend automático','Banco de dados','Deploy automático','Iteração por chat','Integração APIs','Design responsivo','Autenticação','Criação sem código'],
+  'v0.dev':            ['Componentes React','Tailwind CSS','Shadcn UI','Design to code','Prototipagem rápida','Iteração visual','Acessibilidade','Responsividade','Dark mode','Exportação de código'],
+  'Sora':              ['Vídeo realista','Text to video','Cenas complexas','Personagens consistentes','Física realista','Duração até 60s','Alta resolução','Estilos variados','Narrativa visual','Referência de cena'],
+  'Bardeen':           ['Automação de browser','Web scraping','Formulários automáticos','Extração de dados','Integração apps','Playbooks de IA','Trigger automático','Enriquecimento de leads','CRM sync','Pesquisa automática'],
+  'Tome':              ['Apresentações com IA','Narrativa visual','Conteúdo automático','Design adaptativo','Páginas interativas','Exportação','Colaboração','Integração de dados','Templates modernos','One-page sites'],
+  'Gamma':             ['Apresentações automáticas','Documentos visuais','Cards interativos','Design com IA','Múltiplos formatos','Colaboração','Exportação PDF','Embed de mídia','Edição fácil','Compartilhamento rápido'],
+  'Nano Banan':        ['Geração de imagens criativas','Arte expressiva','Design visual','Estilos únicos','Criação artística','Composição visual','Arte digital','Personalização estética','Ilustração','Imagens conceituais'],
+  'Adobe Firefly':     ['Geração de imagens','Efeitos textuais','Preenchimento generativo','Extensão de imagem','Integração Photoshop','Vetores IA','Remoção de objeto','Estilos artísticos','Creative Cloud sync','Alta resolução'],
+  'Leonardo AI':       ['Concept art','Personagens de jogos','Assets de jogos','Textures','Estilos personalizados','Fine-tuning de modelos','Geração em lote','Prompt avançado','Imagens em HD','Animação de personagens'],
+  'Ideogram':          ['Texto em imagens','Tipografia criativa','Logos com texto','Cartazes','Banners com letras','Design gráfico','Arte conceitual','Precis de texto','Marcas visuais','Identidade visual'],
+  'Playground AI':     ['Edição colaborativa','Canvas criativo','Mistura de imagens','Filtros artísticos','Geração rápida','Compartilhamento','Estilos de arte','Remix de imagens','Criação em equipe','Exportação HD'],
+  'Krea AI':           ['Geração em tempo real','Upscaling de imagens','Enhance fotográfico','Estilos visuais','Referência de imagem','IA em tempo real','Criação instantânea','Alta qualidade','Prompt visual','Iteração rápida'],
+  'Bolt.new':          ['App web completo','Deploy instantâneo','Frontend+Backend','Banco de dados','Autenticação','APIs integradas','Sem configuração','Criação por chat','React/Vite','Publicação automática'],
+  'Windsurf':          ['Edição com contexto total','Cascade (agente IA)','Sugestões de código','Refatoração inteligente','Explicação de código','Busca semântica','Multi-arquivo','Integração Git','Debug assistido','Documentação automática'],
+  'Tabnine':           ['Completions personalizados','Aprendizado do time','Privacidade de código','Suporte multi-linguagem','Integração IDE','Sugestões inline','Geração de funções','Contexto local','Sem envio ao servidor','Treinamento personalizado'],
+  'Writesonic':        ['Artigos longos','Landing pages','Anúncios Google','Posts para redes sociais','E-mails marketing','Descrições de produto','SEO otimizado','Múltiplos idiomas','Paráfrase','Verificação de fatos'],
+  'Rytr':              ['Textos rápidos','Múltiplos tons','Blog posts','E-mails','Legendas de redes sociais','Histórias','Slogans','Scripts de vídeo','Revisão de texto','Templates variados'],
+  'Surfer SEO':        ['Otimização on-page','Análise de SERP','Sugestão de palavras-chave','Score de conteúdo','Análise de concorrentes','Estrutura de artigos','NLP SEO','Auditoria de site','Grow Flow','Integração WordPress'],
+  'Clockwise':         ['Otimização de calendário','Blocos de foco automáticos','Reuniões eficientes','Sincronização de time','Priorização inteligente','Tempo de viagem','Buffer automático','Analytics de tempo','Integração Slack','Proteção de foco'],
+  'Fliki':             ['Texto para vídeo','Narração realista','Avatares em vídeo','Múltiplos idiomas','Banco de mídia','Legendas automáticas','Voz clonada','Shorts e Reels','Slides narrados','Publicação direta'],
+};
+
+// Default skills by category
+const catDefaultSkills = {
+  'Assistentes':       ['Conversação','Análise de texto','Resposta a perguntas','Resumo','Tradução','Código','Brainstorming'],
+  'Escrita e Texto':   ['Redação','Revisão','Paráfrase','SEO','Copywriting','E-mails','Blog posts'],
+  'Imagem e Vídeo':    ['Geração de imagens','Edição de vídeo','Arte digital','Concept art','Animação','Upscaling'],
+  'Áudio e Música':    ['Síntese de voz','Geração musical','Transcrição','Remoção de ruído','Podcasts'],
+  'Código':            ['Autocomplete','Geração de funções','Revisão de código','Testes automáticos','Documentação','Debug'],
+  'Dados e Análise':   ['Visualização','Relatórios','Machine learning','Análise preditiva','Dashboards','ETL'],
+  'Automação':         ['Workflows','Integração de apps','Webhooks','Triggers','Agendamento','APIs'],
+  'Marketing e Vendas':['Copywriting','E-mail marketing','Lead scoring','CRM','Anúncios','SEO'],
+  'Atendimento':       ['Chatbot','Tickets','Respostas automáticas','Análise de satisfação','Roteamento','Base de conhecimento'],
+  'Design':            ['UI/UX','Logos','Identidade visual','Prototipagem','Paletas de cor','Mockups'],
+  'Gestão e Negócios': ['Gestão de projetos','KPIs','Relatórios','Kanban','OKRs','Apresentações'],
+  'Produtividade':     ['Agendamento','Transcrição de reuniões','Organização de notas','Foco','Gestão de tempo'],
+  'Educação':          ['Tutoria','Exercícios','Explicações','Feedback','Quiz','Aprendizagem adaptativa'],
+  'Saúde':             ['Triagem de sintomas','Saúde mental','Monitoramento','Orientação médica','Coaching de saúde'],
+};
+
+function getToolSkills(t){
+  if(toolSkills[t.name]) return toolSkills[t.name];
+  // Build from categories
+  const skills = new Set();
+  t.cats.forEach(c => (catDefaultSkills[c]||[]).forEach(s=>skills.add(s)));
+  return [...skills].slice(0,8);
+}
+
+function openToolModal(toolId){
+  const t = tools.find(x=>x.id===toolId);
+  if(!t) return;
+  const skills = getToolSkills(t);
+  const priceColors = {'Gratuito':'#059669','Freemium':'#d97706','Pago':'#dc2626','Open Source':'#7c3aed'};
+  const priceColor = priceColors[t.pricing]||'#6b7280';
+  const skillCheckSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>`;
+  $('toolModalBox').innerHTML = `
+    <div class="modal-header">
+      <div style="flex-shrink:0">${logoImg(t.domain,t.name,48)}</div>
+      <div class="modal-header-info">
+        <h3>${esc(t.name)}</h3>
+        <div class="modal-cats">${t.cats.map(c=>`<span style="background:rgba(255,255,255,.15);color:#e2e8f0;font-size:10px;padding:2px 8px;border-radius:99px">${esc(c)}</span>`).join('')}</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()" style="margin-left:auto;color:#9ca3af">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Sobre a ferramenta</div>
+        <div class="modal-desc">${esc(t.desc)}</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Especialidade principal</div>
+        <div style="font-size:13px;color:#1e3a6e;font-weight:500;background:#f0f6ff;border-left:3px solid #3b82f6;padding:8px 12px;border-radius:0 6px 6px 0;margin-bottom:14px">${esc(getMainSkill(t))}</div>
+        <div class="modal-section-title" style="margin-top:0">Outras habilidades (${skills.length})</div>
+        <div class="modal-skills-grid">
+          ${skills.map(s=>`<div class="modal-skill-item">${skillCheckSvg}${esc(s)}</div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <span class="modal-price-badge" style="color:${priceColor};background:${priceColor}18;border:1px solid ${priceColor}40">${esc(t.pricing)}</span>
+      <a class="modal-open-btn" href="${esc(t.link)}" target="_blank" rel="noopener">
+        Acessar ferramenta
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>`;
+  $('toolModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  $('toolModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+// ── Skills View ──
+function renderSkillsView(){
+  const q=($('skillSearchInput')?.value||'').toLowerCase();
+  const cats=allCats();
+  let html='';
+  cats.forEach(cat=>{
+    const catTools=tools.filter(t=>t.cats.includes(cat)).filter(t=>{
+      if(!q) return true;
+      const skills=getToolSkills(t);
+      return t.name.toLowerCase().includes(q)||skills.some(s=>s.toLowerCase().includes(q));
+    });
+    if(!catTools.length) return;
+    const icon=catIcons[cat]||'';
+    html+=`<div class="skill-group">
+      <div class="skill-group-title">${icon} ${esc(cat)} <span style="color:#9bafc8;font-weight:400;text-transform:none;letter-spacing:0">(${catTools.length})</span></div>
+      <div class="skills-grid">
+        ${catTools.map(t=>{
+          const ms=getMainSkill(t);
+          const extraSkills=getToolSkills(t).slice(0,3);
+          return `<div class="skill-card" onclick="openToolModal('${t.id}')">
+            <div class="skill-card-header">
+              ${logoImg(t.domain,t.name,28)}
+              <div style="min-width:0">
+                <div class="skill-card-name">${esc(t.name)}</div>
+                <div style="font-size:10px;color:#6b7fa3">${esc(t.pricing)}</div>
+              </div>
+            </div>
+            <div class="skill-main-label">${esc(ms)}</div>
+            <div class="skill-chips">
+              ${extraSkills.map(s=>`<span class="skill-chip">${esc(s)}</span>`).join('')}
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  });
+  $('skillsContent').innerHTML=html||'<p style="color:#6b7fa3;text-align:center;padding:40px">Nenhum resultado encontrado.</p>';
+}
+
+let currentView='catalog';
+function setView(view){
+  currentView=view;
+  $('catalogView').style.display=view==='catalog'?'block':'none';
+  $('skillsView').style.display=view==='skills'?'block':'none';
+  // Update sidebar active state
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  if(view==='skills'){
+    $('skillsNav').classList.add('active');
+    renderSkillsView();
+  } else {
+    $('allNav').classList.add('active');
+  }
+}
+
 render();
+
+// Bottom nav category filter
+function bnav(cat, el){
+  activeCategory=cat;
+  document.querySelectorAll('.bnav-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  // sync sidebar category filter
+  if($('categoryFilter')) $('categoryFilter').value=cat;
+  render();
+  el.scrollIntoView({inline:'center',behavior:'smooth'});
+}
 </script>
+
+<!-- Bottom nav bar (mobile) — categorias com nomes que batem com os tools -->
+<nav class="bottom-nav-bar" id="bnavBar">
+  <button class="bnav-btn active" onclick="bnav('all',this)">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    <span>Todas</span>
+  </button>
+  <button class="bnav-btn" onclick="bnav('Assistentes',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+    <span>Assistentes</span>
+  </button>
+  <button class="bnav-btn" onclick="bnav('Escrita e Texto',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    <span>Texto</span>
+  </button>
+  <button class="bnav-btn" onclick="bnav('Imagem e Vídeo',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    <span>Imagens</span>
+  </button>
+  <button class="bnav-btn" onclick="bnav('Áudio e Música',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+    <span>Áudio</span>
+  </button>
+  <button class="bnav-btn" onclick="bnav('Código',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    <span>Código</span>
+  </button>
+  <button class="bnav-btn" onclick="bnav('Produtividade',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    <span>Produtiv.</span>
+  </button>
+  <button class="bnav-btn" onclick="bnav('Dados e Análise',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    <span>Dados</span>
+  </button>
+  <button class="bnav-btn" onclick="bnav('Marketing e Vendas',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    <span>Marketing</span>
+  </button>
+  <button class="bnav-btn" onclick="bnav('Design',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+    <span>Design</span>
+  </button>
+  <button class="bnav-btn" onclick="bnav('Automação',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+    <span>Automação</span>
+  </button>
+  <button class="bnav-btn" onclick="bnav('Educação',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    <span>Educação</span>
+  </button>
+  <button class="bnav-btn" onclick="bnav('Atendimento',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>Atend.</span>
+  </button>
+  <button class="bnav-btn" onclick="bnav('Gestão e Negócios',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+    <span>Gestão</span>
+  </button>
+  <button class="bnav-btn" onclick="bnav('Saúde',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    <span>Saúde</span>
+  </button>
+</nav>
 </body>
 </html>
